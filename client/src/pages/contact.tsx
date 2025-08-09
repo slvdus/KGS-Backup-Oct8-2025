@@ -150,7 +150,7 @@ export default function Contact() {
                     whileHover={{ scale: 1.02 }}
                     data-testid={`contact-info-${index}`}
                   >
-                    <div className="w-12 h-12 cta-button rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-beige-100 hover:bg-beige-200 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors duration-300">
                       <info.icon className="w-6 h-6 text-noir-900" />
                     </div>
                     <div>
@@ -302,7 +302,7 @@ export default function Contact() {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="cta-button w-full font-semibold py-4 rounded-lg text-lg relative overflow-hidden group shimmer-effect"
+                    className="bg-beige-100 hover:bg-beige-200 text-noir-900 w-full font-bold py-4 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     data-testid="button-send-message"
                   >
                     <span className="relative z-10">

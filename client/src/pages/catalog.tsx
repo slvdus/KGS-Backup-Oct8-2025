@@ -169,7 +169,7 @@ export default function Catalog() {
                       variant={viewMode === "grid" ? "default" : "outline"}
                       size="sm"
                       onClick={() => setViewMode("grid")}
-                      className={viewMode === "grid" ? "cta-button" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
+                      className={viewMode === "grid" ? "bg-beige-100 hover:bg-beige-200 text-noir-900 font-semibold" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
                       data-testid="button-grid-view"
                     >
                       <Grid3X3 className="w-4 h-4" />
@@ -180,7 +180,7 @@ export default function Catalog() {
                       variant={viewMode === "list" ? "default" : "outline"}
                       size="sm"
                       onClick={() => setViewMode("list")}
-                      className={viewMode === "list" ? "cta-button" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
+                      className={viewMode === "list" ? "bg-beige-100 hover:bg-beige-200 text-noir-900 font-semibold" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
                       data-testid="button-list-view"
                     >
                       <List className="w-4 h-4" />
@@ -248,27 +248,27 @@ export default function Catalog() {
                 <Button 
                   variant="outline"
                   size="icon"
-                  className="text-gray-400 hover:text-white border-noir-700 hover:border-beige-100"
+                  className="glass-effect text-white hover:text-beige-100 border-noir-600/50 hover:border-beige-100/50 hover:bg-beige-100/10 transition-all duration-300"
                   data-testid="button-prev-page"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </Button>
                 <Button 
-                  className="px-4 py-2 bg-beige-100 text-noir-900 font-semibold"
+                  className="px-4 py-2 bg-beige-100 hover:bg-beige-200 text-noir-900 font-semibold shadow-md transition-all duration-300"
                   data-testid="button-page-1"
                 >
                   1
                 </Button>
                 <Button 
                   variant="outline"
-                  className="px-4 py-2 text-white hover:text-beige-100 border-noir-700 hover:border-beige-100"
+                  className="px-4 py-2 glass-effect text-white hover:text-beige-100 border-noir-600/50 hover:border-beige-100/50 hover:bg-beige-100/10 transition-all duration-300"
                   data-testid="button-page-2"
                 >
                   2
                 </Button>
                 <Button 
                   variant="outline"
-                  className="px-4 py-2 text-white hover:text-beige-100 border-noir-700 hover:border-beige-100"
+                  className="px-4 py-2 glass-effect text-white hover:text-beige-100 border-noir-600/50 hover:border-beige-100/50 hover:bg-beige-100/10 transition-all duration-300"
                   data-testid="button-page-3"
                 >
                   3

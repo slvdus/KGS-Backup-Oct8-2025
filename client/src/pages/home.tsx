@@ -65,7 +65,7 @@ export default function Home() {
           >
             <Link href="/catalog">
               <Button 
-                className="cta-button glass-effect neon-border px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto shimmer-effect"
+                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 rounded-lg text-lg w-full sm:w-auto shimmer-effect"
                 data-testid="button-explore-catalog"
               >
                 Explore Catalog

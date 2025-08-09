@@ -477,7 +477,7 @@ export default function ProductDetail() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  className="cta-button w-full font-bold py-4 text-lg relative overflow-hidden group"
+                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 w-full font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handleAddToCart}
                   disabled={product.inStock === 0}
                   data-testid="button-add-to-cart"
