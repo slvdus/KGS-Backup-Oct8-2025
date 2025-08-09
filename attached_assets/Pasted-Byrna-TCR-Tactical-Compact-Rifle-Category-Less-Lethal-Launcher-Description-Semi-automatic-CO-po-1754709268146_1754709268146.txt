@@ -1,0 +1,90 @@
+Byrna TCR (Tactical Compact Rifle)
+Category: Less-Lethal Launcher
+Description: Semi-automatic CO■-powered less-lethal launcher with tactical ergonomics. Offers extended magazines, rails, and
+Price: $599.99 (base)
+Details: .68 caliber, 12+7 round mags, 11" barrel, pull-pierce CO■, Picatinny rails, flip-up sights, collapsible stock.
+Use Case: Home defense, training, recreation
+Colt Python (Blued)
+Category: Handgun
+Description: Iconic .357 Magnum revolver famed for precision and smooth trigger. Built with vent rib barrel and full underlug.
+Price: $1,699 MSRP
+Details: .357 Magnum/.38 Special, 6-shot DA/SA, 6" barrel (est.), adjustable sights.
+Use Case: Target shooting, collection, hunting
+Colt King Cobra
+Category: Handgun
+Description: Modern .357 Magnum revolver offering strength and reliability with classic styling.
+Price: $1,149 MSRP
+Details: .357 Magnum, 6-shot DA/SA, 6" barrel (est.), ramp front sight.
+Use Case: Range, defensive carry (shorter barrels), collection
+GForce Arms Lever Rifle (LTAC style)
+Category: Rifle
+Description: Lever-action rifle with modern M-LOK handguard and threaded barrel. Combines classic operation with tactical upg
+Price: $799–$999
+Details: .357 Magnum/.38 Special, 8+1, 16.5" threaded barrel, top rail, FO front sight.
+Use Case: Ranch, defense, brush hunting, modern lever setup
+CCI Suppressor Max .22 LR
+Category: Ammunition
+Description: Segmented hollow point .22LR optimized for suppressor use, offering quiet operation and effective expansion.
+Price: $18–$20 per 100
+Details: .22 LR, 45gr Segmented HP, 970 fps, subsonic.
+Use Case: Small game, pest control, quiet training
+PMC X-TAC 5.56 NATO (M855)
+Category: Ammunition
+Description: Green-tip 5.56 NATO penetrator rounds built to military spec for reliable performance.
+Price: $12–$16 per 20
+Details: 5.56x45mm NATO, 62gr LAP, steel penetrator, ~3,100 fps.
+Use Case: Training, tactical drills, duty-grade practice
+Magtech 300 BLK Subsonic
+Category: Ammunition
+Description: Heavy subsonic .300 BLK FMJ for suppressed shooting with minimal noise.
+Price: $31–$45 per 50
+Details: 300 AAC Blackout, 200gr FMJ, 1,050 fps.
+Use Case: Suppressed training, range
+Byrna SD Launcher Kit (Safety Orange)
+Category: Less-Lethal Launcher
+Description: Compact CO■-powered personal defense launcher with included projectiles and CO■ cartridges.
+Price: $379–$399
+Details: .68 caliber, 5-round mags (x2), 15 projectiles, ambi safety, straight trigger.
+Use Case: Home/self defense, training
+Byrna Projectiles Assortment
+Category: Less-Lethal Ammo
+Description: Mix of Byrna Kinetic, Eco-Kinetic, Training, and Pepper projectiles, plus 12ga less-lethal rounds.
+Price: $25–$80
+Details: .68 caliber & 12ga, various payloads.
+Use Case: Training, defense (check legal restrictions)
+Custom Glock-Pattern 9mm
+Category: Handgun
+Description: Custom-built Glock-style pistol with slide cuts, enhanced barrel, and magwell.
+Price: $900–$1,500
+Details: 9mm Luger, windowed slide, gold-tone barrel, tall sights.
+Use Case: Competition, range
+SIG Sauer P365X
+Category: Handgun
+Description: Micro-compact 9mm with optic-ready slide and flat trigger, ideal for concealed carry.
+Price: $579–$699
+Details: 9mm Luger, 12+1, 3.1" barrel, XRAY3 sights.
+Use Case: Concealed carry, EDC
+Walker's Razor Slim Electronic Muffs
+Category: Hearing Protection
+Description: Low-profile electronic earmuffs that amplify ambient sound and protect against gunfire.
+Price: $49–$79
+Details: NRR 23 dB, slim cups, foldable design.
+Use Case: Range, hunting
+Ruger American Pistol (9mm)
+Category: Handgun
+Description: Full-size duty pistol with ergonomic grip and Novak sights.
+Price: $499–$579
+Details: 9mm Luger, 17+1, 4.2" barrel.
+Use Case: Duty, home defense, range
+SIG Sauer P365X (loose with ammo)
+Category: Handgun
+Description: P365X variant pictured with magazine and defensive ammo.
+Price: $579–$699
+Details: 9mm Luger, 12+1, optic-ready.
+Use Case: Concealed carry
+S&W Bodyguard 2.0 (.380 ACP)
+Category: Handgun
+Description: Compact .380 ACP pistol for discreet carry.
+Price: $437–$549
+Details: .380 ACP, 10+1/12+1, 2.75" barrel.
+Use Case: Deep concealment, backup

@@ -15,11 +15,12 @@ export default function Catalog() {
 
   const categories = [
     "All Categories",
-    "Rifles",
-    "Handguns", 
-    "Shotguns",
-    "Accessories",
-    "Ammunition"
+    "Handguns",
+    "Rifles", 
+    "Less-Lethal Launchers",
+    "Ammunition",
+    "Less-Lethal Ammunition",
+    "Hearing Protection"
   ];
 
   const sortOptions = [
@@ -87,7 +88,7 @@ export default function Catalog() {
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-catalog-subtitle"
           >
-            Discover our comprehensive collection of premium firearms and equipment
+            Premium firearms, less-lethal defense systems, and professional accessories
           </motion.p>
           
           {/* Stats */}
@@ -109,6 +110,128 @@ export default function Catalog() {
               <div className="text-2xl font-bold gradient-text">24/7</div>
               <div className="text-gray-400 text-sm">Support</div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-noir-900/50 to-noir-900"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold text-white mb-4">Professional Services</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Expert assistance for all your firearms transfer and licensing needs
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* FFL Transfer Service */}
+            <motion.div
+              className="glass-effect p-8 rounded-2xl border border-white/10 group hover:border-beige-100/30 transition-all duration-500"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              whileHover={{ y: -8 }}
+            >
+              <div className="flex items-start space-x-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-beige-100/20 to-beige-200/20 rounded-2xl flex items-center justify-center">
+                    <svg className="w-8 h-8 text-beige-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3">FFL Transfer Service</h3>
+                  <p className="text-gray-300 mb-6">
+                    Professional Federal Firearms License transfer services for online purchases. Fast, secure, and compliant processing with background checks and proper documentation.
+                  </p>
+                  <ul className="space-y-2 text-gray-400 mb-6">
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      Background check processing
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      Secure storage until pickup
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      Licensed professional handling
+                    </li>
+                  </ul>
+                  <div className="flex items-center justify-between">
+                    <div className="text-2xl font-bold text-beige-100">$35<span className="text-sm text-gray-400 ml-1">per transfer</span></div>
+                    <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-medium">
+                      Learn More
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* NFA Transfer Service */}
+            <motion.div
+              className="glass-effect p-8 rounded-2xl border border-white/10 group hover:border-beige-100/30 transition-all duration-500"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              whileHover={{ y: -8 }}
+            >
+              <div className="flex items-start space-x-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-beige-100/20 to-beige-200/20 rounded-2xl flex items-center justify-center">
+                    <svg className="w-8 h-8 text-beige-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-3">NFA Transfer Service</h3>
+                  <p className="text-gray-300 mb-6">
+                    Expert National Firearms Act transfer services for suppressors, SBRs, and other regulated items. Complete ATF Form 4 processing with professional guidance throughout.
+                  </p>
+                  <ul className="space-y-2 text-gray-400 mb-6">
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      ATF Form 4 processing
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      Tax stamp assistance
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 bg-beige-100 rounded-full mr-3"></div>
+                      Compliance verification
+                    </li>
+                  </ul>
+                  <div className="flex items-center justify-between">
+                    <div className="text-2xl font-bold text-beige-100">$75<span className="text-sm text-gray-400 ml-1">per transfer</span></div>
+                    <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-medium">
+                      Learn More
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Contact Notice */}
+          <motion.div
+            className="text-center mt-12 glass-effect p-6 rounded-2xl border border-white/10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <p className="text-gray-300">
+              <strong className="text-beige-100">Ready to get started?</strong> Contact us today to discuss your transfer needs or to schedule an appointment.
+            </p>
           </motion.div>
         </div>
       </section>
