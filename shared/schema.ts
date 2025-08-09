@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, decimal, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, decimal, integer, serial, json, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -34,3 +34,53 @@ export const insertUserSchema = createInsertSchema(users).pick({
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+// Cart and Order schemas
+export const orders = pgTable("orders", {
+  id: serial("id").primaryKey(),
+  orderNumber: text("order_number").notNull().unique(),
+  customerInfo: json("customer_info").notNull(), // Will contain customer details
+  items: json("items").notNull(), // Will contain cart items
+  subtotal: decimal("subtotal", { precision: 10, scale: 2 }).notNull(),
+  tax: decimal("tax", { precision: 10, scale: 2 }).notNull(),
+  total: decimal("total", { precision: 10, scale: 2 }).notNull(),
+  status: text("status").notNull().default("pending"), // pending, confirmed, ready, completed, cancelled
+  pickupDate: timestamp("pickup_date").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertOrderSchema = createInsertSchema(orders).omit({
+  id: true,
+  orderNumber: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertOrder = z.infer<typeof insertOrderSchema>;
+export type Order = typeof orders.$inferSelect;
+
+// Cart item type for frontend
+export interface CartItem {
+  id: string;
+  name: string;
+  price: string;
+  image: string;
+  category: string;
+  quantity: number;
+}
+
+// Customer info type for checkout
+export interface CustomerInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  licenseNumber?: string; // For firearms purchases
+  dateOfBirth?: string;
+}

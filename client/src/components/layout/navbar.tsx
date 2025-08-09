@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "@/contexts/cart-context";
 
 export default function Navbar() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { totalItems, toggleCart } = useCart();
 
   const navLinks = [
     { href: "/", label: "Home" },
