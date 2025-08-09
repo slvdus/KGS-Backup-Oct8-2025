@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 0%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(0, 0%, 0%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(0, 0%, 0%);
+  --primary: hsl(0, 0%, 0%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(0, 0%, 96%);
+  --secondary-foreground: hsl(0, 0%, 9%);
+  --muted: hsl(0, 0%, 96%);
+  --muted-foreground: hsl(0, 0%, 45%);
+  --accent: hsl(0, 0%, 96%);
+  --accent-foreground: hsl(0, 0%, 9%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 90%);
+  --input: hsl(0, 0%, 90%);
+  --ring: hsl(0, 0%, 90%);
+  --radius: 0.5rem;
+
+  /* Noir theme colors */
+  --noir-900: hsl(0, 0%, 0%);
+  --noir-800: hsl(0, 0%, 10%);
+  --noir-700: hsl(0, 0%, 16%);
+  --noir-600: hsl(0, 0%, 23%);
+  --noir-500: hsl(0, 0%, 29%);
+  --noir-400: hsl(0, 0%, 50%);
+  --beige-100: hsl(42, 23%, 95%);
+  --beige-200: hsl(34, 17%, 92%);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 10%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --primary: hsl(0, 0%, 100%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 10%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 10%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --accent: hsl(0, 0%, 10%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 20%);
+  --ring: hsl(0, 0%, 30%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-noir-900 text-white font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .noir-900 {
+    background-color: var(--noir-900);
+  }
+  
+  .noir-800 {
+    background-color: var(--noir-800);
+  }
+  
+  .noir-700 {
+    background-color: var(--noir-700);
+  }
+  
+  .noir-600 {
+    background-color: var(--noir-600);
+  }
+  
+  .noir-500 {
+    background-color: var(--noir-500);
+  }
+  
+  .noir-400 {
+    background-color: var(--noir-400);
+  }
+  
+  .beige-100 {
+    background-color: var(--beige-100);
+  }
+  
+  .beige-200 {
+    background-color: var(--beige-200);
+  }
+  
+  .text-noir-900 {
+    color: var(--noir-900);
+  }
+  
+  .text-noir-800 {
+    color: var(--noir-800);
+  }
+  
+  .text-noir-700 {
+    color: var(--noir-700);
+  }
+  
+  .text-noir-600 {
+    color: var(--noir-600);
+  }
+  
+  .text-noir-500 {
+    color: var(--noir-500);
+  }
+  
+  .text-noir-400 {
+    color: var(--noir-400);
+  }
+  
+  .text-beige-100 {
+    color: var(--beige-100);
+  }
+  
+  .text-beige-200 {
+    color: var(--beige-200);
+  }
+  
+  .border-noir-900 {
+    border-color: var(--noir-900);
+  }
+  
+  .border-noir-800 {
+    border-color: var(--noir-800);
+  }
+  
+  .border-noir-700 {
+    border-color: var(--noir-700);
+  }
+  
+  .border-noir-600 {
+    border-color: var(--noir-600);
+  }
+  
+  .border-noir-500 {
+    border-color: var(--noir-500);
+  }
+  
+  .border-noir-400 {
+    border-color: var(--noir-400);
+  }
+  
+  .border-beige-100 {
+    border-color: var(--beige-100);
+  }
+  
+  .border-beige-200 {
+    border-color: var(--beige-200);
+  }
+  
+  .hero-bg {
+    background: linear-gradient(135deg, var(--noir-900) 0%, var(--noir-700) 100%);
+  }
+}
+
+/* Custom animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Navigation link hover effect */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--beige-100);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Product card hover effects */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA button effects */
+.cta-button {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(245, 243, 240, 0.2);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
