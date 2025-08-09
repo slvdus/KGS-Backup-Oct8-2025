@@ -26,31 +26,18 @@ export default function Home() {
     <div className="min-h-screen" data-testid="page-home">
       {/* Hero Section */}
       <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         
-        {/* Animated Dotted Grid Background */}
+        {/* Premium Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="dotted-grid"></div>
-          <div className="grid-overlay"></div>
-          <div className="grid-pulse"></div>
-        </div>
-        
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="floating-particle particle-1"></div>
-          <div className="floating-particle particle-2"></div>
-          <div className="floating-particle particle-3"></div>
-          <div className="floating-particle particle-4"></div>
-          <div className="floating-particle particle-5"></div>
-          <div className="floating-particle particle-6"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-noir-900 via-noir-800 to-noir-900"></div>
+          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-beige-100/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-beige-200/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-beige-100/5 to-transparent rounded-full blur-3xl"></div>
         </div>
         
         {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-noir-900/90 via-transparent to-noir-900/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-noir-900/80 via-transparent to-transparent"></div>
-        
-        {/* Moving Radial Spotlight */}
-        <div className="hero-spotlight"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-noir-900/20 via-transparent to-noir-900/90"></div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <motion.h1 
@@ -88,25 +75,20 @@ export default function Home() {
             >
               <Link href="/catalog">
                 <Button 
-                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group"
+                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
                   data-testid="button-explore-catalog"
                 >
                   <motion.span
                     initial={{ x: 0 }}
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
-                    className="relative z-10"
+                    className="relative z-10 flex items-center"
                   >
                     Explore Catalog
+                    <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      →
+                    </span>
                   </motion.span>
-                  <motion.div
-                    className="ml-2 opacity-0 group-hover:opacity-100 relative z-10"
-                    initial={{ x: -10, opacity: 0 }}
-                    whileHover={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    →
-                  </motion.div>
                 </Button>
               </Link>
             </motion.div>
@@ -118,25 +100,20 @@ export default function Home() {
               <Link href="/about">
                 <Button 
                   variant="outline"
-                  className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group"
+                  className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
                   data-testid="button-learn-more"
                 >
                   <motion.span
                     initial={{ x: 0 }}
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
-                    className="relative z-10"
+                    className="relative z-10 flex items-center"
                   >
                     Learn More
+                    <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      →
+                    </span>
                   </motion.span>
-                  <motion.div
-                    className="ml-2 opacity-0 group-hover:opacity-100 relative z-10"
-                    initial={{ x: -10, opacity: 0 }}
-                    whileHover={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    →
-                  </motion.div>
                 </Button>
               </Link>
             </motion.div>

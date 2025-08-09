@@ -38,18 +38,16 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       category: product.category,
     });
     
-    toast({
-      title: "Added to Cart",
-      description: `${product.name} has been added to your cart.`,
-    });
-    
+    // Only open cart slider, no toast notification
     setTimeout(() => openCart(), 300);
   };
 
   const handleViewMore = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    // Navigate to product page and scroll to top
     setLocation(`/product/${product.id}`);
+    window.scrollTo(0, 0);
   };
 
   // Get category-specific badge
@@ -193,11 +191,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             <Button
               variant="outline"
               size="sm"
-              className="w-full glass-effect border-noir-600/50 text-white hover:bg-noir-700/50 hover:border-beige-100/30 hover:text-beige-100 transition-all duration-300"
+              className="w-full glass-effect border-noir-600/50 text-white hover:bg-noir-700/50 hover:border-beige-100/30 hover:text-beige-100 transition-all duration-300 text-xs sm:text-sm"
               onClick={handleViewMore}
               data-testid={`button-view-more-${product.id}`}
             >
-              <Eye className="w-4 h-4 mr-1" />
+              <Eye className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
               View
             </Button>
           </motion.div>
@@ -205,12 +203,12 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               size="sm"
-              className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm"
               onClick={handleAddToCart}
               disabled={product.inStock === 0}
               data-testid={`button-add-to-cart-${product.id}`}
             >
-              <ShoppingCart className="w-4 h-4 mr-1" />
+              <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
               {product.inStock === 0 ? "Out" : "Add"}
             </Button>
           </motion.div>

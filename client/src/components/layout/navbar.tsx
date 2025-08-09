@@ -53,26 +53,18 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="ml-6 lg:ml-10 flex items-center space-x-1 lg:space-x-2">
               {navLinks.map((link, index) => (
-                <motion.div
+                <Link 
                   key={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  href={link.href}
+                  className={`nav-link block px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl relative apple-nav-item ${
+                    isActive(link.href)
+                      ? "text-beige-100 bg-beige-100/15 shadow-inner"
+                      : "text-white/90 hover:text-beige-100 hover:bg-white/10"
+                  }`}
+                  data-testid={`link-${link.label.toLowerCase()}`}
                 >
-                  <Link 
-                    href={link.href}
-                    className={`nav-link block px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl relative apple-nav-item ${
-                      isActive(link.href)
-                        ? "text-beige-100 bg-beige-100/15 shadow-inner"
-                        : "text-white/90 hover:text-beige-100 hover:bg-white/10"
-                    }`}
-                    data-testid={`link-${link.label.toLowerCase()}`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>

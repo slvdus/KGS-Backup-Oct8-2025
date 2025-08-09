@@ -93,22 +93,22 @@ export default function Catalog() {
           
           {/* Stats */}
           <motion.div 
-            className="flex justify-center space-x-8 text-center"
+            className="flex flex-wrap justify-center gap-4 sm:gap-6 text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">14</div>
-              <div className="text-gray-400 text-sm">Products</div>
+            <div className="glass-effect px-3 sm:px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-xl sm:text-2xl font-bold gradient-text">14</div>
+              <div className="text-gray-400 text-xs sm:text-sm">Products</div>
             </div>
-            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">Licensed</div>
-              <div className="text-gray-400 text-sm">FFL Dealer</div>
+            <div className="glass-effect px-3 sm:px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-xl sm:text-2xl font-bold gradient-text">Licensed</div>
+              <div className="text-gray-400 text-xs sm:text-sm">FFL Dealer</div>
             </div>
-            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">Secure</div>
-              <div className="text-gray-400 text-sm">Transfers</div>
+            <div className="glass-effect px-3 sm:px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-xl sm:text-2xl font-bold gradient-text">Secure</div>
+              <div className="text-gray-400 text-xs sm:text-sm">Transfers</div>
             </div>
           </motion.div>
         </div>

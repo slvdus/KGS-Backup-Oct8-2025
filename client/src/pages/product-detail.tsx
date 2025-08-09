@@ -34,12 +34,6 @@ export default function ProductDetail() {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
-  const [showLevelUpAnimation, setShowLevelUpAnimation] = useState(false);
-  
-  // Gamification state
-  const [userLevel, setUserLevel] = useState(1);
-  const [xpProgress, setXpProgress] = useState(65);
-  const [recentPurchases, setRecentPurchases] = useState(3);
   
   // Create multiple product images for carousel (using different text params)
   const productImages = product ? [
@@ -79,27 +73,10 @@ export default function ProductDetail() {
     }
     
     setShowSuccessAnimation(true);
-    
-    toast({
-      title: "Added to Cart! 🎯",
-      description: `${quantity} ${product.name}${quantity > 1 ? 's' : ''} added to your cart.`,
-    });
-    
-    // Gamification: Award XP for purchase
-    if (xpProgress + 20 >= 100) {
-      setUserLevel(prev => prev + 1);
-      setXpProgress((xpProgress + 20) - 100);
-      setShowLevelUpAnimation(true);
-      setTimeout(() => setShowLevelUpAnimation(false), 3000);
-    } else {
-      setXpProgress(prev => prev + 20);
-    }
-    
-    setRecentPurchases(prev => prev + 1);
     setTimeout(() => setShowSuccessAnimation(false), 2000);
     
     // Open the cart slider to show the added item
-    setTimeout(() => openCart(), 500); // Small delay to let success animation play
+    setTimeout(() => openCart(), 300);
   };
 
   const handleContactForPricing = () => {
@@ -199,22 +176,7 @@ export default function ProductDetail() {
         )}
       </AnimatePresence>
 
-      {/* Level Up Animation */}
-      <AnimatePresence>
-        {showLevelUpAnimation && (
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40"
-          >
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 px-6 py-3 rounded-full flex items-center space-x-2 shadow-2xl">
-              <Trophy className="w-6 h-6 text-white" />
-              <span className="text-white font-bold">Level Up! You're now Level {userLevel}!</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header with Back Button and Gamification */}
@@ -236,35 +198,10 @@ export default function ProductDetail() {
             </Link>
           </motion.div>
 
-          {/* Gamification Status */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center space-x-4"
-          >
-            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="flex items-center space-x-2">
-                <Target className="w-4 h-4 text-beige-100" />
-                <span className="text-white text-sm">Level {userLevel}</span>
-                <div className="w-16 h-2 bg-noir-700 rounded-full overflow-hidden">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-beige-100 to-yellow-400"
-                    initial={{ width: '0%' }}
-                    animate={{ width: `${xpProgress}%` }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                  />
-                </div>
-              </div>
-            </div>
-            <Badge variant="secondary" className="glass-effect border-beige-100/30">
-              <Zap className="w-3 h-3 mr-1" />
-              {recentPurchases} purchases
-            </Badge>
-          </motion.div>
+
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Product Image Carousel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
