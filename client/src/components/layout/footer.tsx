@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Facebook, Twitter, Instagram } from "lucide-react";
+import { Facebook, Mail, Phone, Linkedin, Globe } from "lucide-react";
+import { SiX } from "react-icons/si";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -54,8 +55,8 @@ export default function Footer() {
             <div className="flex space-x-4">
               {[
                 { icon: Facebook, href: "#", testId: "link-facebook" },
-                { icon: Twitter, href: "#", testId: "link-twitter" },
-                { icon: Instagram, href: "#", testId: "link-instagram" }
+                { icon: Mail, href: "#", testId: "link-email" },
+                { icon: Phone, href: "#", testId: "link-phone" }
               ].map((social, index) => (
                 <motion.a 
                   key={social.testId}
@@ -155,10 +156,95 @@ export default function Footer() {
           </motion.div>
         </div>
         
-        <div className="border-t border-noir-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400">
-            &copy; 2024 Nature's Arsenal. All rights reserved. | Licensed FFL Dealer
-          </p>
+        <div className="border-t border-noir-700 mt-8 pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <p className="text-gray-400 text-sm">
+              &copy; 2024 Nature's Arsenal. All rights reserved. | Licensed FFL Dealer
+            </p>
+            
+            {/* Developer Credit */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <motion.div
+                className="text-sm text-gray-400 shimmer-text"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                Made by <span className="font-semibold text-beige-100">Mister S. - Solved Group</span>
+              </motion.div>
+              
+              {/* Social Links */}
+              <div className="flex items-center gap-3">
+                <motion.a
+                  href="mailto:contact@slvd.us"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </motion.a>
+                
+                <motion.a
+                  href="https://www.linkedin.com/in/mister-s/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </motion.a>
+                
+                <motion.a
+                  href="https://www.facebook.com/StalderMael"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Facebook"
+                >
+                  <Facebook className="w-4 h-4" />
+                </motion.a>
+                
+                <motion.a
+                  href="https://x.com/MisterSolved"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="X (Twitter)"
+                >
+                  <SiX className="w-4 h-4" />
+                </motion.a>
+                
+                <motion.a
+                  href="https://truthsocial.com/@SolvedGroup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Truth Social"
+                >
+                  <Globe className="w-4 h-4" />
+                </motion.a>
+                
+                <motion.a
+                  href="tel:7373986727"
+                  className="p-1.5 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Phone: 737-398-6727"
+                >
+                  <Phone className="w-4 h-4" />
+                </motion.a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
