@@ -256,10 +256,17 @@ export default function Contact() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="cta-button w-full bg-beige-100 text-noir-900 hover:bg-beige-200 font-semibold py-3"
+                  className="cta-button w-full font-semibold py-3 relative overflow-hidden group"
                   data-testid="button-send-message"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <span className="relative z-10">
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="w-4 h-4 border-2 border-noir-900 border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending...</span>
+                      </div>
+                    ) : "Send Message"}
+                  </span>
                 </Button>
               </form>
             </motion.div>

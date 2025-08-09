@@ -142,14 +142,20 @@ export default function Catalog() {
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" data-testid="loading-products">
               {Array.from({ length: 8 }).map((_, index) => (
-                <div key={index} className="bg-noir-800 border border-noir-700 rounded-lg overflow-hidden">
-                  <Skeleton className="w-full h-48 bg-noir-700" />
+                <motion.div 
+                  key={index} 
+                  className="glass-effect border border-noir-700/50 rounded-xl overflow-hidden shimmer-effect"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="w-full h-48 bg-gradient-to-r from-noir-700 via-noir-600 to-noir-700 animate-pulse" />
                   <div className="p-6 space-y-3">
-                    <Skeleton className="h-6 bg-noir-700" />
-                    <Skeleton className="h-4 bg-noir-700" />
-                    <Skeleton className="h-4 w-2/3 bg-noir-700" />
+                    <div className="h-6 bg-gradient-to-r from-noir-700 via-noir-600 to-noir-700 rounded animate-pulse" />
+                    <div className="h-4 bg-gradient-to-r from-noir-700 via-noir-600 to-noir-700 rounded animate-pulse" />
+                    <div className="h-4 w-2/3 bg-gradient-to-r from-noir-700 via-noir-600 to-noir-700 rounded animate-pulse" />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           ) : sortedProducts.length > 0 ? (

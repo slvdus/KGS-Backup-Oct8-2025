@@ -40,6 +40,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Placeholder image endpoint
+  app.get("/api/placeholder/:width/:height", async (req, res) => {
+    const { width, height } = req.params;
+    const text = req.query.text || "Placeholder";
+    
+    // Simple SVG placeholder
+    const svg = `
+      <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="#1a1a1a"/>
+        <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="16" fill="#f5f3f0" text-anchor="middle" dy=".3em">${text}</text>
+      </svg>
+    `;
+    
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.send(svg);
+  });
+
   // Contact form submission (mock endpoint)
   app.post("/api/contact", async (req, res) => {
     try {

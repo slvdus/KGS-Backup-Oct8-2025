@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-noir-900/95 backdrop-blur-sm border-b border-noir-700">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-noir-700/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div 
@@ -33,8 +33,10 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex-shrink-0" data-testid="link-home-logo">
-              <h1 className="text-xl font-bold text-beige-100">Nature's Arsenal</h1>
+            <Link href="/" className="flex-shrink-0 group" data-testid="link-home-logo">
+              <h1 className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
+                Nature's Arsenal
+              </h1>
             </Link>
           </motion.div>
           
@@ -50,10 +52,10 @@ export default function Navbar() {
                 >
                   <Link 
                     href={link.href}
-                    className={`nav-link px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`nav-link px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative ${
                       isActive(link.href)
-                        ? "text-beige-100"
-                        : "text-white hover:text-beige-100"
+                        ? "text-beige-100 bg-beige-100/10"
+                        : "text-white hover:text-beige-100 hover:bg-beige-100/5"
                     }`}
                     data-testid={`link-${link.label.toLowerCase()}`}
                   >
@@ -86,7 +88,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-noir-800"
+            className="md:hidden glass-effect border-t border-noir-700/50"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

@@ -13,19 +13,19 @@ export default function About() {
       name: "John Mitchell",
       role: "Founder & Owner",
       experience: "25+ years in firearms industry",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
+      image: "/api/placeholder/300/300?text=John+Mitchell"
     },
     {
       name: "Mike Rodriguez", 
       role: "Sales Manager",
       experience: "Expert in tactical equipment",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
+      image: "/api/placeholder/300/300?text=Mike+Rodriguez"
     },
     {
       name: "Sarah Johnson",
       role: "Master Gunsmith", 
       experience: "Certified in custom modifications",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
+      image: "/api/placeholder/300/300?text=Sarah+Johnson"
     }
   ];
 
@@ -60,11 +60,13 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="relative group"
             >
+              <div className="absolute inset-0 bg-gradient-to-r from-beige-100/20 to-transparent rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <img 
-                src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" 
+                src="/api/placeholder/600/400?text=Professional+Gunsmith+at+Work" 
                 alt="Professional gunsmith at work" 
-                className="rounded-lg shadow-2xl"
+                className="relative rounded-xl shadow-2xl glass-effect border border-noir-700/50 group-hover:scale-105 transition-transform duration-500"
                 data-testid="img-gunsmith"
               />
             </motion.div>
@@ -104,7 +106,7 @@ export default function About() {
                     viewport={{ once: true }}
                     data-testid={`stat-${index}`}
                   >
-                    <div className="text-3xl font-bold text-beige-100 mb-2">
+                    <div className="text-3xl font-bold gradient-text mb-2 pulse-glow">
                       {stat.value}
                     </div>
                     <div className="text-gray-400">{stat.label}</div>
@@ -138,22 +140,25 @@ export default function About() {
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
-                className="text-center"
+                className="text-center group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 data-testid={`team-member-${index}`}
               >
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="text-xl font-semibold text-white mb-2" data-testid={`text-member-name-${index}`}>
+                <div className="relative mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-r from-beige-100/20 to-transparent rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="relative w-32 h-32 rounded-full mx-auto object-cover glass-effect border-2 border-beige-100/20 group-hover:border-beige-100/50 group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-beige-100 transition-colors duration-300" data-testid={`text-member-name-${index}`}>
                   {member.name}
                 </h3>
-                <p className="text-beige-100 mb-2" data-testid={`text-member-role-${index}`}>
+                <p className="text-beige-100 mb-2 font-medium" data-testid={`text-member-role-${index}`}>
                   {member.role}
                 </p>
                 <p className="text-gray-400 text-sm" data-testid={`text-member-experience-${index}`}>
@@ -192,17 +197,17 @@ export default function About() {
             ].map((value, index) => (
               <motion.div
                 key={value.title}
-                className="text-center p-6 bg-noir-800 rounded-lg hover:bg-noir-700 transition-colors"
+                className="text-center p-6 glass-effect rounded-xl hover:bg-noir-700/50 transition-all duration-500 group neon-border"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 data-testid={`value-${index}`}
               >
-                <h3 className="text-lg font-semibold text-beige-100 mb-3" data-testid={`text-value-title-${index}`}>
+                <h3 className="text-lg font-semibold text-beige-100 mb-3 group-hover:text-white transition-colors duration-300" data-testid={`text-value-title-${index}`}>
                   {value.title}
                 </h3>
-                <p className="text-gray-400 text-sm" data-testid={`text-value-description-${index}`}>
+                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300" data-testid={`text-value-description-${index}`}>
                   {value.description}
                 </p>
               </motion.div>

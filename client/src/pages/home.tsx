@@ -27,13 +27,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
-        {/* Hero background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30" 
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-          }}
-        ></div>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/5 rounded-full blur-3xl float"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-beige-100/7 rounded-full blur-2xl float" style={{ animationDelay: '4s' }}></div>
+        </div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <motion.h1 
@@ -44,7 +43,7 @@ export default function Home() {
             data-testid="text-hero-title"
           >
             <span className="text-white">Nature's</span>{" "}
-            <span className="text-beige-100">Arsenal</span>
+            <span className="gradient-text pulse-glow">Arsenal</span>
           </motion.h1>
           
           <motion.p 
@@ -66,7 +65,7 @@ export default function Home() {
           >
             <Link href="/catalog">
               <Button 
-                className="cta-button bg-beige-100 text-noir-900 hover:bg-beige-200 px-8 py-4 rounded-none font-semibold text-lg w-full sm:w-auto"
+                className="cta-button glass-effect neon-border px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto shimmer-effect"
                 data-testid="button-explore-catalog"
               >
                 Explore Catalog
@@ -75,7 +74,7 @@ export default function Home() {
             <Link href="/about">
               <Button 
                 variant="outline"
-                className="border-2 border-beige-100 text-beige-100 hover:bg-beige-100 hover:text-noir-900 px-8 py-4 rounded-none font-semibold text-lg w-full sm:w-auto"
+                className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto transition-all duration-300"
                 data-testid="button-learn-more"
               >
                 Learn More
@@ -114,8 +113,8 @@ export default function Home() {
                 viewport={{ once: true }}
                 data-testid={`feature-${index}`}
               >
-                <div className="bg-noir-700 p-6 rounded-lg hover:bg-noir-600 transition-colors duration-300">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-beige-100 rounded-full flex items-center justify-center">
+                <div className="glass-effect p-6 rounded-xl hover:bg-noir-600/50 transition-all duration-500 group neon-border">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-beige-100 to-beige-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
                     <feature.icon className="w-8 h-8 text-noir-900" />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2" data-testid={`text-feature-title-${index}`}>

@@ -30,7 +30,7 @@ export class MemStorage implements IStorage {
         description: "Premium tactical rifle with advanced features including adjustable stock, tactical rail system, and precision barrel. Perfect for sport shooting and tactical applications.",
         price: "1299.00",
         category: "Rifles",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=AR-15+Tactical+Rifle",
         specifications: [
           "Caliber: .223/5.56 NATO",
           "Barrel Length: 16 inches",
@@ -47,7 +47,7 @@ export class MemStorage implements IStorage {
         description: "Reliable and accurate compact pistol perfect for concealed carry and duty use. Features improved trigger, enhanced grip texture, and ambidextrous slide stop.",
         price: "599.00",
         category: "Handguns",
-        image: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=Glock+19+Gen+5",
         specifications: [
           "Caliber: 9mm",
           "Barrel Length: 4.02 inches",
@@ -64,7 +64,7 @@ export class MemStorage implements IStorage {
         description: "Professional grade tactical shotgun designed for law enforcement and security applications. Features adjustable stock and tactical rail system.",
         price: "899.00",
         category: "Shotguns",
-        image: "https://images.unsplash.com/photo-1518562180175-34a163b1d0d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=Tactical+Shotgun+12GA",
         specifications: [
           "Gauge: 12 gauge",
           "Barrel Length: 18.5 inches",
@@ -81,7 +81,7 @@ export class MemStorage implements IStorage {
         description: "High-precision tactical optics with crystal clear glass and reliable tracking. Perfect for long-range precision shooting.",
         price: "329.00",
         category: "Accessories",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=Tactical+Scope+4x32",
         specifications: [
           "Magnification: 4x32",
           "Objective Lens: 32mm",
@@ -98,7 +98,7 @@ export class MemStorage implements IStorage {
         description: "High-quality rounds for precision shooting. Match-grade ammunition for competitive and professional use.",
         price: "89.00",
         category: "Ammunition",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=Premium+Ammunition",
         specifications: [
           "Caliber: .308 Winchester",
           "Bullet Weight: 168 grain",
@@ -115,7 +115,7 @@ export class MemStorage implements IStorage {
         description: "Professional grade tactical holster with adjustable retention and quick-draw capability. Suitable for duty and concealed carry.",
         price: "159.00",
         category: "Accessories",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
+        image: "/api/placeholder/600/400?text=Tactical+Holster",
         specifications: [
           "Material: Kydex",
           "Retention: Adjustable",
@@ -166,7 +166,12 @@ export class MemStorage implements IStorage {
 
   async createProduct(insertProduct: InsertProduct): Promise<Product> {
     const id = randomUUID();
-    const product: Product = { ...insertProduct, id };
+    const product: Product = { 
+      ...insertProduct, 
+      id,
+      specifications: insertProduct.specifications || [],
+      inStock: insertProduct.inStock || 0
+    };
     this.products.set(id, product);
     return product;
   }
