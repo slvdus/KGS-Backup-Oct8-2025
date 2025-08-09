@@ -79,7 +79,7 @@ export default function Catalog() {
             transition={{ duration: 0.8 }}
             data-testid="text-catalog-title"
           >
-            Our <span className="gradient-text pulse-glow">Catalog</span>
+            Premium <span className="gradient-text pulse-glow">Firearms & Defense</span>
           </motion.h1>
           <motion.p 
             className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
@@ -88,7 +88,7 @@ export default function Catalog() {
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-catalog-subtitle"
           >
-            Premium firearms, less-lethal defense systems, and professional accessories
+            Licensed dealer offering authentic firearms, less-lethal launchers, ammunition, and professional transfer services
           </motion.p>
           
           {/* Stats */}
@@ -99,16 +99,16 @@ export default function Catalog() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">500+</div>
+              <div className="text-2xl font-bold gradient-text">14</div>
               <div className="text-gray-400 text-sm">Products</div>
             </div>
             <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">50+</div>
-              <div className="text-gray-400 text-sm">Brands</div>
+              <div className="text-2xl font-bold gradient-text">Licensed</div>
+              <div className="text-gray-400 text-sm">FFL Dealer</div>
             </div>
             <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
-              <div className="text-2xl font-bold gradient-text">24/7</div>
-              <div className="text-gray-400 text-sm">Support</div>
+              <div className="text-2xl font-bold gradient-text">Secure</div>
+              <div className="text-gray-400 text-sm">Transfers</div>
             </div>
           </motion.div>
         </div>
@@ -340,10 +340,10 @@ export default function Catalog() {
             </div>
           ) : sortedProducts.length > 0 ? (
             <motion.div 
-              className={`grid gap-8 ${
+              className={`grid gap-6 ${
                 viewMode === "grid" 
-                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                  : "grid-cols-1 lg:grid-cols-2"
+                  ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                  : "grid-cols-1"
               }`}
               layout
               data-testid="products-grid"
