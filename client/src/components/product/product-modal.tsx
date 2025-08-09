@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus, Minus } from "lucide-react";
+import { X, Plus, Minus, ShoppingCart, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/cart-context";
+import { useToast } from "@/hooks/use-toast";
 import type { Product } from "@shared/schema";
 
 interface ProductModalProps {
@@ -27,9 +29,27 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
     }
   };
 
+  const { addItem, openCart } = useCart();
+  const { toast } = useToast();
+
   const handleAddToCart = () => {
-    // TODO: Implement add to cart functionality
-    console.log(`Adding ${quantity} of ${product.name} to cart`);
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        category: product.category,
+      });
+    }
+    
+    toast({
+      title: "Added to Cart!",
+      description: `${quantity} ${product.name}${quantity > 1 ? 's' : ''} added to your cart.`,
+    });
+    
+    // Open the cart slider to show the added item
+    openCart();
     onClose();
   };
 

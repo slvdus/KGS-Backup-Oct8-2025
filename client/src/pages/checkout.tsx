@@ -40,11 +40,11 @@ export default function Checkout() {
     mutationFn: async (orderData: any) => {
       return apiRequest("/api/orders", "POST", orderData);
     },
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       clearCart();
       toast({
         title: "Order Placed Successfully!",
-        description: `Your order #${data.orderNumber} has been placed. We'll contact you when it's ready for pickup.`,
+        description: `Your order #${data.orderNumber || 'N/A'} has been placed. We'll contact you when it's ready for pickup.`,
       });
       setLocation("/");
     },

@@ -20,6 +20,8 @@ import {
   CheckCircle
 } from "lucide-react";
 import { useProduct } from "@/hooks/use-products";
+import { useCart } from "@/contexts/cart-context";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -59,9 +61,29 @@ export default function ProductDetail() {
     }
   };
 
+  const { addItem, openCart } = useCart();
+  const { toast } = useToast();
+
   const handleAddToCart = () => {
-    console.log(`Adding ${quantity} of ${product?.name} to cart`);
+    if (!product) return;
+    
+    // Add items to cart based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        category: product.category,
+      });
+    }
+    
     setShowSuccessAnimation(true);
+    
+    toast({
+      title: "Added to Cart! 🎯",
+      description: `${quantity} ${product.name}${quantity > 1 ? 's' : ''} added to your cart.`,
+    });
     
     // Gamification: Award XP for purchase
     if (xpProgress + 20 >= 100) {
@@ -75,6 +97,9 @@ export default function ProductDetail() {
     
     setRecentPurchases(prev => prev + 1);
     setTimeout(() => setShowSuccessAnimation(false), 2000);
+    
+    // Open the cart slider to show the added item
+    setTimeout(() => openCart(), 500); // Small delay to let success animation play
   };
 
   const handleContactForPricing = () => {

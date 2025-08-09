@@ -20,7 +20,8 @@ function Router() {
   return (
     <div className="min-h-screen bg-noir-900 text-white">
       <Navbar />
-      <Switch>
+      <div className="pt-20"> {/* Add padding-top to account for floating navbar */}
+        <Switch>
         <Route path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />
         <Route path="/product/:id" component={ProductDetail} />
@@ -29,9 +30,10 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
-      </Switch>
-      <Footer />
-      <CartSlider />
+        </Switch>
+        <Footer />
+        <CartSlider />
+      </div>
     </div>
   );
 }

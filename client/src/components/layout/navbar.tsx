@@ -26,8 +26,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-noir-700/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-4 left-4 right-4 z-50 glass-effect border border-noir-700/50 rounded-2xl backdrop-blur-xl bg-noir-900/80 shadow-2xl">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-16">
           <motion.div 
             className="flex items-center"
@@ -85,8 +85,37 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Cart Button and Mobile menu */}
+          <div className="flex items-center space-x-4">
+            {/* Cart Button */}
+            <motion.button
+              onClick={toggleCart}
+              className="relative p-3 text-white hover:text-beige-100 rounded-xl transition-all duration-300 magnetic-btn group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              data-testid="button-cart"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-beige-100/10 to-beige-100/5 rounded-xl opacity-0"
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <ShoppingCart className="w-6 h-6 relative z-10" />
+              {totalItems > 0 && (
+                <motion.span
+                  className="absolute -top-1 -right-1 bg-beige-100 text-noir-900 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-lg"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  data-testid="cart-badge"
+                >
+                  {totalItems > 99 ? '99+' : totalItems}
+                </motion.span>
+              )}
+            </motion.button>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
             <motion.button
               type="button"
               className="text-white hover:text-beige-100 p-2 rounded-lg transition-colors relative overflow-hidden"
@@ -114,6 +143,7 @@ export default function Navbar() {
                 )}
               </motion.div>
             </motion.button>
+            </div>
           </div>
         </div>
       </div>
@@ -122,7 +152,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden glass-effect border-t border-noir-700/50"
+            className="md:hidden glass-effect border-t border-noir-700/50 rounded-b-2xl mt-1"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
