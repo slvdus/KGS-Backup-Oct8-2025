@@ -165,12 +165,13 @@ export default function Footer() {
             {/* Developer Credit */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <motion.div
-                className="text-sm text-gray-400 shimmer-text"
+                className="text-base font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                Made by <span className="font-semibold text-beige-100">Mister S. - Solved Group</span>
+                <span className="text-gray-300">Made by </span>
+                <span className="shimmer-text font-bold">Mister S. - Solved Group™</span>
               </motion.div>
               
               {/* Social Links */}

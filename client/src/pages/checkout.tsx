@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
-import { ArrowLeft, Calendar, User, Phone, Mail, MapPin, CreditCard, Shield } from "lucide-react";
+import { ArrowLeft, Calendar, User, Phone, Mail, MapPin, CreditCard, Shield, Heart, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useCart } from "@/contexts/cart-context";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
@@ -32,9 +33,13 @@ export default function Checkout() {
 
   const [pickupDate, setPickupDate] = useState("");
   const [notes, setNotes] = useState("");
+  const [veteranDonation, setVeteranDonation] = useState(0);
+  const [customDonation, setCustomDonation] = useState("");
+  const [showDonationInfo, setShowDonationInfo] = useState(false);
 
   const tax = subtotal * 0.0825;
-  const total = subtotal + tax;
+  const finalDonation = customDonation ? parseFloat(customDonation) || 0 : veteranDonation;
+  const total = subtotal + tax + finalDonation;
 
   const createOrderMutation = useMutation({
     mutationFn: async (orderData: any) => {
@@ -74,6 +79,7 @@ export default function Checkout() {
       items,
       subtotal: subtotal.toString(),
       tax: tax.toString(),
+      veteranDonation: finalDonation.toString(),
       total: total.toString(),
       pickupDate: new Date(pickupDate),
       notes,
@@ -401,6 +407,12 @@ export default function Checkout() {
                     <span>Tax (8.25%):</span>
                     <span data-testid="summary-tax">${tax.toFixed(2)}</span>
                   </div>
+                  {finalDonation > 0 && (
+                    <div className="flex justify-between text-beige-100">
+                      <span>Veteran Support:</span>
+                      <span data-testid="summary-donation">${finalDonation.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="border-t border-noir-700/50 pt-3">
                     <div className="flex justify-between text-white font-bold text-xl">
                       <span>Total:</span>
@@ -408,6 +420,97 @@ export default function Checkout() {
                     </div>
                   </div>
                 </div>
+
+                {/* Veteran Donation Section */}
+                <motion.div
+                  className="mb-6 p-4 bg-gradient-to-r from-beige-100/5 to-beige-100/10 rounded-lg border border-beige-100/20"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-red-500" />
+                      <h4 className="text-white font-semibold">Support Our Veterans</h4>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 hover:bg-white/10 rounded-full transition-colors"
+                            onClick={() => setShowDonationInfo(!showDonationInfo)}
+                          >
+                            <Info className="w-4 h-4 text-beige-100" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs glass-effect border-beige-100/20">
+                          <p className="text-sm">
+                            100% of your donation goes directly to local veteran support organizations, 
+                            helping provide essential services, mental health resources, and job training 
+                            for those who served our country.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-gray-300 mb-3">
+                    Add an optional donation to support local veteran organizations
+                  </p>
+                  
+                  <div className="grid grid-cols-4 gap-2 mb-3">
+                    {[5, 10, 25, 50].map(amount => (
+                      <motion.button
+                        key={amount}
+                        type="button"
+                        onClick={() => {
+                          setVeteranDonation(amount);
+                          setCustomDonation("");
+                        }}
+                        className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
+                          veteranDonation === amount && !customDonation
+                            ? 'bg-beige-100 text-noir-900'
+                            : 'glass-effect border border-noir-600/50 text-white hover:border-beige-100/50'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        data-testid={`button-donation-${amount}`}
+                      >
+                        ${amount}
+                      </motion.button>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <Input
+                      type="number"
+                      placeholder="Custom amount"
+                      value={customDonation}
+                      onChange={(e) => {
+                        setCustomDonation(e.target.value);
+                        setVeteranDonation(0);
+                      }}
+                      className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50"
+                      min="0"
+                      step="0.01"
+                      data-testid="input-custom-donation"
+                    />
+                    {(veteranDonation > 0 || customDonation) && (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setVeteranDonation(0);
+                          setCustomDonation("");
+                        }}
+                        className="glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"
+                        data-testid="button-clear-donation"
+                      >
+                        Clear
+                      </Button>
+                    )}
+                  </div>
+                </motion.div>
 
                 {/* Place Order Button */}
                 <motion.div
