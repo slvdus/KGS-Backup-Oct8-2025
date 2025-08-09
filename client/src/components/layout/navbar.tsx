@@ -26,9 +26,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50 glass-effect border border-noir-700/50 rounded-2xl backdrop-blur-xl bg-noir-900/80 shadow-2xl">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 z-50 apple-glass-nav rounded-2xl md:rounded-3xl shadow-2xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14 md:h-16">
           <motion.div 
             className="flex items-center"
             initial={{ opacity: 0, x: -20 }}
@@ -56,7 +56,7 @@ export default function Navbar() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-6 lg:ml-10 flex items-center space-x-1 lg:space-x-2">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -70,10 +70,10 @@ export default function Navbar() {
                   >
                     <Link 
                       href={link.href}
-                      className={`nav-link px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative magnetic-btn ${
+                      className={`nav-link px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl relative apple-nav-item ${
                         isActive(link.href)
-                          ? "text-beige-100 bg-beige-100/10"
-                          : "text-white hover:text-beige-100 hover:bg-beige-100/5"
+                          ? "text-beige-100 bg-beige-100/15 shadow-inner"
+                          : "text-white/90 hover:text-beige-100 hover:bg-white/10"
                       }`}
                       data-testid={`link-${link.label.toLowerCase()}`}
                     >
@@ -90,7 +90,7 @@ export default function Navbar() {
             {/* Cart Button */}
             <motion.button
               onClick={toggleCart}
-              className="relative p-3 text-white hover:text-beige-100 rounded-xl transition-all duration-300 magnetic-btn group"
+              className="relative p-2.5 md:p-3 text-white hover:text-beige-100 rounded-xl transition-all duration-300 apple-nav-item group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-cart"
@@ -103,7 +103,7 @@ export default function Navbar() {
               <ShoppingCart className="w-6 h-6 relative z-10" />
               {totalItems > 0 && (
                 <motion.span
-                  className="absolute -top-1 -right-1 bg-beige-100 text-noir-900 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-lg"
+                  className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 bg-gradient-to-br from-beige-100 to-beige-200 text-noir-900 text-xs font-bold w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center shadow-lg border border-white/20"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   whileHover={{ scale: 1.1 }}
@@ -118,11 +118,11 @@ export default function Navbar() {
             <div className="md:hidden">
             <motion.button
               type="button"
-              className="text-white hover:text-beige-100 p-2 rounded-lg transition-colors relative overflow-hidden"
+              className="text-white hover:text-beige-100 p-2 rounded-xl transition-all duration-300 apple-nav-item relative overflow-hidden"
               onClick={toggleMobileMenu}
               data-testid="button-mobile-menu"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <motion.div
                 className="absolute inset-0 bg-beige-100/10 rounded-lg"
@@ -152,21 +152,21 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden glass-effect border-t border-noir-700/50 rounded-b-2xl mt-1"
+            className="md:hidden apple-glass-nav border-t border-white/10 rounded-b-2xl mt-1 mx-3 md:mx-4"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 pt-3 pb-4 space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-3 py-2 transition-colors ${
+                  className={`block px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
                     isActive(link.href)
-                      ? "text-beige-100"
-                      : "text-white hover:text-beige-100"
+                      ? "text-beige-100 bg-beige-100/15 shadow-inner"
+                      : "text-white/90 hover:text-beige-100 hover:bg-white/10"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                   data-testid={`link-mobile-${link.label.toLowerCase()}`}

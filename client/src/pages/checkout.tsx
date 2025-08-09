@@ -111,7 +111,7 @@ export default function Checkout() {
   }
 
   return (
-    <div className="min-h-screen bg-noir-900 text-white py-20">
+    <div className="min-h-screen bg-noir-900 text-white py-8 sm:py-12 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -131,7 +131,7 @@ export default function Checkout() {
               Back to Cart
             </motion.div>
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" data-testid="page-title">
+          <h1 className="responsive-text-4xl md:responsive-text-5xl font-bold mb-4" data-testid="page-title">
             Checkout
           </h1>
           <p className="text-gray-400 text-lg">
@@ -145,7 +145,7 @@ export default function Checkout() {
             <div className="lg:col-span-2 space-y-8">
               {/* Personal Information */}
               <motion.div
-                className="glass-effect p-6 rounded-xl border border-noir-700/50"
+                className="glass-effect p-4 sm:p-6 rounded-xl border border-white/10"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -155,7 +155,7 @@ export default function Checkout() {
                   <h2 className="text-2xl font-bold text-white">Personal Information</h2>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <motion.div className="input-focus" whileHover={{ y: -2 }}>
                     <Label htmlFor="firstName" className="text-beige-100 mb-2 block">First Name *</Label>
                     <Input

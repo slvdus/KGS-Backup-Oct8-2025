@@ -71,29 +71,109 @@
 }
 
 @layer utilities {
-  /* Glass effects and floating elements */
-  .glass-effect {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Apple-style glass navbar */
+  .apple-glass-nav {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
-  .floating-navbar {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .apple-nav-item {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .apple-nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Glass effects and floating elements */
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
   }
 
   /* Improved magnetic button effects */
   .magnetic-btn {
     transform-origin: center;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .magnetic-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Responsive text sizing */
+  .responsive-text-xs { font-size: 0.75rem; line-height: 1rem; }
+  .responsive-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .responsive-text-base { font-size: 1rem; line-height: 1.5rem; }
+  .responsive-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .responsive-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .responsive-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+  .responsive-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+  .responsive-text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+  .responsive-text-5xl { font-size: 3rem; line-height: 1; }
+
+  @media (min-width: 768px) {
+    .responsive-text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .responsive-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .responsive-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .responsive-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .responsive-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .responsive-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .responsive-text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .responsive-text-4xl { font-size: 2.5rem; line-height: 2.75rem; }
+    .responsive-text-5xl { font-size: 3.5rem; line-height: 1; }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-text-4xl { font-size: 3rem; line-height: 3.25rem; }
+    .responsive-text-5xl { font-size: 4rem; line-height: 1; }
+  }
+
+  /* Responsive spacing utilities */
+  .responsive-p-2 { padding: 0.5rem; }
+  .responsive-p-4 { padding: 1rem; }
+  .responsive-p-6 { padding: 1.5rem; }
+  .responsive-px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .responsive-py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .responsive-py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+  .responsive-m-2 { margin: 0.5rem; }
+  .responsive-m-4 { margin: 1rem; }
+  .responsive-mb-4 { margin-bottom: 1rem; }
+  .responsive-mb-6 { margin-bottom: 1.5rem; }
+
+  @media (min-width: 640px) {
+    .responsive-p-2 { padding: 0.5rem; }
+    .responsive-p-4 { padding: 1rem; }
+    .responsive-p-6 { padding: 1.5rem; }
+    .responsive-px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .responsive-py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .responsive-py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .responsive-mb-4 { margin-bottom: 1rem; }
+    .responsive-mb-6 { margin-bottom: 1.5rem; }
+  }
+
+  @media (min-width: 768px) {
+    .responsive-p-6 { padding: 1.5rem; }
+    .responsive-px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .responsive-py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .responsive-mb-6 { margin-bottom: 1.5rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-p-6 { padding: 2rem; }
+    .responsive-px-4 { padding-left: 2rem; padding-right: 2rem; }
+    .responsive-mb-6 { margin-bottom: 2rem; }
   }
 
   /* Enhanced ripple effects for buttons */
@@ -122,6 +202,29 @@
 
   .noir-900 {
     background-color: var(--noir-900);
+  }
+
+  /* Global glass input styling */
+  .glass-input {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px);
+    color: white !important;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(240, 230, 210, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(240, 230, 210, 0.1) !important;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(156, 163, 175, 1) !important;
+  }
+
+  /* Override any existing border colors for consistency */
+  .border-noir-600\/50,
+  .border-noir-700\/50 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
   
   .noir-800 {

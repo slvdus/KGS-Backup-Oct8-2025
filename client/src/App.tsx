@@ -20,7 +20,7 @@ function Router() {
   return (
     <div className="min-h-screen bg-noir-900 text-white">
       <Navbar />
-      <div className="pt-20"> {/* Add padding-top to account for floating navbar */}
+      <div className="pt-16 md:pt-20 lg:pt-24"> {/* Responsive padding-top for floating navbar */}
         <Switch>
         <Route path="/" component={Home} />
         <Route path="/catalog" component={Catalog} />

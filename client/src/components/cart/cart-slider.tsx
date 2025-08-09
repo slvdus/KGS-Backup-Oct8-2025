@@ -26,7 +26,7 @@ export default function CartSlider() {
           
           {/* Cart Slider */}
           <motion.div
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-noir-900 glass-effect border-l border-noir-700/50 z-50 flex flex-col"
+            className="fixed right-0 top-0 h-full w-full max-w-sm sm:max-w-md apple-glass-nav border-l border-white/10 z-50 flex flex-col"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -34,7 +34,7 @@ export default function CartSlider() {
             data-testid="cart-slider"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-noir-700/50">
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10">
               <div className="flex items-center space-x-3">
                 <ShoppingBag className="w-6 h-6 text-beige-100" />
                 <h2 className="text-xl font-bold text-white" data-testid="cart-title">
@@ -63,7 +63,7 @@ export default function CartSlider() {
             </div>
 
             {/* Cart Items */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               {items.length === 0 ? (
                 <motion.div
                   className="text-center py-12"
@@ -87,7 +87,7 @@ export default function CartSlider() {
                   {items.map((item, index) => (
                     <motion.div
                       key={item.id}
-                      className="glass-effect p-4 rounded-xl border border-noir-700/50 group"
+                      className="glass-effect p-3 sm:p-4 rounded-xl border border-white/10 group"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
@@ -98,15 +98,15 @@ export default function CartSlider() {
                         <motion.img
                           src={item.image}
                           alt={item.name}
-                          className="w-16 h-16 object-cover rounded-lg"
+                          className="w-14 h-14 sm:w-16 sm:h-16 object-cover rounded-lg"
                           whileHover={{ scale: 1.1 }}
                           transition={{ duration: 0.2 }}
                         />
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-white font-semibold truncate mb-1" data-testid={`cart-item-name-${item.id}`}>
+                          <h4 className="text-white font-semibold text-sm sm:text-base truncate mb-1" data-testid={`cart-item-name-${item.id}`}>
                             {item.name}
                           </h4>
-                          <p className="text-gray-400 text-sm mb-2" data-testid={`cart-item-category-${item.id}`}>
+                          <p className="text-gray-400 text-xs sm:text-sm mb-2" data-testid={`cart-item-category-${item.id}`}>
                             {item.category}
                           </p>
                           <div className="flex items-center justify-between">
@@ -158,7 +158,7 @@ export default function CartSlider() {
             {/* Footer */}
             {items.length > 0 && (
               <motion.div
-                className="border-t border-noir-700/50 p-6 space-y-4"
+                className="border-t border-white/10 p-4 sm:p-6 space-y-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -173,7 +173,7 @@ export default function CartSlider() {
                     <span>Tax (8.25%):</span>
                     <span data-testid="cart-tax">${tax.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-white font-bold text-lg border-t border-noir-700/50 pt-2">
+                  <div className="flex justify-between text-white font-bold text-base sm:text-lg border-t border-white/10 pt-2">
                     <span>Total:</span>
                     <span data-testid="cart-total">${total.toFixed(2)}</span>
                   </div>
@@ -187,7 +187,7 @@ export default function CartSlider() {
                   >
                     <Button
                       onClick={closeCart}
-                      className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3"
+                      className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3 text-sm sm:text-base magnetic-btn ripple"
                       data-testid="button-view-cart"
                     >
                       <Link href="/cart" className="w-full">
@@ -202,7 +202,7 @@ export default function CartSlider() {
                     <Button
                       onClick={closeCart}
                       variant="outline"
-                      className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10"
+                      className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10 text-sm sm:text-base apple-nav-item"
                       data-testid="button-continue-shopping-footer"
                     >
                       <Link href="/catalog" className="w-full">
