@@ -447,3 +447,92 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--beige-200), var(--beige-100));
 }
+
+/* Enhanced filter panel animations */
+.filter-panel {
+  transform: translateY(-10px);
+  opacity: 0;
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Sophisticated hover effects for interactive elements */
+.interactive-element {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.interactive-element::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(45deg, transparent, rgba(245, 245, 220, 0.2), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-element:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced form input effects */
+.form-input {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(245, 243, 240, 0.3);
+}
+
+/* Staggered animation delays for grid items */
+.grid-item:nth-child(1) { animation-delay: 0.1s; }
+.grid-item:nth-child(2) { animation-delay: 0.2s; }
+.grid-item:nth-child(3) { animation-delay: 0.3s; }
+.grid-item:nth-child(4) { animation-delay: 0.4s; }
+.grid-item:nth-child(5) { animation-delay: 0.5s; }
+.grid-item:nth-child(6) { animation-delay: 0.6s; }
+.grid-item:nth-child(7) { animation-delay: 0.7s; }
+.grid-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Enhanced contact form animations */
+.contact-form-field {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading skeleton improvements */
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.05) 25%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 255, 0.05) 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 2s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

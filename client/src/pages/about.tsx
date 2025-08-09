@@ -30,29 +30,62 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen pt-20" data-testid="page-about">
-      {/* Hero Section */}
-      <section className="bg-noir-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
+    <div className="min-h-screen pt-20 bg-noir-900" data-testid="page-about">
+      {/* Enhanced Hero Section */}
+      <section className="hero-bg py-20 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Floating background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/5 rounded-full blur-3xl float"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl float" style={{ animationDelay: '2s' }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            data-testid="text-about-title"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="text-about-title">
-              About Nature's Arsenal
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto" data-testid="text-about-subtitle">
-              For over two decades, we've been dedicated to providing the finest firearms 
-              and equipment to enthusiasts, collectors, and professionals.
-            </p>
+            About <span className="gradient-text pulse-glow">Nature's Arsenal</span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            data-testid="text-about-subtitle"
+          >
+            For over two decades, we've been dedicated to providing the finest firearms 
+            and equipment to enthusiasts, collectors, and professionals.
+          </motion.p>
+          
+          {/* Stats */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="glass-effect px-4 py-3 rounded-xl border border-noir-700/50 text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+              >
+                <div className="text-2xl md:text-3xl font-bold gradient-text">{stat.value}</div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-noir-900">
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div

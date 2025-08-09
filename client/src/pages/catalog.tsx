@@ -60,84 +60,141 @@ export default function Catalog() {
   }
 
   return (
-    <div className="min-h-screen pt-20" data-testid="page-catalog">
-      {/* Header */}
-      <section className="bg-noir-800 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
+    <div className="min-h-screen pt-20 bg-noir-900" data-testid="page-catalog">
+      {/* Hero Section */}
+      <section className="hero-bg py-20 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Floating background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/5 rounded-full blur-3xl float"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl float" style={{ animationDelay: '2s' }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h1 
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            data-testid="text-catalog-title"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" data-testid="text-catalog-title">
-              Product Catalog
-            </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto" data-testid="text-catalog-subtitle">
-              Discover our carefully curated selection of premium firearms and accessories
-            </p>
+            Our <span className="gradient-text pulse-glow">Catalog</span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            data-testid="text-catalog-subtitle"
+          >
+            Discover our comprehensive collection of premium firearms and equipment
+          </motion.p>
+          
+          {/* Stats */}
+          <motion.div 
+            className="flex justify-center space-x-8 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-2xl font-bold gradient-text">500+</div>
+              <div className="text-gray-400 text-sm">Products</div>
+            </div>
+            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-2xl font-bold gradient-text">50+</div>
+              <div className="text-gray-400 text-sm">Brands</div>
+            </div>
+            <div className="glass-effect px-4 py-2 rounded-full border border-noir-700/50">
+              <div className="text-2xl font-bold gradient-text">24/7</div>
+              <div className="text-gray-400 text-sm">Support</div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="bg-noir-900 py-8 border-b border-noir-700">
+      {/* Enhanced Filters */}
+      <section className="py-8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-4">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-48 bg-noir-700 border-noir-600 text-white" data-testid="select-category">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-noir-700 border-noir-600">
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          <motion.div 
+            className="glass-effect rounded-xl border border-noir-700/50 p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-6">
+              <div className="flex flex-wrap gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-beige-100">Category</label>
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger className="w-48 glass-effect border-noir-600/50 text-white hover:border-beige-100/30 transition-colors" data-testid="select-category">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="glass-effect border-noir-600/50 bg-noir-800/95 backdrop-blur-xl">
+                      {categories.map((category) => (
+                        <SelectItem key={category} value={category} className="text-white hover:bg-beige-100/10">
+                          {category}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-beige-100">Sort By</label>
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="w-48 glass-effect border-noir-600/50 text-white hover:border-beige-100/30 transition-colors" data-testid="select-sort">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="glass-effect border-noir-600/50 bg-noir-800/95 backdrop-blur-xl">
+                      {sortOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value} className="text-white hover:bg-beige-100/10">
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
               
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48 bg-noir-700 border-noir-600 text-white" data-testid="select-sort">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-noir-700 border-noir-600">
-                  {sortOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="flex items-center gap-6">
+                <div className="text-right">
+                  <div className="text-sm text-gray-400">Showing</div>
+                  <div className="text-lg font-bold text-beige-100">{sortedProducts.length} products</div>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant={viewMode === "grid" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setViewMode("grid")}
+                      className={viewMode === "grid" ? "cta-button" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
+                      data-testid="button-grid-view"
+                    >
+                      <Grid3X3 className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant={viewMode === "list" ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setViewMode("list")}
+                      className={viewMode === "list" ? "cta-button" : "glass-effect border-noir-600/50 text-white hover:bg-noir-700/50"}
+                      data-testid="button-list-view"
+                    >
+                      <List className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
+                </div>
+              </div>
             </div>
-            
-            <div className="flex items-center gap-2">
-              <Button
-                variant={viewMode === "grid" ? "default" : "outline"}
-                size="icon"
-                onClick={() => setViewMode("grid")}
-                className="bg-noir-700 border-noir-600 hover:bg-noir-600"
-                data-testid="button-view-grid"
-              >
-                <Grid3X3 className="w-5 h-5" />
-              </Button>
-              <Button
-                variant={viewMode === "list" ? "default" : "outline"}
-                size="icon"
-                onClick={() => setViewMode("list")}
-                className="bg-noir-700 border-noir-600 hover:bg-noir-600"
-                data-testid="button-view-list"
-              >
-                <List className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-12 bg-noir-900">
+      <section className="py-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" data-testid="loading-products">
