@@ -181,35 +181,35 @@ export default function CartSlider() {
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      onClick={closeCart}
-                      className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3 text-sm sm:text-base magnetic-btn ripple"
-                      data-testid="button-view-cart"
+                  <Link href="/cart" className="block">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Link href="/cart" className="w-full">
+                      <Button
+                        onClick={closeCart}
+                        className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3 text-sm sm:text-base magnetic-btn ripple"
+                        data-testid="button-view-cart"
+                      >
                         View Cart & Checkout
-                      </Link>
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      onClick={closeCart}
-                      variant="outline"
-                      className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10 text-sm sm:text-base apple-nav-item"
-                      data-testid="button-continue-shopping-footer"
+                      </Button>
+                    </motion.div>
+                  </Link>
+                  <Link href="/catalog" className="block">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Link href="/catalog" className="w-full">
+                      <Button
+                        onClick={closeCart}
+                        variant="outline"
+                        className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10 text-sm sm:text-base apple-nav-item"
+                        data-testid="button-continue-shopping-footer"
+                      >
                         Continue Shopping
-                      </Link>
-                    </Button>
-                  </motion.div>
+                      </Button>
+                    </motion.div>
+                  </Link>
                 </div>
               </motion.div>
             )}

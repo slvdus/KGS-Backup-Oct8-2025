@@ -198,34 +198,34 @@ export default function Cart() {
 
                 {/* Action Buttons */}
                 <div className="space-y-4">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3 sm:py-4 responsive-text-base lg:text-lg magnetic-btn ripple"
-                      data-testid="button-proceed-checkout"
+                  <Link href="/checkout" className="block">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Link href="/checkout" className="w-full">
+                      <Button
+                        className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-3 sm:py-4 responsive-text-base lg:text-lg magnetic-btn ripple"
+                        data-testid="button-proceed-checkout"
+                      >
                         Proceed to Checkout
-                      </Link>
-                    </Button>
-                  </motion.div>
+                      </Button>
+                    </motion.div>
+                  </Link>
                   
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button
-                      variant="outline"
-                      className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10 py-3 sm:py-4 apple-nav-item"
-                      data-testid="button-continue-shopping"
+                  <Link href="/catalog" className="block">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Link href="/catalog" className="w-full">
+                      <Button
+                        variant="outline"
+                        className="w-full border-beige-100/30 text-beige-100 hover:bg-beige-100/10 py-3 sm:py-4 apple-nav-item"
+                        data-testid="button-continue-shopping"
+                      >
                         Continue Shopping
-                      </Link>
-                    </Button>
-                  </motion.div>
+                      </Button>
+                    </motion.div>
+                  </Link>
                 </div>
 
                 {/* Store Pickup Notice */}

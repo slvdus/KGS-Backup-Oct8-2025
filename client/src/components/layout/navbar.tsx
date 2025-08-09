@@ -45,11 +45,6 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
               >
                 Nature's Arsenal
-                <motion.div
-                  className="absolute -inset-2 bg-gradient-to-r from-beige-100/10 via-beige-100/20 to-beige-100/10 rounded-lg opacity-0"
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
               </motion.h1>
             </Link>
           </motion.div>
@@ -63,23 +58,20 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <Link 
+                    href={link.href}
+                    className={`nav-link block px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl relative apple-nav-item ${
+                      isActive(link.href)
+                        ? "text-beige-100 bg-beige-100/15 shadow-inner"
+                        : "text-white/90 hover:text-beige-100 hover:bg-white/10"
+                    }`}
+                    data-testid={`link-${link.label.toLowerCase()}`}
                   >
-                    <Link 
-                      href={link.href}
-                      className={`nav-link px-3 lg:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl relative apple-nav-item ${
-                        isActive(link.href)
-                          ? "text-beige-100 bg-beige-100/15 shadow-inner"
-                          : "text-white/90 hover:text-beige-100 hover:bg-white/10"
-                      }`}
-                      data-testid={`link-${link.label.toLowerCase()}`}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
+                    {link.label}
+                  </Link>
                 </motion.div>
               ))}
             </div>
