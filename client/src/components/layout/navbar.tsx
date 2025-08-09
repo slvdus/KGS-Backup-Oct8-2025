@@ -33,10 +33,22 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex-shrink-0 group" data-testid="link-home-logo">
-              <h1 className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
+            <Link href="/" className="flex-shrink-0 group relative" data-testid="link-home-logo">
+              <motion.h1 
+                className="text-xl font-bold gradient-text relative"
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
                 Nature's Arsenal
-              </h1>
+                <motion.div
+                  className="absolute -inset-2 bg-gradient-to-r from-beige-100/10 via-beige-100/20 to-beige-100/10 rounded-lg opacity-0"
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.h1>
             </Link>
           </motion.div>
           
@@ -50,17 +62,22 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Link 
-                    href={link.href}
-                    className={`nav-link px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative ${
-                      isActive(link.href)
-                        ? "text-beige-100 bg-beige-100/10"
-                        : "text-white hover:text-beige-100 hover:bg-beige-100/5"
-                    }`}
-                    data-testid={`link-${link.label.toLowerCase()}`}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {link.label}
-                  </Link>
+                    <Link 
+                      href={link.href}
+                      className={`nav-link px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative magnetic-btn ${
+                        isActive(link.href)
+                          ? "text-beige-100 bg-beige-100/10"
+                          : "text-white hover:text-beige-100 hover:bg-beige-100/5"
+                      }`}
+                      data-testid={`link-${link.label.toLowerCase()}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -68,18 +85,33 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
+            <motion.button
               type="button"
-              className="text-white hover:text-beige-100 p-2 transition-colors"
+              className="text-white hover:text-beige-100 p-2 rounded-lg transition-colors relative overflow-hidden"
               onClick={toggleMobileMenu}
               data-testid="button-mobile-menu"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+              <motion.div
+                className="absolute inset-0 bg-beige-100/10 rounded-lg"
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.div
+                initial={false}
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative z-10"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </motion.div>
+            </motion.button>
           </div>
         </div>
       </div>

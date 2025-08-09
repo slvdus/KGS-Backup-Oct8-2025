@@ -96,10 +96,35 @@ export default function Contact() {
       {/* Enhanced Hero Section */}
       <section className="hero-bg py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/50"></div>
-        {/* Floating background elements */}
+        {/* Enhanced floating background elements with micro-interactions */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/5 rounded-full blur-3xl float"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl float" style={{ animationDelay: '2s' }}></div>
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/5 rounded-full blur-3xl"
+            animate={{ 
+              x: [0, 30, 0],
+              y: [0, -20, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: 8, 
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl"
+            animate={{ 
+              x: [0, -40, 0],
+              y: [0, 25, 0],
+              scale: [1, 0.9, 1]
+            }}
+            transition={{ 
+              duration: 10, 
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -185,35 +210,75 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
+                    className="group"
+                    whileHover={{ y: -2 }}
                   >
-                    <label className="block text-sm font-medium text-beige-100 mb-2">
+                    <motion.label 
+                      className="block text-sm font-medium text-beige-100 mb-2"
+                      whileHover={{ color: "#f5f3f0" }}
+                      transition={{ duration: 0.2 }}
+                    >
                       First Name
-                    </label>
-                    <Input
-                      type="text"
-                      required
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 transition-colors"
-                      data-testid="input-first-name"
-                    />
+                    </motion.label>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                      className="relative"
+                    >
+                      <Input
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange('firstName', e.target.value)}
+                        className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 transition-all duration-300 hover:border-beige-100/30"
+                        data-testid="input-first-name"
+                      />
+                      {formData.firstName && (
+                        <motion.div
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+                    </motion.div>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
+                    className="group"
+                    whileHover={{ y: -2 }}
                   >
-                    <label className="block text-sm font-medium text-beige-100 mb-2">
+                    <motion.label 
+                      className="block text-sm font-medium text-beige-100 mb-2"
+                      whileHover={{ color: "#f5f3f0" }}
+                      transition={{ duration: 0.2 }}
+                    >
                       Last Name
-                    </label>
-                    <Input
-                      type="text"
-                      required
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 transition-colors"
-                      data-testid="input-last-name"
-                    />
+                    </motion.label>
+                    <motion.div
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                      className="relative"
+                    >
+                      <Input
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange('lastName', e.target.value)}
+                        className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 transition-all duration-300 hover:border-beige-100/30"
+                        data-testid="input-last-name"
+                      />
+                      {formData.lastName && (
+                        <motion.div
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+                    </motion.div>
                   </motion.div>
                 </div>
                 

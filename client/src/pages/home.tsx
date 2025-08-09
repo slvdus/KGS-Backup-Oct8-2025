@@ -81,23 +81,65 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link href="/catalog">
-              <Button 
-                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 rounded-lg text-lg w-full sm:w-auto shimmer-effect"
-                data-testid="button-explore-catalog"
-              >
-                Explore Catalog
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button 
-                variant="outline"
-                className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto transition-all duration-300"
-                data-testid="button-learn-more"
-              >
-                Learn More
-              </Button>
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/catalog">
+                <Button 
+                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group"
+                  data-testid="button-explore-catalog"
+                >
+                  <motion.span
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative z-10"
+                  >
+                    Explore Catalog
+                  </motion.span>
+                  <motion.div
+                    className="ml-2 opacity-0 group-hover:opacity-100 relative z-10"
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    →
+                  </motion.div>
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href="/about">
+                <Button 
+                  variant="outline"
+                  className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group"
+                  data-testid="button-learn-more"
+                >
+                  <motion.span
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative z-10"
+                  >
+                    Learn More
+                  </motion.span>
+                  <motion.div
+                    className="ml-2 opacity-0 group-hover:opacity-100 relative z-10"
+                    initial={{ x: -10, opacity: 0 }}
+                    whileHover={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    →
+                  </motion.div>
+                </Button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -124,24 +166,63 @@ export default function Home() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="text-center group"
+                className="glass-effect p-8 rounded-xl border border-noir-700/50 group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 data-testid={`feature-${index}`}
               >
-                <div className="glass-effect p-6 rounded-xl hover:bg-noir-600/50 transition-all duration-500 group neon-border">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-beige-100 to-beige-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 pulse-glow">
-                    <feature.icon className="w-8 h-8 text-noir-900" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2" data-testid={`text-feature-title-${index}`}>
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400" data-testid={`text-feature-description-${index}`}>
-                    {feature.description}
-                  </p>
-                </div>
+                {/* Hover Glow Effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-beige-100/5 via-beige-100/10 to-beige-100/5 rounded-xl opacity-0"
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                {/* Icon */}
+                <motion.div
+                  className="w-16 h-16 bg-beige-100/10 rounded-xl flex items-center justify-center mb-6 relative"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-xl opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <feature.icon className="w-8 h-8 text-beige-100 relative z-10" />
+                </motion.div>
+                
+                {/* Content */}
+                <motion.h3 
+                  className="text-xl font-bold text-white mb-3 relative z-10"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                  data-testid={`feature-title-${index}`}
+                >
+                  {feature.title}
+                </motion.h3>
+                <motion.p 
+                  className="text-gray-400 relative z-10"
+                  initial={{ opacity: 0.8 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  data-testid={`feature-description-${index}`}
+                >
+                  {feature.description}
+                </motion.p>
+                
+                {/* Animated Border */}
+                <motion.div
+                  className="absolute inset-0 border-2 border-transparent rounded-xl"
+                  whileHover={{ 
+                    borderColor: "rgba(245, 243, 240, 0.2)",
+                    boxShadow: "0 0 20px rgba(245, 243, 240, 0.1)"
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
               </motion.div>
             ))}
           </div>

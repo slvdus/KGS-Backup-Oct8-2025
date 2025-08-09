@@ -39,16 +39,55 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Animated border on hover */}
           <div className="absolute inset-0 border-2 border-transparent group-hover:border-beige-100/30 transition-all duration-500 rounded-t-xl"></div>
           
-          {/* Product availability indicator */}
-          <div className="absolute top-3 right-3">
+          {/* Product availability indicator with enhanced animation */}
+          <motion.div 
+            className="absolute top-3 right-3"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
             {product.inStock > 5 ? (
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
+              <motion.div 
+                className="w-3 h-3 bg-green-400 rounded-full shadow-lg relative"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  boxShadow: [
+                    "0 0 5px rgba(34, 197, 94, 0.5)",
+                    "0 0 15px rgba(34, 197, 94, 0.8)",
+                    "0 0 5px rgba(34, 197, 94, 0.5)"
+                  ]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="absolute inset-0 bg-green-400 rounded-full opacity-30 animate-ping"></div>
+              </motion.div>
             ) : product.inStock > 0 ? (
-              <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse shadow-lg"></div>
+              <motion.div 
+                className="w-3 h-3 bg-yellow-400 rounded-full shadow-lg relative"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  boxShadow: [
+                    "0 0 5px rgba(251, 191, 36, 0.5)",
+                    "0 0 10px rgba(251, 191, 36, 0.7)",
+                    "0 0 5px rgba(251, 191, 36, 0.5)"
+                  ]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="absolute inset-0 bg-yellow-400 rounded-full opacity-30 animate-ping"></div>
+              </motion.div>
             ) : (
               <div className="w-3 h-3 bg-red-400 rounded-full shadow-lg"></div>
             )}
-          </div>
+          </motion.div>
         </div>
         
         <div className="p-6 relative">
