@@ -593,27 +593,238 @@ export default function ProductDetail() {
                   className="glass-effect rounded-xl border border-noir-700/50 p-6"
                 >
                   {activeTab === 'overview' && (
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <h3 className="text-xl font-semibold text-white mb-4">Product Overview</h3>
                       <p className="text-gray-400 leading-relaxed" data-testid="text-product-description">
                         {product.description}
                       </p>
+
+                      {/* Category-specific safety and legal notices */}
+                      {(product.category === 'Handguns' || product.category === 'Rifles') && (
+                        <motion.div
+                          className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <div className="flex items-start space-x-3">
+                            <Shield className="w-5 h-5 text-orange-400 mt-1 flex-shrink-0" />
+                            <div className="text-sm">
+                              <h4 className="text-orange-400 font-semibold mb-2">Important Firearm Information</h4>
+                              <p className="text-orange-300/90">
+                                This firearm must be transferred through a licensed FFL dealer. Background check and valid ID required. 
+                                Must be 18+ for rifles/shotguns, 21+ for handguns. Local and state laws apply.
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {product.category === 'Less-Lethal Launchers' && (
+                        <motion.div
+                          className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <div className="flex items-start space-x-3">
+                            <Target className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
+                            <div className="text-sm">
+                              <h4 className="text-blue-400 font-semibold mb-2">Less-Lethal Device Notice</h4>
+                              <p className="text-blue-300/90">
+                                Non-firearm defense system. Check local laws regarding possession and use of less-lethal devices. 
+                                Proper training recommended before use.
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                        <motion.div
+                          className="bg-red-500/10 border border-red-500/30 rounded-lg p-4"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <div className="flex items-start space-x-3">
+                            <Zap className="w-5 h-5 text-red-400 mt-1 flex-shrink-0" />
+                            <div className="text-sm">
+                              <h4 className="text-red-400 font-semibold mb-2">Ammunition Restrictions</h4>
+                              <p className="text-red-300/90">
+                                Must be 18+ to purchase. Cannot ship to CA, NY, CT, NJ, MA, DC. 
+                                Adult signature required upon delivery. Check local caliber restrictions.
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                         <div className="space-y-3">
                           <h4 className="font-semibold text-beige-100">Key Features</h4>
                           <ul className="space-y-2 text-gray-400">
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Premium construction</li>
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Professional grade</li>
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Licensed dealer verified</li>
+                            {/* Category-specific key features */}
+                            {product.category === 'Handguns' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Precision engineered action</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Ergonomic grip design</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Quality sights and controls</li>
+                              </>
+                            )}
+                            {product.category === 'Rifles' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Precision barrel and action</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Modern tactical features</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Reliable performance</li>
+                              </>
+                            )}
+                            {product.category === 'Less-Lethal Launchers' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />CO₂ powered system</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Multiple projectile types</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Safety-focused design</li>
+                              </>
+                            )}
+                            {(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Quality manufactured</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Consistent performance</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Proper storage packaging</li>
+                              </>
+                            )}
+                            {product.category === 'Hearing Protection' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Electronic amplification</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Noise reduction rating</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Comfortable fit</li>
+                              </>
+                            )}
                           </ul>
                         </div>
                         <div className="space-y-3">
                           <h4 className="font-semibold text-beige-100">What's Included</h4>
                           <ul className="space-y-2 text-gray-400">
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Product unit</li>
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Documentation</li>
-                            <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Warranty card</li>
+                            {/* Category-specific inclusions */}
+                            {(product.category === 'Handguns' || product.category === 'Rifles') && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Firearm as described</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Owner's manual</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Manufacturer warranty</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Factory case (if applicable)</li>
+                              </>
+                            )}
+                            {product.category === 'Less-Lethal Launchers' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Launcher unit</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />CO₂ cartridges</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />User manual & safety guide</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Carrying case</li>
+                              </>
+                            )}
+                            {(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Full quantity as advertised</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Original packaging</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Lot number documentation</li>
+                              </>
+                            )}
+                            {product.category === 'Hearing Protection' && (
+                              <>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Electronic earmuffs</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />User manual</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Batteries (if required)</li>
+                                <li className="flex items-center"><CheckCircle className="w-4 h-4 text-green-400 mr-2" />Carrying bag</li>
+                              </>
+                            )}
                           </ul>
+                        </div>
+                      </div>
+
+                      {/* Category-specific use case information */}
+                      <div className="space-y-3 mt-6">
+                        <h4 className="font-semibold text-beige-100">Recommended Use Cases</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          {product.category === 'Handguns' && (
+                            <>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Target className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Target Shooting</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Shield className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Personal Defense</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Trophy className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Competition</div>
+                              </div>
+                            </>
+                          )}
+                          {product.category === 'Rifles' && (
+                            <>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Target className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Long Range</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Shield className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Ranch/Defense</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Trophy className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Hunting</div>
+                              </div>
+                            </>
+                          )}
+                          {product.category === 'Less-Lethal Launchers' && (
+                            <>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Shield className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Home Defense</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Target className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Training</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Trophy className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Recreation</div>
+                              </div>
+                            </>
+                          )}
+                          {(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                            <>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Target className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Range Training</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Shield className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Personal Defense</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Trophy className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Competition</div>
+                              </div>
+                            </>
+                          )}
+                          {product.category === 'Hearing Protection' && (
+                            <>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Target className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Range Shooting</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Trophy className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Hunting</div>
+                              </div>
+                              <div className="glass-effect p-3 rounded-lg border border-noir-700/30 text-center">
+                                <Shield className="w-6 h-6 text-beige-100 mx-auto mb-2" />
+                                <div className="text-sm text-gray-300">Training</div>
+                              </div>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -683,31 +894,94 @@ export default function ProductDetail() {
                   )}
 
                   {activeTab === 'shipping' && (
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-white mb-4">Shipping Information</h3>
+                    <div className="space-y-6">
+                      <h3 className="text-xl font-semibold text-white mb-4">Shipping & Transfer Information</h3>
+                      
+                      {/* Category-specific shipping information */}
+                      {(product.category === 'Handguns' || product.category === 'Rifles') && (
+                        <motion.div
+                          className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 mb-6"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <h4 className="text-orange-400 font-semibold mb-3 flex items-center">
+                            <Shield className="w-5 h-5 mr-2" />
+                            FFL Transfer Required
+                          </h4>
+                          <div className="space-y-2 text-orange-300/90 text-sm">
+                            <p>• Must ship to licensed FFL dealer in your area</p>
+                            <p>• Background check and valid ID required for pickup</p>
+                            <p>• Transfer fee typically $25-50 (paid to FFL dealer)</p>
+                            <p>• Processing time: 1-3 business days after payment</p>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                        <motion.div
+                          className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <h4 className="text-red-400 font-semibold mb-3 flex items-center">
+                            <Zap className="w-5 h-5 mr-2" />
+                            Ammunition Shipping Restrictions
+                          </h4>
+                          <div className="space-y-2 text-red-300/90 text-sm">
+                            <p>• Adult signature required (21+ for handgun ammo, 18+ for rifle/shotgun)</p>
+                            <p>• Cannot ship to: CA, CT, DC, MA, NJ, NY</p>
+                            <p>• Ground shipping only - no air transport</p>
+                            <p>• Additional hazmat fees may apply</p>
+                          </div>
+                        </motion.div>
+                      )}
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-4">
-                          <div className="flex items-center space-x-3">
-                            <Truck className="w-6 h-6 text-beige-100" />
-                            <div>
-                              <div className="text-white font-medium">Free Standard Shipping</div>
-                              <div className="text-gray-400 text-sm">5-7 business days</div>
+                          {/* Standard shipping options */}
+                          {!(product.category === 'Handguns' || product.category === 'Rifles') && (
+                            <div className="flex items-center space-x-3">
+                              <Truck className="w-6 h-6 text-beige-100" />
+                              <div>
+                                <div className="text-white font-medium">Free Standard Shipping</div>
+                                <div className="text-gray-400 text-sm">
+                                  {product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition' 
+                                    ? '3-5 business days (ground only)' 
+                                    : '5-7 business days'
+                                  }
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          <div className="flex items-center space-x-3">
-                            <Zap className="w-6 h-6 text-yellow-400" />
-                            <div>
-                              <div className="text-white font-medium">Express Shipping</div>
-                              <div className="text-gray-400 text-sm">2-3 business days (+$15)</div>
+                          )}
+                          
+                          {(product.category === 'Handguns' || product.category === 'Rifles') && (
+                            <div className="flex items-center space-x-3">
+                              <Shield className="w-6 h-6 text-beige-100" />
+                              <div>
+                                <div className="text-white font-medium">FFL Transfer Shipping</div>
+                                <div className="text-gray-400 text-sm">Ships to your chosen FFL dealer</div>
+                              </div>
                             </div>
-                          </div>
+                          )}
+                          
+                          {!(product.category === 'Ammunition' || product.category === 'Less-Lethal Ammunition') && (
+                            <div className="flex items-center space-x-3">
+                              <Zap className="w-6 h-6 text-yellow-400" />
+                              <div>
+                                <div className="text-white font-medium">Express Shipping</div>
+                                <div className="text-gray-400 text-sm">2-3 business days (+$15)</div>
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="space-y-4">
                           <div className="flex items-center space-x-3">
                             <Shield className="w-6 h-6 text-green-400" />
                             <div>
                               <div className="text-white font-medium">Secure Packaging</div>
-                              <div className="text-gray-400 text-sm">Professional handling</div>
+                              <div className="text-gray-400 text-sm">Professional handling & discretion</div>
                             </div>
                           </div>
                           <div className="flex items-center space-x-3">
@@ -719,6 +993,35 @@ export default function ProductDetail() {
                           </div>
                         </div>
                       </div>
+
+                      {/* FFL Transfer Process */}
+                      {(product.category === 'Handguns' || product.category === 'Rifles') && (
+                        <div className="space-y-4 mt-6">
+                          <h4 className="font-semibold text-beige-100">FFL Transfer Process</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            {[
+                              { step: '1', title: 'Choose FFL', desc: 'Select licensed dealer near you' },
+                              { step: '2', title: 'Place Order', desc: 'Complete purchase online' },
+                              { step: '3', title: 'We Ship', desc: 'Item ships to your FFL' },
+                              { step: '4', title: 'Pick Up', desc: 'Complete transfer at FFL' }
+                            ].map((item, index) => (
+                              <motion.div
+                                key={index}
+                                className="glass-effect p-4 rounded-lg border border-noir-700/30 text-center"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 + index * 0.1 }}
+                              >
+                                <div className="w-8 h-8 bg-beige-100 text-noir-900 rounded-full flex items-center justify-center font-bold mx-auto mb-2">
+                                  {item.step}
+                                </div>
+                                <div className="text-white font-medium text-sm">{item.title}</div>
+                                <div className="text-gray-400 text-xs mt-1">{item.desc}</div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </motion.div>
