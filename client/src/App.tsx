@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -7,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import CartSlider from "@/components/cart/cart-slider";
+import LoadingScreen from "@/components/loading-screen";
 import Home from "@/pages/home";
 import Catalog from "@/pages/catalog";
 import ProductDetail from "@/pages/product-detail";
@@ -41,12 +43,15 @@ function Router() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />
+          {!isLoading && <Router />}
         </TooltipProvider>
       </CartProvider>
     </QueryClientProvider>
