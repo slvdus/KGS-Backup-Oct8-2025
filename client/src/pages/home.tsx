@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <div className="min-h-screen" data-testid="page-home">
       {/* Hero Section */}
-      <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden py-8 sm:pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Animated Dotted Grid Background */}
@@ -94,9 +94,10 @@ export default function Home() {
         {/* Moving Radial Spotlight */}
         <div className="hero-spotlight"></div>
         
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto pt-12 sm:pt-0">
+          {/* Badge - hidden on mobile, shown on desktop */}
           <motion.div
-            className="mb-4 inline-block"
+            className="mb-4 hidden sm:inline-block"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -107,7 +108,7 @@ export default function Home() {
           </motion.div>
           
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -118,7 +119,7 @@ export default function Home() {
           </motion.h1>
           
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-3 sm:mb-4 max-w-2xl mx-auto px-4"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-2 sm:mb-4 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -129,13 +130,25 @@ export default function Home() {
           </motion.p>
           
           <motion.p 
-            className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 max-w-xl mx-auto px-4"
+            className="text-base sm:text-lg text-gray-400 mb-4 sm:mb-8 max-w-xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             Skip the big box stores. Get wholesale pricing with personal service that actually cares about YOU.
           </motion.p>
+          
+          {/* Badge - shown on mobile above buttons, hidden on desktop */}
+          <motion.div
+            className="mb-4 inline-block sm:hidden"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+          >
+            <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm">
+              🏆 98% Customer Recommendation Rate
+            </span>
+          </motion.div>
           
           <motion.div 
             className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center"
