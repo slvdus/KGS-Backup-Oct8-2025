@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="absolute top-0 right-1/3 w-48 h-48 bg-beige-100/2 rounded-full blur-3xl float" style={{ animationDelay: '3s' }}></div>
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <motion.div 
             className="col-span-1 md:col-span-2"
@@ -36,14 +36,14 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <motion.h3 
-              className="text-xl font-bold gradient-text mb-4"
+              className="text-lg sm:text-xl font-bold gradient-text mb-3 sm:mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
               KGS CREW
             </motion.h3>
             <motion.p 
-              className="text-gray-400 mb-4"
+              className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -89,7 +89,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <motion.h4 
-              className="text-lg font-semibold text-white mb-4"
+              className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -130,7 +130,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <motion.h4 
-              className="text-lg font-semibold text-white mb-4"
+              className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -158,7 +158,7 @@ export default function Footer() {
         
         <div className="border-t border-noir-700 mt-8 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-xs sm:text-sm">
               &copy; 2024 KGS CREW Inc. All rights reserved. | Licensed FFL Dealer | Type 01 FFL
             </p>
             
@@ -170,8 +170,8 @@ export default function Footer() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-gray-300">Made by </span>
-                <span className="shimmer-text font-bold">Mister S. - Solved Group™</span>
+                <span className="text-gray-300 text-sm sm:text-base">Made by </span>
+                <span className="shimmer-text font-bold text-sm sm:text-base">Mister S. - Solved Group™</span>
               </motion.div>
               
               {/* Social Links */}

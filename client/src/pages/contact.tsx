@@ -130,7 +130,7 @@ export default function Contact() {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -139,7 +139,7 @@ export default function Contact() {
             Book Your <span className="gradient-text pulse-glow">VIP Appointment</span>
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -167,9 +167,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="glass-effect p-8 rounded-xl border border-noir-700/50"
+              className="glass-effect p-6 sm:p-8 rounded-xl border border-noir-700/50"
             >
-              <h2 className="text-3xl font-bold gradient-text mb-8" data-testid="text-contact-info-title">
+              <h2 className="text-2xl sm:text-3xl font-bold gradient-text mb-8" data-testid="text-contact-info-title">
                 Let's Connect
               </h2>
               
@@ -177,7 +177,7 @@ export default function Contact() {
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.title}
-                    className="flex items-start space-x-4 p-4 rounded-lg hover:bg-noir-700/30 transition-colors duration-300"
+                    className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg hover:bg-noir-700/30 transition-colors duration-300"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -247,9 +247,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="glass-effect p-8 rounded-xl border border-noir-700/50"
+              className="glass-effect p-6 sm:p-8 rounded-xl border border-noir-700/50"
             >
-              <h2 className="text-3xl font-bold gradient-text mb-8" data-testid="text-contact-form-title">
+              <h2 className="text-2xl sm:text-3xl font-bold gradient-text mb-8" data-testid="text-contact-form-title">
                 Request Your Appointment
               </h2>
               

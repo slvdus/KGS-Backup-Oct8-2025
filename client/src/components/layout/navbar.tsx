@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: "/catalog", label: "Inventory" },
     { href: "/about", label: "About" },
     { href: "/community", label: "Community" },
-    { href: "/contact", label: "Book Appointment" },
+    { href: "/contact", label: "Appointment" },
   ];
 
   const isActive = (href: string) => {
@@ -27,9 +27,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 z-50 apple-glass-nav rounded-2xl md:rounded-3xl shadow-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 md:h-16">
+    <nav className="fixed top-2 left-2 right-2 sm:top-3 sm:left-3 sm:right-3 md:top-4 md:left-4 md:right-4 z-50 apple-glass-nav rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-12 sm:h-14 md:h-16">
           <motion.div 
             className="flex items-center"
             initial={{ opacity: 0, x: -20 }}
@@ -38,7 +38,7 @@ export default function Navbar() {
           >
             <Link href="/" className="flex-shrink-0 group relative" data-testid="link-home-logo">
               <motion.h1 
-                className="text-xl font-bold gradient-text relative"
+                className="text-lg sm:text-xl font-bold gradient-text relative"
                 whileHover={{ 
                   scale: 1.05,
                   transition: { duration: 0.2 }
@@ -75,7 +75,7 @@ export default function Navbar() {
             {/* Cart Button */}
             <motion.button
               onClick={toggleCart}
-              className="relative p-2.5 md:p-3 text-white hover:text-beige-100 rounded-xl transition-all duration-300 apple-nav-item group"
+              className="relative p-2 sm:p-2.5 md:p-3 text-white hover:text-beige-100 rounded-xl transition-all duration-300 apple-nav-item group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               data-testid="button-cart"
@@ -85,7 +85,7 @@ export default function Navbar() {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <ShoppingCart className="w-6 h-6 relative z-10" />
+              <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" />
               {totalItems > 0 && (
                 <motion.span
                   className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 bg-gradient-to-br from-beige-100 to-beige-200 text-noir-900 text-xs font-bold w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center shadow-lg border border-white/20"
@@ -103,7 +103,7 @@ export default function Navbar() {
             <div className="md:hidden">
             <motion.button
               type="button"
-              className="text-white hover:text-beige-100 p-2 rounded-xl transition-all duration-300 apple-nav-item relative overflow-hidden"
+              className="text-white hover:text-beige-100 p-2 sm:p-2.5 rounded-xl transition-all duration-300 apple-nav-item relative overflow-hidden"
               onClick={toggleMobileMenu}
               data-testid="button-mobile-menu"
               whileHover={{ scale: 1.05 }}
@@ -122,9 +122,9 @@ export default function Navbar() {
                 className="relative z-10"
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 ) : (
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                 )}
               </motion.div>
             </motion.button>
@@ -143,12 +143,12 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-4 pt-3 pb-4 space-y-2">
+            <div className="px-3 pt-2 pb-3 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
+                  className={`block px-4 py-3 rounded-lg transition-all duration-200 font-medium text-base ${
                     isActive(link.href)
                       ? "text-beige-100 bg-beige-100/15 shadow-inner"
                       : "text-white/90 hover:text-beige-100 hover:bg-white/10"

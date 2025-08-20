@@ -60,7 +60,7 @@ export default function Community() {
           </motion.div>
           
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -70,7 +70,7 @@ export default function Community() {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -86,7 +86,7 @@ export default function Community() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <Button 
-              className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg btn-hover-effect magnetic-btn ripple"
+              className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg btn-hover-effect magnetic-btn ripple"
               onClick={() => {
                 // This will be replaced with the actual Go HighLevel link
                 window.open('#', '_blank');
@@ -104,7 +104,7 @@ export default function Community() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20">
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -113,7 +113,7 @@ export default function Community() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" data-testid="text-benefits-title">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 px-4" data-testid="text-benefits-title">
               Why Join the KGS CREW Community?
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto" data-testid="text-benefits-subtitle">
@@ -125,7 +125,7 @@ export default function Community() {
             {benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
-                className="glass-effect p-8 rounded-xl border border-noir-700/50 group relative overflow-hidden"
+                className="glass-effect p-6 sm:p-8 rounded-xl border border-noir-700/50 group relative overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -169,7 +169,7 @@ export default function Community() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-noir-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-noir-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -197,7 +197,7 @@ export default function Community() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-noir-900">
+      <section className="py-12 sm:py-16 md:py-20 bg-noir-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"

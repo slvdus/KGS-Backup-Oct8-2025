@@ -135,17 +135,17 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       </div>
       
       {/* Content Section */}
-      <div className="p-5 flex-1 flex flex-col">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col">
         {/* Product name - Fixed height */}
         <h3 
-          className="text-lg font-semibold text-white mb-2 line-clamp-2 min-h-[3.5rem] group-hover:text-beige-100 transition-colors duration-300" 
+          className="text-base sm:text-lg font-semibold text-white mb-2 line-clamp-2 min-h-[3rem] sm:min-h-[3.5rem] group-hover:text-beige-100 transition-colors duration-300" 
           data-testid={`text-product-name-${product.id}`}
         >
           {product.name}
         </h3>
         
         {/* Product description - Fixed height */}
-        <p className="text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem] group-hover:text-gray-300 transition-colors duration-300" data-testid={`text-product-description-${product.id}`}>
+        <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] group-hover:text-gray-300 transition-colors duration-300" data-testid={`text-product-description-${product.id}`}>
           {product.description}
         </p>
         
@@ -168,7 +168,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <div className="flex items-center justify-between">
             <div className="flex items-baseline space-x-2">
               <span 
-                className="text-2xl font-bold gradient-text pulse-glow" 
+                className="text-xl sm:text-2xl font-bold gradient-text pulse-glow" 
                 data-testid={`text-product-price-${product.id}`}
               >
                 ${product.price}

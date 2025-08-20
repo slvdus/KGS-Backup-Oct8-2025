@@ -65,7 +65,7 @@ export default function Home() {
           </motion.div>
           
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -76,18 +76,18 @@ export default function Home() {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-3 sm:mb-4 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-hero-subtitle"
           >
             Pennsylvania's Best Prices in Firearms.
-            <span className="block text-lg mt-2 text-beige-100">By Appointment Only - Because You Deserve VIP Treatment</span>
+            <span className="block text-base sm:text-lg mt-2 text-beige-100">By Appointment Only - VIP Treatment</span>
           </motion.p>
           
           <motion.p 
-            className="text-lg text-gray-400 mb-8 max-w-xl mx-auto"
+            className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 max-w-xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -108,7 +108,7 @@ export default function Home() {
             >
               <a href="tel:717-249-0000">
                 <Button 
-                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
+                  className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
                   data-testid="button-book-appointment"
                 >
                   <Phone className="w-5 h-5 mr-2" />
@@ -134,7 +134,7 @@ export default function Home() {
               <Link href="/catalog">
                 <Button 
                   variant="outline"
-                  className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
+                  className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
                   data-testid="button-browse-inventory"
                 >
                   <motion.span
@@ -198,10 +198,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" data-testid="text-features-title">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 px-4" data-testid="text-features-title">
               Why Customers Drive Hours to KGS CREW
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto" data-testid="text-features-subtitle">
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-4" data-testid="text-features-subtitle">
               We don't just sell guns. We build relationships that last a lifetime.
             </p>
           </motion.div>
@@ -210,7 +210,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="glass-effect p-8 rounded-xl border border-beige-100/10 backdrop-blur-md bg-noir-900/30 group relative overflow-hidden shadow-2xl"
+                className="glass-effect p-6 sm:p-8 rounded-xl border border-beige-100/10 backdrop-blur-md bg-noir-900/30 group relative overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -278,7 +278,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-noir-800/50 to-transparent"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-white mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 px-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -287,14 +287,14 @@ export default function Home() {
             Ready to Save Big on Your Next Firearm?
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-300 mb-8"
+            className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 px-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
           >
             Text or call us now to schedule your private appointment.
-            <span className="block text-lg mt-2 text-beige-100">No waiting. No crowds. Just the best prices in PA.</span>
+            <span className="block text-base sm:text-lg mt-2 text-beige-100">No waiting. No crowds. Best prices in PA.</span>
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -305,7 +305,7 @@ export default function Home() {
           >
             <a href="tel:717-249-0000">
               <Button 
-                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg"
+                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call 717-249-0000
@@ -314,7 +314,7 @@ export default function Home() {
             <Link href="/community">
               <Button 
                 variant="outline"
-                className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg"
+                className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg"
               >
                 Join Our Community
               </Button>
