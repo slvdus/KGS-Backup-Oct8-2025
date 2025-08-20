@@ -37,9 +37,9 @@ export default function Community() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-noir-900" data-testid="page-community">
-      {/* Hero Section */}
-      <section className="hero-bg py-20 text-center relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900" data-testid="page-community">
+      {/* Hero Section - Mobile-first approach */}
+      <section className="hero-bg py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/50"></div>
         {/* Floating background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

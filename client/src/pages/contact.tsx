@@ -93,9 +93,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-noir-900" data-testid="page-contact">
-      {/* Enhanced Hero Section */}
-      <section className="hero-bg py-20 text-center relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900" data-testid="page-contact">
+      {/* Enhanced Hero Section - Mobile-first approach */}
+      <section className="hero-bg py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/50"></div>
         {/* Enhanced floating background elements with micro-interactions */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -130,7 +130,7 @@ export default function Contact() {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -139,7 +139,7 @@ export default function Contact() {
             Book Your <span className="gradient-text pulse-glow">VIP Appointment</span>
           </motion.h1>
           <motion.p 
-            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -148,7 +148,7 @@ export default function Contact() {
             No crowds. No waiting. Just you and the best prices in Pennsylvania.
           </motion.p>
           <motion.p 
-            className="text-lg text-beige-100 mt-4"
+            className="text-sm sm:text-base md:text-lg text-beige-100 mt-3 sm:mt-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -158,8 +158,8 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Content */}
-      <section className="py-20 relative">
+      {/* Contact Content - Mobile-first approach */}
+      <section className="py-12 sm:py-16 md:py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Enhanced Contact Information */}

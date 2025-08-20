@@ -77,9 +77,9 @@ export default function Catalog() {
   }
 
   return (
-    <div className="min-h-screen pt-20 bg-noir-900" data-testid="page-catalog">
-      {/* Hero Section */}
-      <section className="hero-bg py-20 text-center relative overflow-hidden">
+    <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900" data-testid="page-catalog">
+      {/* Hero Section - Mobile-first approach */}
+      <section className="hero-bg py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/50"></div>
         {/* Floating background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -89,7 +89,7 @@ export default function Catalog() {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -98,7 +98,7 @@ export default function Catalog() {
             Premium <span className="gradient-text pulse-glow">Firearms & Defense</span>
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+            className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

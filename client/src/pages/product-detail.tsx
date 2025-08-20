@@ -97,7 +97,7 @@ export default function ProductDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-20 bg-noir-900" data-testid="loading-product-detail">
+      <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900" data-testid="loading-product-detail">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-4">
@@ -134,7 +134,7 @@ export default function ProductDetail() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center" data-testid="error-product-detail">
+      <div className="min-h-screen pt-16 sm:pt-20 flex items-center justify-center" data-testid="error-product-detail">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white mb-4">Product Not Found</h2>
           <p className="text-gray-400 mb-6">The product you're looking for doesn't exist or has been removed.</p>
@@ -149,7 +149,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen pt-20 bg-noir-900 relative overflow-hidden" data-testid="page-product-detail">
+    <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900 relative overflow-hidden" data-testid="page-product-detail">
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/3 rounded-full blur-3xl float"></div>

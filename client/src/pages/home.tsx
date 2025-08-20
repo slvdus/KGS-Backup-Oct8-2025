@@ -66,8 +66,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
-      {/* Hero Section */}
-      <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      {/* Hero Section - Mobile-first approach */}
+      <section className="hero-bg min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Animated Dotted Grid Background */}
@@ -95,20 +95,20 @@ export default function Home() {
         <div className="hero-spotlight"></div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          {/* Badge - hidden on mobile, shown on desktop */}
+          {/* Badge - responsive display */}
           <motion.div
-            className="mb-4 hidden sm:inline-block"
+            className="mb-4 inline-block"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
-              🏆 98% Customer Recommendation Rate
+            <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
+              🏆 98% Customer Recommendation
             </span>
           </motion.div>
           
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -119,7 +119,7 @@ export default function Home() {
           </motion.h1>
           
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-2 sm:mb-4 max-w-2xl mx-auto px-4"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 sm:mb-4 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -130,7 +130,7 @@ export default function Home() {
           </motion.p>
           
           <motion.p 
-            className="text-base sm:text-lg text-gray-400 mb-4 sm:mb-8 max-w-xl mx-auto px-4"
+            className="text-sm sm:text-base md:text-lg text-gray-400 mb-6 sm:mb-8 max-w-xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -219,8 +219,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Best Sellers Section */}
-      <section className="py-16 sm:py-20 bg-noir-900 relative overflow-hidden">
+      {/* Best Sellers Section - Mobile-first approach */}
+      <section className="py-12 sm:py-16 md:py-20 bg-noir-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-noir-800/30 to-noir-900"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -267,8 +267,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Collections Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 relative overflow-hidden">
+      {/* Collections Section - Mobile-first approach */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-0 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-beige-100/2 rounded-full blur-3xl" />
@@ -341,8 +341,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Community CTA Section */}
-      <section className="py-16 sm:py-20 bg-noir-900 relative overflow-hidden">
+      {/* Community CTA Section - Mobile-first approach */}
+      <section className="py-12 sm:py-16 md:py-20 bg-noir-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-transparent to-beige-100/5" />
         </div>
@@ -413,8 +413,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 relative overflow-hidden" data-testid="section-features">
+      {/* Features Section - Mobile-first approach */}
+      <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden" data-testid="section-features">
         {/* Dynamic gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-noir-900 via-noir-800/50 to-noir-900" />
         
