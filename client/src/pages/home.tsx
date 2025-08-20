@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <div className="min-h-screen" data-testid="page-home">
       {/* Hero Section */}
-      <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden py-8 sm:pt-16">
+      <section className="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Animated Dotted Grid Background */}
@@ -94,7 +94,7 @@ export default function Home() {
         {/* Moving Radial Spotlight */}
         <div className="hero-spotlight"></div>
         
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto pt-12 sm:pt-0">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           {/* Badge - hidden on mobile, shown on desktop */}
           <motion.div
             className="mb-4 hidden sm:inline-block"
