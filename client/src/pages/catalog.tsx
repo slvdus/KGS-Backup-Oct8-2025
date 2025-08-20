@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Grid3X3, List, ChevronLeft, ChevronRight } from "lucide-react";
 import { useProducts } from "@/hooks/use-products";
@@ -6,12 +6,28 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import ProductCard from "@/components/product/product-card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useLocation } from "wouter";
 
 export default function Catalog() {
   const { data: products, isLoading, error } = useProducts();
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [location] = useLocation();
+  
+  // Get category from URL params
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryFromUrl = urlParams.get('category') || "All Categories";
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
   const [sortBy, setSortBy] = useState("name-asc");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  
+  // Update selected category when URL changes
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get('category');
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, [location]);
 
   const categories = [
     "All Categories",

@@ -1,9 +1,51 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ShieldCheck, Star, Users, Phone } from "lucide-react";
+import { ShieldCheck, Star, Users, Phone, ArrowRight, Shield, Target, Headphones, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useProducts } from "@/hooks/use-products";
+import ProductCard from "@/components/product/product-card";
 
 export default function Home() {
+  const { data: products } = useProducts();
+  
+  // Get best sellers (first 4 products)
+  const bestSellers = products?.slice(0, 4) || [];
+  
+  const collections = [
+    {
+      title: "Handguns",
+      description: "Premium pistols from Glock, S&W, Sig Sauer",
+      icon: Target,
+      category: "Handguns",
+      gradient: "from-red-500/20 to-orange-500/20",
+      borderColor: "border-red-500/30"
+    },
+    {
+      title: "Rifles",
+      description: "AR-15s, bolt-action, and hunting rifles",
+      icon: Shield,
+      category: "Rifles",
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      borderColor: "border-blue-500/30"
+    },
+    {
+      title: "Less-Lethal",
+      description: "Byrna launchers and self-defense options",
+      icon: Package,
+      category: "Less-Lethal Launchers",
+      gradient: "from-green-500/20 to-emerald-500/20",
+      borderColor: "border-green-500/30"
+    },
+    {
+      title: "Accessories",
+      description: "Optics, holsters, and hearing protection",
+      icon: Headphones,
+      category: "Hearing Protection",
+      gradient: "from-purple-500/20 to-pink-500/20",
+      borderColor: "border-purple-500/30"
+    }
+  ];
+  
   const features = [
     {
       icon: Star,
@@ -161,6 +203,200 @@ export default function Home() {
           >
             📍 10 Vale Road, Newville, PA | 📞 717-249-0000
           </motion.p>
+        </div>
+      </section>
+
+      {/* Best Sellers Section */}
+      <section className="py-16 sm:py-20 bg-noir-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-noir-800/30 to-noir-900"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              <span className="gradient-text">Best Sellers</span>
+            </h2>
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+              Our most popular firearms flying off the shelves
+            </p>
+          </motion.div>
+          
+          {bestSellers.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {bestSellers.map((product, index) => (
+                <ProductCard key={product.id} product={product} index={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-400">Loading best sellers...</p>
+            </div>
+          )}
+          
+          <motion.div
+            className="text-center mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/catalog">
+              <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-6 py-3 rounded-lg">
+                View All Products
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Collections Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-0 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-beige-100/2 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              Browse Our <span className="gradient-text">Collections</span>
+            </h2>
+            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+              Find exactly what you're looking for in our organized categories
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {collections.map((collection, index) => (
+              <motion.div
+                key={collection.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Link href={`/catalog?category=${encodeURIComponent(collection.category)}`}>
+                  <motion.div
+                    className={`glass-effect p-6 rounded-xl border ${collection.borderColor} group cursor-pointer h-full relative overflow-hidden`}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${collection.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
+                    
+                    <div className="relative z-10">
+                      <div className="w-14 h-14 bg-beige-100/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-beige-100/20 transition-colors duration-300">
+                        <collection.icon className="w-7 h-7 text-beige-100" />
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-beige-100 transition-colors duration-300">
+                        {collection.title}
+                      </h3>
+                      
+                      <p className="text-gray-400 text-sm mb-4">
+                        {collection.description}
+                      </p>
+                      
+                      <div className="flex items-center text-beige-100 text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                        Browse Collection
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </div>
+                    </div>
+                    
+                    <motion.div
+                      className="absolute inset-0 border-2 border-transparent rounded-xl"
+                      whileHover={{ 
+                        borderColor: "rgba(245, 243, 240, 0.3)"
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community CTA Section */}
+      <section className="py-16 sm:py-20 bg-noir-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-transparent to-beige-100/5" />
+        </div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="glass-effect p-8 sm:p-12 rounded-2xl border border-beige-100/20 text-center relative overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-beige-100/5 to-transparent" />
+            
+            <motion.div
+              className="relative z-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="mb-6 inline-block">
+                <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-4 py-2 rounded-full text-sm font-semibold">
+                  🎯 500+ Members Getting Exclusive Deals
+                </span>
+              </div>
+              
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                Join the <span className="gradient-text">KGS CREW Community</span>
+              </h2>
+              
+              <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+                Get insider access, exclusive deals, and priority appointments. 
+                Members save an average of $200 per purchase.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+                <div className="text-center">
+                  <div className="text-2xl font-bold gradient-text mb-1">24/7</div>
+                  <div className="text-sm text-gray-400">Community Access</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold gradient-text mb-1">First</div>
+                  <div className="text-sm text-gray-400">To Know Deals</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold gradient-text mb-1">VIP</div>
+                  <div className="text-sm text-gray-400">Member Events</div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/community">
+                  <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-8 py-4 rounded-lg text-lg w-full sm:w-auto">
+                    <Users className="w-5 h-5 mr-2" />
+                    Join Community - It's FREE
+                  </Button>
+                </Link>
+                <Link href="/community">
+                  <Button variant="outline" className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto">
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
