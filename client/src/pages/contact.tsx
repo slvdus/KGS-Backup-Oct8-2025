@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Youtube, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,35 +24,36 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Address",
-      content: ["1234 Tactical Drive", "Gunsmith Valley, TX 75001"]
+      title: "Visit By Appointment",
+      content: ["10 Vale Road", "Newville, PA 17241"]
     },
     {
       icon: Phone,
-      title: "Phone",
-      content: ["(555) 123-4567"]
+      title: "Call or Text",
+      content: ["717-249-0000", "Schedule your appointment today!"]
     },
     {
       icon: Mail,
       title: "Email", 
-      content: ["info@naturesarsenal.com"]
+      content: ["KGSCrewInc@gmail.com"]
     },
     {
       icon: Clock,
       title: "Hours",
       content: [
-        "Monday - Friday: 9:00 AM - 7:00 PM",
-        "Saturday: 9:00 AM - 5:00 PM", 
-        "Sunday: 12:00 PM - 4:00 PM"
+        "By Appointment Only",
+        "Call or Text to Schedule", 
+        "We work around YOUR schedule"
       ]
     }
   ];
 
   const subjectOptions = [
-    "General Inquiry",
-    "Product Question", 
-    "Service Request",
-    "Custom Order"
+    "Schedule Appointment",
+    "Product Availability", 
+    "FFL Transfer",
+    "Special Order",
+    "General Question"
   ];
 
   const handleInputChange = (field: string, value: string) => {
@@ -68,7 +69,7 @@ export default function Contact() {
       
       toast({
         title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
+        description: "We'll call you within 24 hours to schedule your appointment.",
       });
       
       // Reset form
@@ -83,7 +84,7 @@ export default function Contact() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "Failed to send message. Please call us directly at 717-249-0000.",
         variant: "destructive",
       });
     } finally {
@@ -135,7 +136,7 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             data-testid="text-contact-title"
           >
-            <span className="gradient-text pulse-glow">Contact</span> Us
+            Book Your <span className="gradient-text pulse-glow">VIP Appointment</span>
           </motion.h1>
           <motion.p 
             className="text-xl text-gray-300 max-w-2xl mx-auto"
@@ -144,7 +145,15 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-contact-subtitle"
           >
-            Get in touch with our expert team for personalized service and guidance
+            No crowds. No waiting. Just you and the best prices in Pennsylvania.
+          </motion.p>
+          <motion.p 
+            className="text-lg text-beige-100 mt-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            98% of our customers recommend us. Find out why.
           </motion.p>
         </div>
       </section>
@@ -161,7 +170,7 @@ export default function Contact() {
               className="glass-effect p-8 rounded-xl border border-noir-700/50"
             >
               <h2 className="text-3xl font-bold gradient-text mb-8" data-testid="text-contact-info-title">
-                Get In Touch
+                Let's Connect
               </h2>
               
               <div className="space-y-6">
@@ -184,12 +193,52 @@ export default function Contact() {
                       </h3>
                       <div className="text-gray-400" data-testid={`text-contact-info-content-${index}`}>
                         {info.content.map((line, lineIndex) => (
-                          <p key={lineIndex}>{line}</p>
+                          <p key={lineIndex} className={lineIndex === 0 && info.title === "Call or Text" ? "text-beige-100 font-semibold text-lg" : ""}>
+                            {line}
+                          </p>
                         ))}
                       </div>
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-8 pt-8 border-t border-noir-700/50">
+                <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://www.facebook.com/KeystoneGunSales" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  >
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://youtube.com/@BrentKGS" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full glass-effect border border-noir-700/50 text-gray-400 hover:text-beige-100 hover:border-beige-100/30 transition-all duration-300"
+                  >
+                    <Youtube className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Quick Action Buttons */}
+              <div className="mt-8 space-y-3">
+                <a href="tel:717-249-0000" className="block">
+                  <Button className="w-full bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold py-4">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call Now: 717-249-0000
+                  </Button>
+                </a>
+                <a href="https://kgscrewinc.com" target="_blank" rel="noopener noreferrer" className="block">
+                  <Button variant="outline" className="w-full glass-effect border-beige-100/30 text-beige-100 hover:bg-beige-100/10">
+                    Visit Our Website
+                  </Button>
+                </a>
               </div>
             </motion.div>
             
@@ -201,7 +250,7 @@ export default function Contact() {
               className="glass-effect p-8 rounded-xl border border-noir-700/50"
             >
               <h2 className="text-3xl font-bold gradient-text mb-8" data-testid="text-contact-form-title">
-                Send us a Message
+                Request Your Appointment
               </h2>
               
               <form className="space-y-6" onSubmit={handleSubmit} data-testid="form-contact">
@@ -306,13 +355,15 @@ export default function Contact() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                 >
                   <label className="block text-sm font-medium text-beige-100 mb-2">
-                    Phone
+                    Phone (Required for Appointment)
                   </label>
                   <Input
                     type="tel"
+                    required
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 transition-colors"
+                    placeholder="We'll text to confirm your appointment"
                     data-testid="input-phone"
                   />
                 </motion.div>
@@ -323,11 +374,11 @@ export default function Contact() {
                   transition={{ duration: 0.6, delay: 0.7 }}
                 >
                   <label className="block text-sm font-medium text-beige-100 mb-2">
-                    Subject
+                    What Can We Help You With?
                   </label>
                   <Select value={formData.subject} onValueChange={(value) => handleInputChange('subject', value)}>
                     <SelectTrigger className="glass-effect border-noir-600/50 text-white focus:border-beige-100/50 transition-colors" data-testid="select-subject">
-                      <SelectValue placeholder="Select a subject" />
+                      <SelectValue placeholder="Select a topic" />
                     </SelectTrigger>
                     <SelectContent className="glass-effect border-noir-600/50 bg-noir-800/95 backdrop-blur-xl">
                       {subjectOptions.map((option) => (
@@ -345,7 +396,7 @@ export default function Contact() {
                   transition={{ duration: 0.6, delay: 0.8 }}
                 >
                   <label className="block text-sm font-medium text-beige-100 mb-2">
-                    Message
+                    Tell Us More
                   </label>
                   <Textarea
                     rows={5}
@@ -353,6 +404,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
                     className="glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 resize-none transition-colors"
+                    placeholder="What firearm are you looking for? Any special requests?"
                     data-testid="textarea-message"
                   />
                 </motion.div>
@@ -376,7 +428,7 @@ export default function Contact() {
                           <div className="w-4 h-4 border-2 border-noir-900 border-t-transparent rounded-full animate-spin"></div>
                           <span>Sending...</span>
                         </div>
-                      ) : "Send Message"}
+                      ) : "Request Appointment"}
                     </span>
                   </Button>
                 </motion.div>

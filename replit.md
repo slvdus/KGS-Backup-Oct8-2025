@@ -1,6 +1,20 @@
 # Overview
 
-Nature's Arsenal is a sophisticated full-stack web application for a firearms retailer featuring premium Vercel-style UI/UX design. Built as a comprehensive e-commerce platform, it showcases firearms inventory with detailed product information, provides company information, and includes customer contact capabilities. The application features a dark "noir" theme with glass effects, sophisticated micro-interactions, and premium aesthetics that create an outstanding user experience.
+KGS CREW (Keystone Gun Sales) is a sophisticated full-stack web application for a premium firearms retailer featuring Vercel-style UI/UX design and Alex Hormozi-inspired marketing copy. Built as a comprehensive e-commerce platform, it showcases firearms inventory with detailed product information, provides company information, and includes customer contact capabilities with an appointment-only business model. The application features a dark "noir" theme with glass effects, sophisticated micro-interactions, and premium aesthetics that create an outstanding user experience.
+
+# Business Information
+
+- **Company**: KGS CREW Inc. (Keystone Gun Sales)
+- **Location**: 10 Vale Road, Newville, PA 17241
+- **Phone**: 717-249-0000
+- **Email**: KGSCrewInc@gmail.com
+- **Website**: kgscrewinc.com
+- **Model**: By appointment only for personalized VIP service
+- **Key Metric**: 98% customer recommendation rate from 94+ reviews
+- **Founded**: April 2020
+- **Owners**: Brent Miller (President) & Amber Kane (Co-Owner)
+- **Team**: Bill (Sales Specialist), Andy (Founder Emeritus)
+- **Social**: Facebook @KeystoneGunSales, YouTube @BrentKGS
 
 # User Preferences
 
@@ -24,11 +38,27 @@ The server includes comprehensive request logging, error handling middleware, an
 
 Currently implements an in-memory storage solution using Maps for rapid prototyping and development. The system is designed with a storage interface that supports easy migration to PostgreSQL using Drizzle ORM. Database schemas are defined using Drizzle with PostgreSQL dialect, including tables for products and users.
 
-Product data includes comprehensive information like specifications arrays, pricing, inventory levels, and categorization. The schema supports features like low stock warnings and detailed product specifications.
+Product data includes comprehensive information like specifications arrays, pricing, inventory levels, and categorization. The schema supports features like low stock warnings and detailed product specifications. The product catalog includes realistic firearms inventory:
+- Handguns (Glock, S&W, Sig Sauer, Ruger, Canik)
+- Rifles (AR-15, bolt-action, lever-action, .22 rifles)
+- Shotguns (tactical and hunting models)
+- Ammunition (9mm, 5.56, .22LR, 12GA)
+- Accessories (optics, lights, magazines, holsters, cases)
+- Youth Rifles (specialty Keystone products)
 
 ## Component Architecture
 
 The frontend follows a hierarchical component structure with reusable UI components featuring sophisticated animations and micro-interactions. Layout components (navbar, footer) and page-specific components are enhanced with glass effects and floating animations. Product-related components include advanced hover effects, stock indicators, and smooth transitions. The application uses a comprehensive design system with over 30 UI components covering forms, navigation, feedback, and data display, all enhanced with Vercel-style polish and premium animations.
+
+## Marketing & Content Strategy
+
+The application uses Alex Hormozi-style marketing copy throughout, focusing on:
+- **Value Proposition**: "Pennsylvania's Best Prices in Firearms"
+- **Social Proof**: "98% of customers recommend us" with 94+ reviews
+- **Exclusivity**: Appointment-only model for VIP treatment
+- **Urgency**: Limited availability, exclusive member benefits
+- **Personal Touch**: Family-owned business treating customers like family
+- **Guarantees**: Best price guarantee, personalized service promise
 
 ## Recent UI/UX Enhancements (January 2025)
 - **Glass Effects**: Implemented sophisticated glass morphism effects across all components with backdrop blur and subtle borders
@@ -50,6 +80,16 @@ The frontend follows a hierarchical component structure with reusable UI compone
 - **Footer Animations**: Staggered reveal animations and enhanced social media button interactions
 - **CSS Animation Library**: Created comprehensive micro-interaction system with 15+ animation classes including shimmer, magnetic, ripple, and stagger effects
 - **Performance Optimized**: All animations use GPU-accelerated transforms and are optimized for smooth 60fps performance
+
+## Page Structure
+
+1. **Home Page**: Hero with appointment CTA, social proof (98% recommendation), three key value propositions
+2. **About Page**: Company story since 2020, team profiles (Brent, Amber, Bill, Andy), values and promises
+3. **Catalog Page**: Full inventory with filtering by category, real firearms and accessories
+4. **Product Detail**: Comprehensive specifications, stock indicators, add to cart functionality
+5. **Contact Page**: Appointment booking form, location (10 Vale Road, Newville), phone/email, social links
+6. **Community Page**: Go HighLevel integration landing page, member benefits, exclusive deals messaging
+7. **Cart/Checkout**: Standard e-commerce flow with glass effects and animations
 
 ## Development Workflow
 

@@ -3,21 +3,20 @@
 ## Overview
 Migrating Nature's Arsenal website to a new business while maintaining the same structure and design.
 
-## Information Needed from Client
-- [ ] Business name
-- [ ] Business tagline/slogan
-- [ ] Contact information (email, phone, address)
-- [ ] Business hours
-- [ ] About Us content
-- [ ] Mission statement
-- [ ] Company history/story
-- [ ] Team information (if applicable)
-- [ ] Product catalog (all products with details)
-- [ ] Product categories
-- [ ] Social media links
-- [ ] Legal/compliance information
-- [ ] Return/shipping policies
-- [ ] Any special certifications or affiliations
+## KGS CREW Business Information
+- [x] Business name: KGS CREW (Keystone Gun Sales)
+- [x] Tagline: "The Best Prices in PA - By Appointment Only"
+- [x] Email: KGSCrewInc@gmail.com
+- [x] Phone: 717-249-0000
+- [x] Address: 10 Vale Road, Newville, PA 17241
+- [x] Hours: By Appointment Only (Call or Text)
+- [x] About: Family-owned FFL dealer, est. 2020 by Brent Miller & Amber Kane
+- [x] Mission: Personalized service, education, no-pressure sales
+- [x] Team: Brent Miller (President), Amber Kane (Co-Owner), Bill, Andy
+- [x] Social: YouTube (@BrentKGS), Facebook (KeystoneGunSales)
+- [x] Website: kgscrewinc.com
+- [x] Key Stats: 98% recommendation rate, 94+ reviews
+- [x] Special: Appointment-only model for personalized attention
 
 ## Files to Update
 
@@ -94,3 +93,10 @@ Migrating Nature's Arsenal website to a new business while maintaining the same 
 - Keep all animations and micro-interactions
 - Preserve the responsive design
 - Ensure all forms and cart functionality remain intact
+- Apply Alex Hormozi marketing principles:
+  * Lead with value and social proof (98% recommendation)
+  * Emphasize exclusivity (appointment-only)
+  * Focus on results (best prices, personalized service)
+  * Clear CTAs with urgency
+  * Problem/solution messaging
+- Add Community landing page for Go HighLevel redirect

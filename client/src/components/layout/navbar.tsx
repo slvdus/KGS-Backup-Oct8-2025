@@ -11,9 +11,10 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/catalog", label: "Catalog" },
+    { href: "/catalog", label: "Inventory" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/community", label: "Community" },
+    { href: "/contact", label: "Book Appointment" },
   ];
 
   const isActive = (href: string) => {
@@ -44,7 +45,7 @@ export default function Navbar() {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Nature's Arsenal
+                KGS CREW
               </motion.h1>
             </Link>
           </motion.div>

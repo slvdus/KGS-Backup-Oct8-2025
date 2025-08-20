@@ -2,30 +2,36 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const stats = [
-    { value: "20+", label: "Years in Business" },
-    { value: "5000+", label: "Satisfied Customers" },
-    { value: "100%", label: "Licensed & Compliant" },
-    { value: "24/7", label: "Customer Support" }
+    { value: "98%", label: "Recommend Us" },
+    { value: "94+", label: "5-Star Reviews" },
+    { value: "100%", label: "Licensed FFL" },
+    { value: "1-on-1", label: "Personal Service" }
   ];
 
   const teamMembers = [
     {
-      name: "John Mitchell",
-      role: "Founder & Owner",
-      experience: "25+ years in firearms industry",
-      image: "/api/placeholder/300/300?text=John+Mitchell"
+      name: "Brent Miller",
+      role: "President & Owner",
+      experience: "Digital sales expert, bar owner, your firearms guide",
+      image: "/api/placeholder/300/300?text=Brent+Miller"
     },
     {
-      name: "Mike Rodriguez", 
-      role: "Sales Manager",
-      experience: "Expert in tactical equipment",
-      image: "/api/placeholder/300/300?text=Mike+Rodriguez"
+      name: "Amber Kane", 
+      role: "Co-Owner",
+      experience: "Customer turned owner - knows what shooters really want",
+      image: "/api/placeholder/300/300?text=Amber+Kane"
     },
     {
-      name: "Sarah Johnson",
-      role: "Master Gunsmith", 
-      experience: "Certified in custom modifications",
-      image: "/api/placeholder/300/300?text=Sarah+Johnson"
+      name: "Bill",
+      role: "Sales Specialist", 
+      experience: "Retired US Postal carrier, lifetime of service",
+      image: "/api/placeholder/300/300?text=Bill"
+    },
+    {
+      name: "Andy",
+      role: "Founder Emeritus", 
+      experience: "Original founder, still sharing his expertise",
+      image: "/api/placeholder/300/300?text=Andy"
     }
   ];
 
@@ -48,7 +54,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             data-testid="text-about-title"
           >
-            About <span className="gradient-text pulse-glow">Nature's Arsenal</span>
+            The <span className="gradient-text pulse-glow">KGS CREW</span> Story
           </motion.h1>
           <motion.p 
             className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
@@ -57,8 +63,8 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-about-subtitle"
           >
-            For over two decades, we've been dedicated to providing the finest firearms 
-            and equipment to enthusiasts, collectors, and professionals.
+            Since April 2020, we've revolutionized firearms sales in PA with one simple idea: 
+            Treat customers like family, not transactions.
           </motion.p>
           
           {/* Stats */}
@@ -97,10 +103,10 @@ export default function About() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-beige-100/20 to-transparent rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <img 
-                src="/api/placeholder/600/400?text=Professional+Gunsmith+at+Work" 
-                alt="Professional gunsmith at work" 
+                src="/api/placeholder/600/400?text=KGS+CREW+Store" 
+                alt="KGS CREW Store Interior" 
                 className="relative rounded-xl shadow-2xl glass-effect border border-noir-700/50 group-hover:scale-105 transition-transform duration-500"
-                data-testid="img-gunsmith"
+                data-testid="img-store"
               />
             </motion.div>
             
@@ -111,40 +117,30 @@ export default function About() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold text-white mb-6" data-testid="text-story-title">
-                Our Story
+                From Customer to Owner: A Success Story
               </h2>
               <div className="space-y-4 text-gray-400" data-testid="text-story-content">
                 <p>
-                  Founded in 2001, Nature's Arsenal began as a small family-owned business 
-                  with a passion for firearms and outdoor sports. Over the years, we've grown 
-                  into one of the region's most trusted firearms dealers.
+                  In April 2020, when the world was shutting down, Brent Miller and Amber Kane 
+                  saw an opportunity. Amber was a longtime customer who knew what shooters really 
+                  wanted. Brent brought business expertise from hospitality, real estate, and 
+                  digital sales.
                 </p>
                 <p>
-                  Our commitment to quality, safety, and customer service has earned us a 
-                  reputation among law enforcement, military personnel, and civilian enthusiasts alike.
+                  Together, they transformed KGS CREW into Pennsylvania's most recommended gun shop. 
+                  How? Simple: <span className="text-beige-100 font-semibold">By appointment only.</span> No 
+                  crowds. No pressure. Just you, the best prices in PA, and personal attention you 
+                  won't find anywhere else.
                 </p>
                 <p>
-                  We pride ourselves on our extensive knowledge, competitive pricing, and 
-                  the personal attention we give to every customer who walks through our doors.
+                  The result? <span className="text-beige-100 font-semibold">98% of our customers recommend us.</span> People 
+                  drive from all over Pennsylvania and beyond because they know: at KGS CREW, 
+                  you're not just another sale. You're family.
                 </p>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-2 gap-8">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    data-testid={`stat-${index}`}
-                  >
-                    <div className="text-3xl font-bold gradient-text mb-2 pulse-glow">
-                      {stat.value}
-                    </div>
-                    <div className="text-gray-400">{stat.label}</div>
-                  </motion.div>
-                ))}
+                <p className="text-beige-100 font-semibold">
+                  Fun fact: Brent also owns Kane's Korner Pizzeria in Newville. Come for the guns, 
+                  stay for the pizza!
+                </p>
               </div>
             </motion.div>
           </div>
@@ -162,14 +158,14 @@ export default function About() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold text-white mb-4" data-testid="text-team-title">
-              Meet Our Team
+              Meet The Crew
             </h2>
             <p className="text-gray-400 text-lg" data-testid="text-team-subtitle">
-              Experienced professionals dedicated to serving you
+              The experts who make your experience unforgettable
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -214,19 +210,19 @@ export default function About() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold text-white mb-4" data-testid="text-values-title">
-              Our Values
+              The KGS CREW Promise
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto" data-testid="text-values-subtitle">
-              The principles that guide everything we do
+              This is why 98% of our customers recommend us
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Safety First", description: "We prioritize safety in every transaction and interaction." },
-              { title: "Quality Products", description: "Only the finest firearms and equipment make it to our shelves." },
-              { title: "Expert Knowledge", description: "Our team brings decades of combined experience and expertise." },
-              { title: "Customer Service", description: "Personalized attention and support for every customer." }
+              { title: "Best Prices, Period", description: "We beat the big box stores every single time. Guaranteed." },
+              { title: "No Pressure Sales", description: "Take your time. Ask questions. We're here to educate, not push." },
+              { title: "VIP Treatment", description: "Appointment-only means you get our full attention. Every time." },
+              { title: "Family Values", description: "We remember your name, your preferences, and treat you like family." }
             ].map((value, index) => (
               <motion.div
                 key={value.title}
@@ -246,6 +242,43 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-noir-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-noir-900/50 to-transparent"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Experience the KGS CREW Difference
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            Join the hundreds of satisfied customers who won't shop anywhere else.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <a href="tel:717-249-0000">
+              <button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-8 py-4 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                Schedule Your Appointment Today
+              </button>
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -40,7 +40,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              Nature's Arsenal
+              KGS CREW
             </motion.h3>
             <motion.p 
               className="text-gray-400 mb-4"
@@ -49,14 +49,14 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Your trusted partner for premium firearms and equipment. 
-              Licensed, professional, and committed to excellence.
+              Pennsylvania's best prices in firearms. By appointment only.
+              98% customer recommendation rate. Family-owned since 2020.
             </motion.p>
             <div className="flex space-x-4">
               {[
-                { icon: Facebook, href: "#", testId: "link-facebook" },
-                { icon: Mail, href: "#", testId: "link-email" },
-                { icon: Phone, href: "#", testId: "link-phone" }
+                { icon: Facebook, href: "https://www.facebook.com/KeystoneGunSales", testId: "link-facebook" },
+                { icon: Mail, href: "mailto:KGSCrewInc@gmail.com", testId: "link-email" },
+                { icon: Phone, href: "tel:717-249-0000", testId: "link-phone" }
               ].map((social, index) => (
                 <motion.a 
                   key={social.testId}
@@ -159,7 +159,7 @@ export default function Footer() {
         <div className="border-t border-noir-700 mt-8 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-sm">
-              &copy; 2024 Nature's Arsenal. All rights reserved. | Licensed FFL Dealer
+              &copy; 2024 KGS CREW Inc. All rights reserved. | Licensed FFL Dealer | Type 01 FFL
             </p>
             
             {/* Developer Credit */}

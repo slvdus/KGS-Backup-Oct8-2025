@@ -14,6 +14,7 @@ import Cart from "@/pages/cart";
 import Checkout from "@/pages/checkout";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import Community from "@/pages/community";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -29,6 +30,7 @@ function Router() {
         <Route path="/checkout" component={Checkout} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/community" component={Community} />
         <Route component={NotFound} />
         </Switch>
         <Footer />

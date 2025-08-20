@@ -24,243 +24,424 @@ export class MemStorage implements IStorage {
 
   private initializeProducts() {
     const sampleProducts: Product[] = [
+      // Handguns
       {
         id: "1",
-        name: "Byrna TCR (Tactical Compact Rifle)",
-        description: "Semi-automatic CO₂-powered less-lethal launcher with tactical ergonomics. Offers extended magazines, rails, and professional-grade performance for home defense, training, and recreation.",
-        price: "599.99",
-        category: "Less-Lethal Launchers",
-        image: "/api/placeholder/600/400?text=Byrna+TCR+Tactical+Compact+Rifle",
-        specifications: [
-          "Caliber: .68 caliber",
-          "Magazine Capacity: 12+7 rounds",
-          "Barrel Length: 11 inches",
-          "Power: Pull-pierce CO₂",
-          "Features: Picatinny rails, flip-up sights",
-          "Stock: Collapsible tactical stock"
-        ],
-        inStock: 8
-      },
-      {
-        id: "2",
-        name: "Colt Python (Blued)",
-        description: "Iconic .357 Magnum revolver famed for precision and smooth trigger. Built with vent rib barrel and full underlug. A legendary firearm perfect for target shooting, collection, and hunting.",
-        price: "1699.00",
+        name: "Glock 19 Gen 5",
+        description: "The gold standard of compact 9mm pistols. Used by law enforcement worldwide. Perfect balance of size, capacity, and shootability for concealed carry or home defense.",
+        price: "549.99",
         category: "Handguns",
-        image: "/api/placeholder/600/400?text=Colt+Python+Blued+Revolver",
+        image: "/api/placeholder/600/400?text=Glock+19+Gen+5",
         specifications: [
-          "Caliber: .357 Magnum/.38 Special",
-          "Capacity: 6-shot",
-          "Action: Double/Single Action",
-          "Barrel Length: 6 inches",
-          "Sights: Adjustable target sights",
-          "Finish: Royal Blue"
-        ],
-        inStock: 3
-      },
-      {
-        id: "3",
-        name: "Colt King Cobra",
-        description: "Modern .357 Magnum revolver offering strength and reliability with classic styling. Perfect for range shooting, defensive carry, and collection.",
-        price: "1149.00",
-        category: "Handguns",
-        image: "/api/placeholder/600/400?text=Colt+King+Cobra+357+Magnum",
-        specifications: [
-          "Caliber: .357 Magnum",
-          "Capacity: 6-shot",
-          "Action: Double/Single Action", 
-          "Barrel Length: 6 inches",
-          "Sights: Ramp front sight",
-          "Frame: Stainless steel"
-        ],
-        inStock: 5
-      },
-      {
-        id: "4",
-        name: "GForce Arms Lever Rifle (LTAC Style)",
-        description: "Lever-action rifle with modern M-LOK handguard and threaded barrel. Combines classic operation with tactical upgrades for ranch, defense, and brush hunting applications.",
-        price: "899.00",
-        category: "Rifles",
-        image: "/api/placeholder/600/400?text=GForce+Arms+Lever+Action+Rifle",
-        specifications: [
-          "Caliber: .357 Magnum/.38 Special",
-          "Capacity: 8+1 rounds",
-          "Barrel Length: 16.5 inches (threaded)",
-          "Features: M-LOK handguard, top rail",
-          "Sights: Fiber optic front sight",
-          "Action: Lever-action"
-        ],
-        inStock: 6
-      },
-      {
-        id: "5",
-        name: "CCI Suppressor Max .22 LR",
-        description: "Segmented hollow point .22LR optimized for suppressor use, offering quiet operation and effective expansion. Ideal for small game, pest control, and quiet training.",
-        price: "19.00",
-        category: "Ammunition",
-        image: "/api/placeholder/600/400?text=CCI+Suppressor+Max+22LR",
-        specifications: [
-          "Caliber: .22 Long Rifle",
-          "Bullet Weight: 45 grain",
-          "Bullet Type: Segmented Hollow Point",
-          "Velocity: 970 fps (subsonic)",
-          "Quantity: 100 rounds per box",
-          "Use: Suppressor optimized"
-        ],
-        inStock: 50
-      },
-      {
-        id: "6",
-        name: "PMC X-TAC 5.56 NATO (M855)",
-        description: "Green-tip 5.56 NATO penetrator rounds built to military specification for reliable performance. Perfect for training, tactical drills, and duty-grade practice.",
-        price: "14.00",
-        category: "Ammunition",
-        image: "/api/placeholder/600/400?text=PMC+X-TAC+556+NATO+M855",
-        specifications: [
-          "Caliber: 5.56x45mm NATO",
-          "Bullet Weight: 62 grain",
-          "Bullet Type: Light Armor Piercing (LAP)",
-          "Velocity: ~3,100 fps",
-          "Quantity: 20 rounds per box",
-          "Features: Steel penetrator core"
-        ],
-        inStock: 75
-      },
-      {
-        id: "7", 
-        name: "Magtech 300 BLK Subsonic",
-        description: "Heavy subsonic .300 Blackout FMJ ammunition designed for suppressed shooting with minimal noise signature. Excellent for suppressed training and range use.",
-        price: "38.00",
-        category: "Ammunition",
-        image: "/api/placeholder/600/400?text=Magtech+300+Blackout+Subsonic",
-        specifications: [
-          "Caliber: 300 AAC Blackout",
-          "Bullet Weight: 200 grain",
-          "Bullet Type: Full Metal Jacket (FMJ)",
-          "Velocity: 1,050 fps (subsonic)",
-          "Quantity: 50 rounds per box",
-          "Use: Suppressor optimized"
-        ],
-        inStock: 40
-      },
-      {
-        id: "8",
-        name: "Byrna SD Launcher Kit (Safety Orange)",
-        description: "Compact CO₂-powered personal defense launcher with included projectiles and CO₂ cartridges. Ready-to-use kit for home defense, self-defense, and training applications.",
-        price: "389.00",
-        category: "Less-Lethal Launchers",
-        image: "/api/placeholder/600/400?text=Byrna+SD+Launcher+Orange",
-        specifications: [
-          "Caliber: .68 caliber",
-          "Magazine Capacity: 5 rounds (2 magazines)",
-          "Projectiles: 15 included",
-          "Safety: Ambidextrous safety",
-          "Trigger: Straight trigger design",
-          "Color: Safety Orange"
+          "Caliber: 9mm Luger",
+          "Capacity: 15+1 rounds",
+          "Barrel Length: 4.02 inches",
+          "Overall Length: 7.28 inches",
+          "Weight: 23.65 oz (unloaded)",
+          "Action: Safe Action (striker-fired)"
         ],
         inStock: 12
       },
       {
-        id: "9",
-        name: "Byrna Projectiles Assortment",
-        description: "Mix of Byrna Kinetic, Eco-Kinetic, Training, and Pepper projectiles, plus 12ga less-lethal rounds. Various payloads for training and defense applications.",
-        price: "50.00",
-        category: "Less-Lethal Ammunition",
-        image: "/api/placeholder/600/400?text=Byrna+Projectiles+Assortment",
-        specifications: [
-          "Calibers: .68 caliber & 12 gauge",
-          "Types: Kinetic, Eco-Kinetic, Training, Pepper",
-          "Payload: Various non-lethal payloads",
-          "Compatibility: Byrna launchers",
-          "Use: Training and defense",
-          "Note: Check local legal restrictions"
-        ],
-        inStock: 25
-      },
-      {
-        id: "10",
-        name: "Custom Glock-Pattern 9mm",
-        description: "Custom-built Glock-style pistol with slide cuts, enhanced barrel, and magwell. Features windowed slide, gold-tone barrel, and tall sights for competition and range use.",
-        price: "1200.00",
+        id: "2",
+        name: "Smith & Wesson M&P Shield Plus",
+        description: "Revolutionary micro-compact with increased capacity. The Shield Plus offers 13+1 rounds in a package perfect for everyday carry.",
+        price: "479.99",
         category: "Handguns",
-        image: "/api/placeholder/600/400?text=Custom+Glock+9mm+Competition",
+        image: "/api/placeholder/600/400?text=S&W+Shield+Plus",
         specifications: [
           "Caliber: 9mm Luger",
-          "Features: Windowed slide cuts",
-          "Barrel: Gold-tone enhanced barrel",
-          "Sights: Tall competition sights",
-          "Magwell: Enhanced magwell",
-          "Use: Competition, range shooting"
-        ],
-        inStock: 4
-      },
-      {
-        id: "11",
-        name: "SIG Sauer P365X",
-        description: "Micro-compact 9mm pistol with optic-ready slide and flat trigger, ideal for concealed carry. Perfect balance of size, capacity, and shootability for everyday carry.",
-        price: "639.00",
-        category: "Handguns",
-        image: "/api/placeholder/600/400?text=SIG+Sauer+P365X+9mm",
-        specifications: [
-          "Caliber: 9mm Luger",
-          "Capacity: 12+1 rounds",
+          "Capacity: 13+1 rounds",
           "Barrel Length: 3.1 inches",
-          "Sights: XRAY3 Night Sights",
-          "Slide: Optic-ready",
-          "Trigger: Flat trigger"
+          "Overall Length: 6.1 inches",
+          "Weight: 20.2 oz (unloaded)",
+          "Sights: Tritium night sights available"
         ],
-        inStock: 15
+        inStock: 8
       },
       {
-        id: "12",
-        name: "Walker's Razor Slim Electronic Muffs",
-        description: "Low-profile electronic earmuffs that amplify ambient sound and protect against gunfire. Slim design with foldable cups perfect for range and hunting use.",
-        price: "64.00",
-        category: "Hearing Protection",
-        image: "/api/placeholder/600/400?text=Walkers+Razor+Slim+Electronic+Muffs",
-        specifications: [
-          "NRR Rating: 23 dB",
-          "Type: Electronic amplification",
-          "Design: Slim profile cups",
-          "Features: Foldable design",
-          "Power: Battery operated",
-          "Use: Range, hunting, training"
-        ],
-        inStock: 30
-      },
-      {
-        id: "13",
-        name: "Ruger American Pistol (9mm)",
-        description: "Full-size duty pistol with ergonomic grip and Novak sights. Reliable and accurate platform designed for duty, home defense, and range applications.",
-        price: "539.00",
+        id: "3",
+        name: "Sig Sauer P320 X-Carry",
+        description: "Modular striker-fired pistol with enhanced trigger and grip. Military-tested reliability meets competition-ready features.",
+        price: "679.99",
         category: "Handguns",
-        image: "/api/placeholder/600/400?text=Ruger+American+Pistol+9mm",
+        image: "/api/placeholder/600/400?text=Sig+P320+X-Carry",
         specifications: [
           "Caliber: 9mm Luger",
           "Capacity: 17+1 rounds",
-          "Barrel Length: 4.2 inches",
-          "Sights: Novak 3-dot sights",
-          "Frame: Ergonomic grip design",
-          "Action: Striker-fired"
+          "Barrel Length: 3.9 inches",
+          "Trigger: X-Series flat trigger",
+          "Grip: X-Series grip module",
+          "Optic Ready: Yes"
+        ],
+        inStock: 6
+      },
+      {
+        id: "4",
+        name: "Ruger LCP MAX .380",
+        description: "Maximum capacity in minimum size. 12+1 rounds of .380 ACP in a pocket-sized package. Your last line of defense that fits anywhere.",
+        price: "369.99",
+        category: "Handguns",
+        image: "/api/placeholder/600/400?text=Ruger+LCP+MAX",
+        specifications: [
+          "Caliber: .380 ACP",
+          "Capacity: 12+1 rounds",
+          "Barrel Length: 2.8 inches",
+          "Weight: 10.6 oz",
+          "Sights: Tritium front sight",
+          "Trigger: ~6 lbs"
         ],
         inStock: 10
       },
       {
-        id: "14",
-        name: "S&W Bodyguard 2.0 (.380 ACP)",
-        description: "Compact .380 ACP pistol designed for discreet carry and deep concealment. Ultra-compact size makes it perfect as a primary carry gun or backup weapon.",
-        price: "493.00",
+        id: "5",
+        name: "Canik TP9 Elite SC",
+        description: "Turkish engineering at its finest. Match-grade barrel, outstanding trigger, and Warren Tactical sights at an unbeatable price point.",
+        price: "429.99",
         category: "Handguns",
-        image: "/api/placeholder/600/400?text=SW+Bodyguard+2.0+380ACP",
+        image: "/api/placeholder/600/400?text=Canik+TP9+Elite+SC",
         specifications: [
-          "Caliber: .380 ACP",
-          "Capacity: 10+1/12+1 rounds",
-          "Barrel Length: 2.75 inches",
-          "Frame: Polymer frame",
-          "Use: Deep concealment, backup",
-          "Action: Striker-fired"
+          "Caliber: 9mm Luger",
+          "Capacity: 12+1 / 15+1 rounds",
+          "Barrel Length: 3.6 inches",
+          "Includes: Hard case, 2 mags, holster",
+          "Sights: Warren Tactical",
+          "Optic Ready: Yes with plates"
+        ],
+        inStock: 7
+      },
+
+      // Rifles
+      {
+        id: "6",
+        name: "Smith & Wesson M&P15 Sport II",
+        description: "America's favorite entry-level AR-15. Built for reliability, accuracy, and affordability. The perfect first rifle for sport shooting or home defense.",
+        price: "699.99",
+        category: "Rifles",
+        image: "/api/placeholder/600/400?text=M&P15+Sport+II",
+        specifications: [
+          "Caliber: 5.56 NATO/.223 Rem",
+          "Barrel: 16\" 1:9 twist",
+          "Gas System: Direct impingement",
+          "Stock: 6-position telescoping",
+          "Weight: 6.5 lbs",
+          "Includes: 30-round PMAG"
+        ],
+        inStock: 9
+      },
+      {
+        id: "7",
+        name: "Ruger 10/22 Carbine",
+        description: "The most popular .22 rifle in America. Perfect for plinking, small game hunting, or teaching new shooters. Endless customization options.",
+        price: "379.99",
+        category: "Rifles",
+        image: "/api/placeholder/600/400?text=Ruger+10-22",
+        specifications: [
+          "Caliber: .22 Long Rifle",
+          "Capacity: 10 rounds (rotary mag)",
+          "Barrel Length: 18.5 inches",
+          "Overall Length: 37 inches",
+          "Weight: 5 lbs",
+          "Stock: Synthetic black"
+        ],
+        inStock: 15
+      },
+      {
+        id: "8",
+        name: "Mossberg Patriot .308",
+        description: "American-made bolt-action precision. Fluted barrel, adjustable trigger, and guaranteed MOA accuracy. Your ticket to filling the freezer.",
+        price: "449.99",
+        category: "Rifles",
+        image: "/api/placeholder/600/400?text=Mossberg+Patriot+308",
+        specifications: [
+          "Caliber: .308 Winchester",
+          "Capacity: 4+1 rounds",
+          "Barrel: 22\" fluted",
+          "Trigger: LBA adjustable",
+          "Stock: Synthetic with recoil pad",
+          "Accuracy: MOA guarantee"
+        ],
+        inStock: 5
+      },
+      {
+        id: "9",
+        name: "Henry Big Boy X .357/.38",
+        description: "Tactical meets traditional. Lever-action reliability with modern features. Threaded barrel, rail, and fiber optic sights.",
+        price: "979.99",
+        category: "Rifles",
+        image: "/api/placeholder/600/400?text=Henry+Big+Boy+X",
+        specifications: [
+          "Caliber: .357 Mag/.38 Special",
+          "Capacity: 7 rounds",
+          "Barrel: 17.4\" threaded",
+          "Sights: Fiber optic",
+          "Stock: Black synthetic",
+          "Rails: Picatinny top rail"
+        ],
+        inStock: 3
+      },
+
+      // Shotguns
+      {
+        id: "10",
+        name: "Mossberg 500 Tactical",
+        description: "The proven pump-action defender. Military and law enforcement trusted. Your home's first line of defense with devastating stopping power.",
+        price: "549.99",
+        category: "Shotguns",
+        image: "/api/placeholder/600/400?text=Mossberg+500+Tactical",
+        specifications: [
+          "Gauge: 12 gauge",
+          "Capacity: 8+1 rounds",
+          "Barrel: 20\" cylinder bore",
+          "Stock: 6-position adjustable",
+          "Sights: Ghost ring",
+          "Action: Pump-action"
+        ],
+        inStock: 7
+      },
+      {
+        id: "11",
+        name: "Remington 870 Express",
+        description: "The most trusted name in shotguns. Over 11 million sold. From duck blinds to deer stands, this workhorse delivers every time.",
+        price: "479.99",
+        category: "Shotguns",
+        image: "/api/placeholder/600/400?text=Remington+870",
+        specifications: [
+          "Gauge: 12 gauge",
+          "Capacity: 4+1 rounds",
+          "Barrel: 28\" vent rib",
+          "Chokes: Modified RemChoke",
+          "Stock: Hardwood",
+          "Finish: Matte black"
+        ],
+        inStock: 6
+      },
+      {
+        id: "12",
+        name: "Benelli Nova Tactical",
+        description: "Italian innovation in a pump-action package. Rotary bolt, steel cage embedded polymer stock. Built for the harshest conditions.",
+        price: "449.99",
+        category: "Shotguns",
+        image: "/api/placeholder/600/400?text=Benelli+Nova+Tactical",
+        specifications: [
+          "Gauge: 12 gauge",
+          "Capacity: 4+1 rounds",
+          "Barrel: 18.5\" cylinder",
+          "Stock: Polymer with grip",
+          "Sights: Ghost ring",
+          "Weather resistant coating"
+        ],
+        inStock: 4
+      },
+
+      // Ammunition
+      {
+        id: "13",
+        name: "Federal 9mm 115gr FMJ - 50rds",
+        description: "Range-ready brass-cased ammunition. Consistent, reliable, and clean-burning. Stock up at KGS CREW's unbeatable bulk prices.",
+        price: "19.99",
+        category: "Ammunition",
+        image: "/api/placeholder/600/400?text=Federal+9mm+Ammo",
+        specifications: [
+          "Caliber: 9mm Luger",
+          "Grain: 115 grain FMJ",
+          "Velocity: 1180 fps",
+          "Rounds: 50 per box",
+          "Case: Brass",
+          "Primer: Boxer"
+        ],
+        inStock: 100
+      },
+      {
+        id: "14",
+        name: "Winchester 5.56 NATO 55gr - 20rds",
+        description: "M193 specification ammunition. Lake City production quality at civilian prices. Perfect for your AR platform.",
+        price: "12.99",
+        category: "Ammunition",
+        image: "/api/placeholder/600/400?text=Winchester+556+Ammo",
+        specifications: [
+          "Caliber: 5.56x45mm NATO",
+          "Grain: 55 grain FMJ",
+          "Velocity: 3240 fps",
+          "Rounds: 20 per box",
+          "Case: Brass",
+          "Military spec"
+        ],
+        inStock: 150
+      },
+      {
+        id: "15",
+        name: "CCI Mini-Mag .22LR - 100rds",
+        description: "The gold standard in rimfire. Clean, accurate, and reliable. More velocity and energy than standard velocity rounds.",
+        price: "9.99",
+        category: "Ammunition",
+        image: "/api/placeholder/600/400?text=CCI+Mini+Mag+22",
+        specifications: [
+          "Caliber: .22 Long Rifle",
+          "Grain: 40 grain round nose",
+          "Velocity: 1235 fps",
+          "Rounds: 100 per box",
+          "Copper-plated bullet",
+          "Clean-burning powder"
+        ],
+        inStock: 200
+      },
+      {
+        id: "16",
+        name: "Federal 12GA 00 Buck - 5rds",
+        description: "Maximum stopping power when it matters most. Nine .33 caliber pellets deliver devastating energy. Trust Federal for home defense.",
+        price: "8.99",
+        category: "Ammunition",
+        image: "/api/placeholder/600/400?text=Federal+12GA+Buck",
+        specifications: [
+          "Gauge: 12 gauge",
+          "Load: 00 Buckshot",
+          "Pellets: 9 pellets",
+          "Length: 2-3/4\"",
+          "Velocity: 1325 fps",
+          "Rounds: 5 per box"
+        ],
+        inStock: 75
+      },
+
+      // Accessories
+      {
+        id: "17",
+        name: "Vortex Crossfire Red Dot",
+        description: "Rugged, reliable, and ready. 2 MOA dot for fast target acquisition. Unlimited eye relief and parallax free. Your accuracy upgrade.",
+        price: "149.99",
+        category: "Optics",
+        image: "/api/placeholder/600/400?text=Vortex+Crossfire",
+        specifications: [
+          "Dot Size: 2 MOA",
+          "Battery: CR2032",
+          "Battery Life: 50,000 hrs",
+          "Adjustments: 1 MOA clicks",
+          "Mount: Picatinny",
+          "Waterproof & shockproof"
+        ],
+        inStock: 12
+      },
+      {
+        id: "18",
+        name: "Streamlight TLR-7A Weapon Light",
+        description: "500 lumens of instant target identification. Ambidextrous switching and rail-mounted design. When you can't identify, you can't defend.",
+        price: "129.99",
+        category: "Accessories",
+        image: "/api/placeholder/600/400?text=Streamlight+TLR7A",
+        specifications: [
+          "Lumens: 500",
+          "Runtime: 1.5 hours",
+          "Battery: CR123A",
+          "Switches: Ambidextrous",
+          "Mount: Universal rail",
+          "IPX7 waterproof"
         ],
         inStock: 8
+      },
+      {
+        id: "19",
+        name: "Magpul PMAG 30rd AR Magazine",
+        description: "The magazine that changed everything. Impact-resistant polymer, anti-tilt follower, and legendary reliability. Never let a mag failure stop you.",
+        price: "14.99",
+        category: "Magazines",
+        image: "/api/placeholder/600/400?text=Magpul+PMAG+30",
+        specifications: [
+          "Caliber: 5.56/.223",
+          "Capacity: 30 rounds",
+          "Material: Polymer",
+          "Window: GEN M3 available",
+          "Color: Black",
+          "Made in USA"
+        ],
+        inStock: 50
+      },
+      {
+        id: "20",
+        name: "Peltor Sport Tactical 300",
+        description: "Electronic hearing protection that amplifies range commands and blocks harmful noise. Protect your hearing, improve your awareness.",
+        price: "89.99",
+        category: "Safety",
+        image: "/api/placeholder/600/400?text=Peltor+Tactical+300",
+        specifications: [
+          "NRR: 24 dB",
+          "Amplification: Yes",
+          "Auto shut-off: 2 hours",
+          "Input jack: 3.5mm",
+          "Batteries: 2 x AAA",
+          "Foldable design"
+        ],
+        inStock: 15
+      },
+      {
+        id: "21",
+        name: "Alien Gear ShapeShift 4.0 IWB Holster",
+        description: "Revolutionary modular holster system. Converts from IWB to OWB in seconds. Lifetime warranty and 30-day test drive guarantee.",
+        price: "59.99",
+        category: "Holsters",
+        image: "/api/placeholder/600/400?text=Alien+Gear+Holster",
+        specifications: [
+          "Type: IWB/OWB convertible",
+          "Material: Neoprene/Polymer",
+          "Retention: Adjustable",
+          "Cant: Adjustable",
+          "Warranty: Lifetime",
+          "Fits: Multiple models"
+        ],
+        inStock: 20
+      },
+      {
+        id: "22",
+        name: "Plano All Weather Tactical Case",
+        description: "Military-grade protection for your investment. Watertight, crushproof, and dustproof. Customizable foam insert protects during transport.",
+        price: "79.99",
+        category: "Cases",
+        image: "/api/placeholder/600/400?text=Plano+Tactical+Case",
+        specifications: [
+          "Size: 42\" rifle case",
+          "Material: Heavy-duty polymer",
+          "Seal: Watertight O-ring",
+          "Foam: Pluck foam insert",
+          "Latches: Dual-stage",
+          "Wheels: Heavy-duty"
+        ],
+        inStock: 10
+      },
+
+      // Youth Rifles (Keystone Sporting Arms specialty)
+      {
+        id: "23",
+        name: "Crickett Youth Rifle .22LR",
+        description: "My First Rifle - The perfect way to teach gun safety. Manually cocked single-shot design. Creating responsible shooters since 1996.",
+        price: "159.99",
+        category: "Youth Rifles",
+        image: "/api/placeholder/600/400?text=Crickett+Youth+Rifle",
+        specifications: [
+          "Caliber: .22 Long Rifle",
+          "Action: Single shot",
+          "Barrel: 16.125\"",
+          "Length of Pull: 11.5\"",
+          "Weight: 2.5 lbs",
+          "Safety: Rebounding firing pin"
+        ],
+        inStock: 8
+      },
+      {
+        id: "24",
+        name: "Savage Rascal Youth .22LR",
+        description: "Sized right for young shooters. AccuTrigger technology and proven Savage accuracy. Building tomorrow's marksmen today.",
+        price: "189.99",
+        category: "Youth Rifles",
+        image: "/api/placeholder/600/400?text=Savage+Rascal+22",
+        specifications: [
+          "Caliber: .22 Long Rifle",
+          "Action: Single shot",
+          "Barrel: 16.125\"",
+          "Trigger: AccuTrigger",
+          "Sights: Adjustable",
+          "Colors: Multiple available"
+        ],
+        inStock: 6
       }
     ];
 

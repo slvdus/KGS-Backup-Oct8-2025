@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ShieldCheck, Star, Users } from "lucide-react";
+import { ShieldCheck, Star, Users, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const features = [
     {
-      icon: ShieldCheck,
-      title: "Licensed & Certified",
-      description: "Fully licensed FFL dealer with all necessary certifications and compliance."
+      icon: Star,
+      title: "98% Recommend Us",
+      description: "94+ verified reviews. Customers drive from ALL over PA & beyond for our unbeatable prices."
     },
     {
-      icon: Star,
-      title: "Premium Quality",
-      description: "Curated selection of only the finest firearms and accessories."
+      icon: ShieldCheck,
+      title: "Appointment-Only Exclusivity",
+      description: "One-on-one personalized service. No crowds. No pressure. Just you and our expert team."
     },
     {
       icon: Users,
-      title: "Expert Service",
-      description: "Knowledgeable staff with decades of combined experience."
+      title: "Family-Owned Since 2020",
+      description: "Brent & Amber treat every customer like family. That's why they keep coming back."
     }
   ];
 
@@ -53,26 +53,46 @@ export default function Home() {
         <div className="hero-spotlight"></div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <motion.div
+            className="mb-4 inline-block"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
+              🏆 98% Customer Recommendation Rate
+            </span>
+          </motion.div>
+          
           <motion.h1 
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             data-testid="text-hero-title"
           >
-            <span className="text-white">Nature's</span>{" "}
-            <span className="gradient-text pulse-glow">Arsenal</span>
+            <span className="text-white">KGS</span>{" "}
+            <span className="gradient-text pulse-glow">CREW</span>
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-hero-subtitle"
           >
-            Premium firearms and equipment for the discerning enthusiast. 
-            Where precision meets sophistication.
+            Pennsylvania's Best Prices in Firearms.
+            <span className="block text-lg mt-2 text-beige-100">By Appointment Only - Because You Deserve VIP Treatment</span>
+          </motion.p>
+          
+          <motion.p 
+            className="text-lg text-gray-400 mb-8 max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Skip the big box stores. Get wholesale pricing with personal service that actually cares about YOU.
           </motion.p>
           
           <motion.div 
@@ -86,35 +106,36 @@ export default function Home() {
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <Link href="/catalog">
+              <a href="tel:717-249-0000">
                 <Button 
                   className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
-                  data-testid="button-explore-catalog"
+                  data-testid="button-book-appointment"
                 >
+                  <Phone className="w-5 h-5 mr-2" />
                   <motion.span
                     initial={{ x: 0 }}
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                     className="relative z-10 flex items-center"
                   >
-                    Explore Catalog
+                    Book Your Appointment
                     <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       →
                     </span>
                   </motion.span>
                 </Button>
-              </Link>
+              </a>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <Link href="/about">
+              <Link href="/catalog">
                 <Button 
                   variant="outline"
                   className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto btn-hover-effect magnetic-btn ripple relative overflow-hidden group flex items-center justify-center"
-                  data-testid="button-learn-more"
+                  data-testid="button-browse-inventory"
                 >
                   <motion.span
                     initial={{ x: 0 }}
@@ -122,7 +143,7 @@ export default function Home() {
                     transition={{ duration: 0.2 }}
                     className="relative z-10 flex items-center"
                   >
-                    Learn More
+                    Browse Inventory
                     <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       →
                     </span>
@@ -131,6 +152,15 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
+          
+          <motion.p 
+            className="text-sm text-gray-400 mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            📍 10 Vale Road, Newville, PA | 📞 717-249-0000
+          </motion.p>
         </div>
       </section>
 
@@ -145,10 +175,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" data-testid="text-features-title">
-              Why Choose Nature's Arsenal
+              Why Customers Drive Hours to KGS CREW
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto" data-testid="text-features-subtitle">
-              Uncompromising quality and service for over two decades
+              We don't just sell guns. We build relationships that last a lifetime.
             </p>
           </motion.div>
           
@@ -216,6 +246,56 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-noir-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-noir-800/50 to-transparent"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready to Save Big on Your Next Firearm?
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            Text or call us now to schedule your private appointment.
+            <span className="block text-lg mt-2 text-beige-100">No waiting. No crowds. Just the best prices in PA.</span>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center"
+          >
+            <a href="tel:717-249-0000">
+              <Button 
+                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold shadow-lg hover:shadow-xl px-8 py-4 rounded-lg text-lg"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call 717-249-0000
+              </Button>
+            </a>
+            <Link href="/community">
+              <Button 
+                variant="outline"
+                className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 hover:border-beige-100 px-8 py-4 rounded-lg font-semibold text-lg"
+              >
+                Join Our Community
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
