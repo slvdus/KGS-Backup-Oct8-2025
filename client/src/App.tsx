@@ -9,6 +9,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import CartSlider from "@/components/cart/cart-slider";
 import LoadingScreen from "@/components/loading-screen";
+import ScrollToTop from "@/components/scroll-to-top";
 import Home from "@/pages/home";
 import Catalog from "@/pages/catalog";
 import ProductDetail from "@/pages/product-detail";
@@ -22,6 +23,7 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <div className="min-h-screen bg-noir-900 text-white">
+      <ScrollToTop />
       <Navbar />
       <div className="pt-16 md:pt-20 lg:pt-24"> {/* Responsive padding-top for floating navbar */}
         <Switch>
