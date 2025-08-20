@@ -165,8 +165,32 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-noir-800" data-testid="section-features">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden" data-testid="section-features">
+        {/* Dynamic gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-noir-900 via-noir-800/50 to-noir-900" />
+        
+        {/* Animated mesh gradient */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-beige-100/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-beige-100/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+        
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(245, 243, 240, 0.03) 35px,
+            rgba(245, 243, 240, 0.03) 70px
+          )`
+        }} />
+        
+        {/* Top and bottom fade borders */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-beige-100/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-beige-100/20 to-transparent" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -186,7 +210,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="glass-effect p-8 rounded-xl border border-noir-700/50 group relative overflow-hidden"
+                className="glass-effect p-8 rounded-xl border border-beige-100/10 backdrop-blur-md bg-noir-900/30 group relative overflow-hidden shadow-2xl"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
