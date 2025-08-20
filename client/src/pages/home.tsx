@@ -217,16 +217,16 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3">
               <span className="gradient-text">Best Sellers</span>
             </h2>
-            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-0">
               Our most popular firearms flying off the shelves
             </p>
           </motion.div>
           
           {bestSellers.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {bestSellers.map((product, index) => (
                 <ProductCard key={product.id} product={product} index={index} />
               ))}
@@ -245,9 +245,9 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <Link href="/catalog">
-              <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-6 py-3 rounded-lg">
+              <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base">
                 View All Products
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 ml-1.5 sm:ml-2" />
               </Button>
             </Link>
           </motion.div>
@@ -269,15 +269,15 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3">
               Browse Our <span className="gradient-text">Collections</span>
             </h2>
-            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-0">
               Find exactly what you're looking for in our organized categories
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {collections.map((collection, index) => (
               <motion.div
                 key={collection.title}
@@ -288,28 +288,28 @@ export default function Home() {
               >
                 <Link href={`/catalog?category=${encodeURIComponent(collection.category)}`}>
                   <motion.div
-                    className={`glass-effect p-6 rounded-xl border ${collection.borderColor} group cursor-pointer h-full relative overflow-hidden`}
+                    className={`glass-effect p-4 sm:p-5 md:p-6 rounded-xl border ${collection.borderColor} group cursor-pointer h-full relative overflow-hidden`}
                     whileHover={{ y: -8, scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${collection.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
                     
                     <div className="relative z-10">
-                      <div className="w-14 h-14 bg-beige-100/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-beige-100/20 transition-colors duration-300">
-                        <collection.icon className="w-7 h-7 text-beige-100" />
+                      <div className="w-12 sm:w-14 h-12 sm:h-14 bg-beige-100/10 rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-beige-100/20 transition-colors duration-300">
+                        <collection.icon className="w-6 sm:w-7 h-6 sm:h-7 text-beige-100" />
                       </div>
                       
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-beige-100 transition-colors duration-300">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2 group-hover:text-beige-100 transition-colors duration-300">
                         {collection.title}
                       </h3>
                       
-                      <p className="text-gray-400 text-sm mb-4">
+                      <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
                         {collection.description}
                       </p>
                       
-                      <div className="flex items-center text-beige-100 text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                      <div className="flex items-center text-beige-100 text-xs sm:text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300">
                         Browse Collection
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                        <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 ml-1.5 sm:ml-2" />
                       </div>
                     </div>
                     
@@ -336,7 +336,7 @@ export default function Home() {
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="glass-effect p-8 sm:p-12 rounded-2xl border border-beige-100/20 text-center relative overflow-hidden"
+            className="glass-effect p-6 sm:p-8 md:p-12 rounded-xl sm:rounded-2xl border border-beige-100/20 text-center relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -351,47 +351,47 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="mb-6 inline-block">
-                <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-4 py-2 rounded-full text-sm font-semibold">
+              <div className="mb-4 sm:mb-6 inline-block">
+                <span className="bg-beige-100/10 border border-beige-100/30 text-beige-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                   🎯 500+ Members Getting Exclusive Deals
                 </span>
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
                 Join the <span className="gradient-text">KGS CREW Community</span>
               </h2>
               
-              <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-2 sm:px-0">
                 Get insider access, exclusive deals, and priority appointments. 
                 Members save an average of $200 per purchase.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-2xl mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text mb-1">24/7</div>
-                  <div className="text-sm text-gray-400">Community Access</div>
+                  <div className="text-xl sm:text-2xl font-bold gradient-text mb-0.5 sm:mb-1">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Community Access</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text mb-1">First</div>
-                  <div className="text-sm text-gray-400">To Know Deals</div>
+                  <div className="text-xl sm:text-2xl font-bold gradient-text mb-0.5 sm:mb-1">First</div>
+                  <div className="text-xs sm:text-sm text-gray-400">To Know Deals</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text mb-1">VIP</div>
-                  <div className="text-sm text-gray-400">Member Events</div>
+                  <div className="text-xl sm:text-2xl font-bold gradient-text mb-0.5 sm:mb-1">VIP</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Member Events</div>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Link href="/community">
-                  <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-8 py-4 rounded-lg text-lg w-full sm:w-auto">
-                    <Users className="w-5 h-5 mr-2" />
+                  <Button className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg text-sm sm:text-base md:text-lg w-full sm:w-auto">
+                    <Users className="w-4 sm:w-5 h-4 sm:h-5 mr-1.5 sm:mr-2" />
                     Join Community - It's FREE
                   </Button>
                 </Link>
                 <Link href="/community">
-                  <Button variant="outline" className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto">
+                  <Button variant="outline" className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg w-full sm:w-auto">
                     Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 ml-1.5 sm:ml-2" />
                   </Button>
                 </Link>
               </div>
