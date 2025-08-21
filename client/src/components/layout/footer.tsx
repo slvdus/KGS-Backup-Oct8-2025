@@ -159,7 +159,7 @@ export default function Footer() {
         <div className="border-t border-noir-700 mt-8 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-xs sm:text-sm">
-              &copy; 2024 KGS CREW Inc. All rights reserved. | Licensed FFL Dealer | Type 01 FFL
+              &copy; 2025 KGS CREW Inc. All rights reserved. | Licensed FFL Dealer | Type 01 FFL
             </p>
             
             {/* Developer Credit */}
@@ -170,8 +170,8 @@ export default function Footer() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <span className="text-gray-300 text-sm sm:text-base">Made by </span>
-                <span className="shimmer-text font-bold text-sm sm:text-base">Mister S. - Solved Group™</span>
+                <span className="text-white text-sm sm:text-base">Made by </span>
+                <span className="text-white font-bold text-sm sm:text-base">Mister S. - Solved Group™</span>
               </motion.div>
               
               {/* Social Links */}
