@@ -704,9 +704,10 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  className="mx-auto sm:mx-0 w-full sm:w-auto"
                 >
                   <Link href="/community">
-                    <Button className="bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-bold px-8 py-4 rounded-xl text-lg group relative overflow-hidden">
+                    <Button className="w-full sm:w-auto bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-bold px-8 py-4 rounded-xl text-lg group relative overflow-hidden">
                       <motion.div
                         className="absolute inset-0 bg-white/20"
                         initial={{ x: "-100%" }}
@@ -724,9 +725,10 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  className="mx-auto sm:mx-0 w-full sm:w-auto"
                 >
                   <Link href="/community">
-                    <Button variant="outline" className="glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 px-8 py-4 rounded-xl font-semibold text-lg">
+                    <Button variant="outline" className="w-full sm:w-auto glass-effect border-2 border-beige-100/30 text-beige-100 hover:bg-beige-100/10 px-8 py-4 rounded-xl font-semibold text-lg">
                       Learn More About Benefits
                     </Button>
                   </Link>
