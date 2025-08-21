@@ -20,6 +20,8 @@ import Contact from "@/pages/contact";
 import Community from "@/pages/community";
 import Appointment from "@/pages/appointment";
 import Policies from "@/pages/policies";
+import FFLTransfer from "@/pages/ffl-transfer";
+import NFATransfer from "@/pages/nfa-transfer";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -39,6 +41,8 @@ function Router() {
         <Route path="/community" component={Community} />
         <Route path="/appointment" component={Appointment} />
         <Route path="/policies" component={Policies} />
+        <Route path="/ffl-transfer" component={FFLTransfer} />
+        <Route path="/nfa-transfer" component={NFATransfer} />
         <Route component={NotFound} />
         </Switch>
         <Footer />

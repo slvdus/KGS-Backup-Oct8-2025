@@ -134,6 +134,18 @@ export const pageSEO = {
     description: "Complete your firearm purchase securely. FFL information required. Best prices in Pennsylvania with VIP service. Family-owned since 2020.",
     keywords: "firearm checkout, secure gun purchase, FFL checkout, payment",
     canonicalUrl: "https://kgscrewinc.com/checkout"
+  },
+  fflTransfer: {
+    title: "FFL Transfer Service - $35 Transfers | KGS CREW",
+    description: "Professional FFL transfer services in Newville, PA. Fast processing, competitive rates at $35 per transfer. Licensed dealer handling all your firearm transfer needs.",
+    keywords: "FFL transfer PA, gun transfer service, firearm transfer Newville, FFL dealer Pennsylvania, background check service",
+    canonicalUrl: "https://kgscrewinc.com/ffl-transfer"
+  },
+  nfaTransfer: {
+    title: "NFA Transfer Service - Suppressors & SBRs | KGS CREW",
+    description: "Expert NFA transfer services for suppressors, SBRs, and other NFA items. ATF Form 4 processing, fingerprinting, and compliance verification. $75 per transfer.",
+    keywords: "NFA transfer PA, suppressor transfer, SBR transfer, ATF Form 4, NFA dealer Pennsylvania, tax stamp service",
+    canonicalUrl: "https://kgscrewinc.com/nfa-transfer"
   }
 };
 

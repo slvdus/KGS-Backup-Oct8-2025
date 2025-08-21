@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import ProductCard from "@/components/product/product-card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Catalog() {
@@ -346,10 +346,12 @@ export default function Catalog() {
                         <span className="text-xs sm:text-sm text-beige-100/50">per transfer</span>
                       </div>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
-                          Learn More
-                          <Zap className="w-4 h-4 ml-2" />
-                        </Button>
+                        <Link href="/ffl-transfer">
+                          <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
+                            Learn More
+                            <Zap className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
                       </motion.div>
                     </div>
                   </div>
@@ -412,10 +414,12 @@ export default function Catalog() {
                         <span className="text-xs sm:text-sm text-beige-100/50">per transfer</span>
                       </div>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button className="bg-gradient-to-r from-purple-500 to-violet-500 hover:from-purple-600 hover:to-violet-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
-                          Learn More
-                          <Zap className="w-4 h-4 ml-2" />
-                        </Button>
+                        <Link href="/nfa-transfer">
+                          <Button className="bg-gradient-to-r from-purple-500 to-violet-500 hover:from-purple-600 hover:to-violet-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
+                            Learn More
+                            <Zap className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
                       </motion.div>
                     </div>
                   </div>
