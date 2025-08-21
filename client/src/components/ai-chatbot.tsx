@@ -31,13 +31,15 @@ export default function AIChatbot() {
   const { isOpen: isCartOpen } = useCart();
   const [location] = useLocation();
   
-  // Only show on home, product detail, and cart pages
+  // Only show on home, product detail, cart, appointment, and contact pages
   const shouldShowChatbot = () => {
     if (isCartOpen) return false; // Hide when cart slider is open
     
     const allowedPaths = [
       '/',           // Home page
       '/cart',       // Cart page
+      '/appointment', // Appointment page
+      '/contact',    // Contact page
     ];
     
     // Check if current path is in allowed paths or is a product page
