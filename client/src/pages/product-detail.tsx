@@ -499,27 +499,29 @@ export default function ProductDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              {/* Tab Navigation */}
-              <div className="flex space-x-1 glass-effect rounded-xl p-1 border border-noir-700/50">
-                {[
-                  { id: 'overview', label: 'Overview' },
-                  { id: 'specs', label: 'Specifications' },
-                  { id: 'reviews', label: 'Reviews' },
-                  { id: 'shipping', label: 'Shipping' }
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      activeTab === tab.id
-                        ? 'bg-beige-100 text-noir-900'
-                        : 'text-gray-400 hover:text-white hover:bg-noir-700/50'
-                    }`}
-                    data-testid={`tab-${tab.id}`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
+              {/* Tab Navigation - Mobile Optimized */}
+              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div className="flex space-x-1 glass-effect rounded-xl p-1 border border-noir-700/50 min-w-fit">
+                  {[
+                    { id: 'overview', label: 'Overview' },
+                    { id: 'specs', label: 'Specs' },
+                    { id: 'reviews', label: 'Reviews' },
+                    { id: 'shipping', label: 'Shipping' }
+                  ].map((tab) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex-shrink-0 py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                        activeTab === tab.id
+                          ? 'bg-beige-100 text-noir-900'
+                          : 'text-gray-400 hover:text-white hover:bg-noir-700/50'
+                      }`}
+                      data-testid={`tab-${tab.id}`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Tab Content */}
@@ -530,11 +532,11 @@ export default function ProductDetail() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="glass-effect rounded-xl border border-noir-700/50 p-6"
+                  className="glass-effect rounded-xl border border-noir-700/50 p-4 sm:p-6"
                 >
                   {activeTab === 'overview' && (
-                    <div className="space-y-6">
-                      <h3 className="text-xl font-semibold text-white mb-4">Product Overview</h3>
+                    <div className="space-y-4 sm:space-y-6">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Product Overview</h3>
                       <p className="text-gray-400 leading-relaxed" data-testid="text-product-description">
                         {product.description}
                       </p>
@@ -772,7 +774,7 @@ export default function ProductDetail() {
 
                   {activeTab === 'specs' && (
                     <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-white mb-4">Technical Specifications</h3>
+                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Technical Specifications</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-testid="specifications-list">
                         {product.specifications.map((spec, index) => (
                           <motion.div 
@@ -791,9 +793,9 @@ export default function ProductDetail() {
                   )}
 
                   {activeTab === 'reviews' && (
-                    <div className="space-y-6">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-semibold text-white">Customer Reviews</h3>
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                        <h3 className="text-lg sm:text-xl font-semibold text-white">Customer Reviews</h3>
                         <div className="flex items-center space-x-2">
                           <div className="flex">
                             {Array.from({ length: 5 }).map((_, i) => (
@@ -834,8 +836,8 @@ export default function ProductDetail() {
                   )}
 
                   {activeTab === 'shipping' && (
-                    <div className="space-y-6">
-                      <h3 className="text-xl font-semibold text-white mb-4">Shipping & Transfer Information</h3>
+                    <div className="space-y-4 sm:space-y-6">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Shipping & Transfer Information</h3>
                       
                       {/* Category-specific shipping information */}
                       {(product.category === 'Handguns' || product.category === 'Rifles') && (
