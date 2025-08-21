@@ -643,22 +643,6 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              {/* Live Badge */}
-              <motion.div
-                className="mb-6 inline-flex items-center gap-2"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, type: "spring" }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-sm font-semibold">
-                    500+ Active Members • $100K+ Saved
-                  </span>
-                </div>
-              </motion.div>
-              
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                 Join the <span className="gradient-text">KGS CREW</span> Community
               </h2>
@@ -737,6 +721,22 @@ export default function Home() {
                   </Link>
                 </motion.div>
               </div>
+              
+              {/* Live Badge */}
+              <motion.div
+                className="mt-6 inline-flex items-center gap-2"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-green-400 text-sm font-semibold">
+                    500+ Active Members • $100K+ Saved
+                  </span>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
