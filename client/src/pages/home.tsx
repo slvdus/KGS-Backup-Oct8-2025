@@ -596,7 +596,7 @@ export default function Home() {
                         {collection.description}
                       </p>
                       
-                      <div className="flex items-center text-beige-100 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex items-center text-beige-100 text-sm font-semibold transition-opacity">
                         Browse Collection
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
