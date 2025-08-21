@@ -459,10 +459,12 @@ export default function Catalog() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl">
-                  Contact Us Now
-                  <Zap className="w-4 h-4 ml-2" />
-                </Button>
+                <Link href="/contact">
+                  <Button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl">
+                    Contact Us Now
+                    <Zap className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>
