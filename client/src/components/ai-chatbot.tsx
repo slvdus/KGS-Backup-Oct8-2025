@@ -14,6 +14,7 @@ interface Message {
 
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showHelpTooltip, setShowHelpTooltip] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
@@ -42,6 +43,24 @@ export default function AIChatbot() {
     // Check if current path is in allowed paths or is a product page
     return allowedPaths.includes(location) || location.startsWith('/product/');
   };
+  
+  // Show help tooltip for 3 seconds when component mounts
+  useEffect(() => {
+    if (!isOpen && shouldShowChatbot()) {
+      const timer = setTimeout(() => {
+        setShowHelpTooltip(true);
+        
+        // Hide tooltip after 3 seconds
+        const hideTimer = setTimeout(() => {
+          setShowHelpTooltip(false);
+        }, 3000);
+        
+        return () => clearTimeout(hideTimer);
+      }, 1000); // Show after 1 second delay
+      
+      return () => clearTimeout(timer);
+    }
+  }, [location]); // Re-trigger when location changes
   
   // Don't render if conditions aren't met
   if (!shouldShowChatbot()) {
@@ -128,26 +147,57 @@ export default function AIChatbot() {
       {/* Chat Button */}
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-beige-100 to-beige-200 rounded-full shadow-2xl flex items-center justify-center group"
-          >
-            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-noir-900" />
-            <div className="absolute -top-1 -right-1">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-              </span>
-            </div>
+          <>
+            <motion.button
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                setIsOpen(true);
+                setShowHelpTooltip(false);
+              }}
+              className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-beige-100 to-beige-200 rounded-full shadow-2xl flex items-center justify-center group"
+            >
+              <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-noir-900" />
+              <div className="absolute -top-1 -right-1">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
+              </div>
+              
+              {/* Sparkle animation */}
+              <Sparkles className="absolute -top-2 -left-2 w-4 h-4 text-amber-400 animate-pulse" />
+            </motion.button>
             
-            {/* Sparkle animation */}
-            <Sparkles className="absolute -top-2 -left-2 w-4 h-4 text-amber-400 animate-pulse" />
-          </motion.button>
+            {/* Help Tooltip */}
+            <AnimatePresence>
+              {showHelpTooltip && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20, scale: 0.8 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 20, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  className="fixed bottom-8 right-24 z-40 pointer-events-none"
+                >
+                  <div className="relative">
+                    <div className="bg-gradient-to-r from-beige-100 to-beige-200 text-noir-900 px-4 py-2 rounded-lg shadow-xl font-medium text-sm whitespace-nowrap">
+                      <span className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4" />
+                        Click if you need help
+                      </span>
+                    </div>
+                    {/* Arrow pointing to button */}
+                    <div className="absolute top-1/2 -right-2 transform -translate-y-1/2">
+                      <div className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-beige-200"></div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
         )}
       </AnimatePresence>
 
