@@ -18,9 +18,13 @@ import {
   Clock,
   MapPin,
   Heart,
-  Trophy
+  Trophy,
+  Mail,
+  Send
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import { useProducts } from "@/hooks/use-products";
 import ProductCard from "@/components/product/product-card";
 import { useState, useEffect } from "react";
@@ -28,9 +32,38 @@ import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Home() {
   const { data: products } = useProducts();
+  const { toast } = useToast();
   const [reviewCount, setReviewCount] = useState(0);
   const [satisfactionRate, setSatisfactionRate] = useState(0);
   const [hoveredCollection, setHoveredCollection] = useState<number | null>(null);
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  // Newsletter subscription handler
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Please enter your email",
+        description: "We need your email to send you exclusive deals.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubscribing(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: "Welcome to the KGS CREW!",
+        description: "You're now getting first access to deals that save you hundreds.",
+      });
+      setEmail("");
+      setIsSubscribing(false);
+    }, 1500);
+  };
   
   // Animated counters
   useEffect(() => {
@@ -859,6 +892,211 @@ export default function Home() {
                 Join Our Community
               </Button>
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden bg-gradient-to-b from-noir-900 via-noir-800/60 to-noir-900" data-testid="section-newsletter">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-beige-100/5 via-transparent to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-green-500/5 via-transparent to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [0, -50, 0],
+              y: [0, 30, 0],
+              scale: [1, 0.8, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3
+            }}
+          />
+        </div>
+
+        {/* Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `repeating-conic-gradient(from 45deg at 50% 50%, transparent 0deg, rgba(245, 243, 240, 0.03) 20deg, transparent 40deg)`
+        }} />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="glass-effect rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 border border-beige-100/10 bg-gradient-to-br from-noir-900/80 via-noir-800/50 to-noir-900/80"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {/* Header */}
+            <motion.div 
+              className="text-center mb-8 sm:mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {/* Icon with glow effect */}
+              <motion.div 
+                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-full mb-4 sm:mb-6 relative"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="absolute inset-0 bg-beige-100/20 rounded-full blur-xl animate-pulse" />
+                <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-beige-100 relative z-10" />
+              </motion.div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
+                Get <span className="gradient-text">Insider Access</span>
+              </h2>
+              
+              <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+                Join 2,500+ smart buyers getting exclusive deals before anyone else.
+                <span className="block text-sm sm:text-base mt-2 text-beige-100/80">
+                  Average member saves $300+ per purchase
+                </span>
+              </p>
+            </motion.div>
+
+            {/* Benefits Grid */}
+            <motion.div 
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              {[
+                { icon: Zap, text: "Flash Sales", subtext: "24hr early access" },
+                { icon: Trophy, text: "VIP Pricing", subtext: "Members-only deals" },
+                { icon: Package, text: "New Arrivals", subtext: "First to know" }
+              ].map((benefit, index) => (
+                <motion.div
+                  key={benefit.text}
+                  className="flex items-center gap-3 glass-effect p-3 sm:p-4 rounded-xl border border-noir-700/50"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, borderColor: "rgba(245, 243, 240, 0.3)" }}
+                >
+                  <benefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-beige-100 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-semibold text-sm sm:text-base">{benefit.text}</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">{benefit.subtext}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Newsletter Form */}
+            <motion.form
+              onSubmit={handleNewsletterSubmit}
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="flex-1 relative">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email for exclusive deals..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full h-12 sm:h-14 px-4 sm:px-6 glass-effect border-noir-600/50 text-white placeholder:text-gray-400 focus:border-beige-100/50 text-base sm:text-lg rounded-xl"
+                    data-testid="input-newsletter-email"
+                  />
+                  <motion.div
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    animate={{
+                      boxShadow: email ? "0 0 20px rgba(245, 243, 240, 0.1)" : "0 0 0px rgba(245, 243, 240, 0)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+                
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
+                    type="submit"
+                    disabled={isSubscribing}
+                    className="w-full sm:w-auto h-12 sm:h-14 bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-bold px-6 sm:px-10 rounded-xl text-base sm:text-lg group relative overflow-hidden"
+                    data-testid="button-newsletter-subscribe"
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-white/30"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+                    <span className="relative z-10 flex items-center justify-center">
+                      {isSubscribing ? (
+                        "Subscribing..."
+                      ) : (
+                        <>
+                          Get Exclusive Access
+                          <Send className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </>
+                      )}
+                    </span>
+                  </Button>
+                </motion.div>
+              </div>
+
+              {/* Privacy Note */}
+              <motion.p 
+                className="text-xs sm:text-sm text-gray-400 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <Shield className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1" />
+                Your privacy is protected. Unsubscribe anytime. No spam, ever.
+              </motion.p>
+            </motion.form>
+
+            {/* Social Proof */}
+            <motion.div
+              className="mt-8 pt-8 border-t border-noir-700/50"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span className="text-gray-300">2,500+ Active Members</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-yellow-400" />
+                  <span className="text-gray-300">4.9/5 Member Rating</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-blue-400" />
+                  <span className="text-gray-300">$300+ Avg Savings</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
