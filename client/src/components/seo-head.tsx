@@ -63,7 +63,7 @@ export default function SEOHead({
       if (!script) {
         script = document.createElement('script');
         script.id = scriptId;
-        script.type = 'application/ld+json';
+        (script as HTMLScriptElement).type = 'application/ld+json';
         document.head.appendChild(script);
       }
       

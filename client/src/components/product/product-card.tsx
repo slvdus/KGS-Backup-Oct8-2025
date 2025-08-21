@@ -109,7 +109,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       <div className="relative overflow-hidden h-56">
         <motion.img 
           src={product.image} 
-          alt={product.name} 
+          alt={`${product.name} - ${product.category} available at KGS CREW gun store PA`} 
+          loading="lazy"
           className="product-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         

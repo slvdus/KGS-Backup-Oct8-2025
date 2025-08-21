@@ -23,6 +23,36 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import SEOHead, { pageSEO } from "@/components/seo-head";
+
+const nfaTransferSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "NFA Transfer Service",
+  "provider": {
+    "@type": "Organization",
+    "name": "KGS CREW Inc.",
+    "url": "https://kgscrewinc.com"
+  },
+  "serviceType": "National Firearms Act Transfer - Suppressors, SBRs, and NFA Items",
+  "areaServed": {
+    "@type": "State",
+    "name": "Pennsylvania"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "75.00",
+    "priceCurrency": "USD",
+    "description": "NFA transfer service plus $200 ATF tax stamp"
+  },
+  "description": "Expert NFA transfer services for suppressors, SBRs, and other NFA items with ATF Form 4 processing",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://kgscrewinc.com/contact"
+    }
+  }
+};
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -109,7 +139,7 @@ export default function NFATransfer() {
 
   return (
     <>
-      <SEOHead {...pageSEO.nfaTransfer} />
+      <SEOHead {...pageSEO.nfaTransfer} structuredData={nfaTransferSchema} />
       
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">

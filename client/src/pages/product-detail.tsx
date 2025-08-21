@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SEOHead, { getProductSEO } from "@/components/seo-head";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams, Link } from "wouter";
 import { 
@@ -151,6 +152,7 @@ export default function ProductDetail() {
 
   return (
     <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900 relative overflow-hidden" data-testid="page-product-detail">
+      {product && <SEOHead {...getProductSEO(product)} />}
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-beige-100/3 rounded-full blur-3xl float"></div>

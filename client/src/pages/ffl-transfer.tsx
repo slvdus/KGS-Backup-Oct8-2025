@@ -21,6 +21,36 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import SEOHead, { pageSEO } from "@/components/seo-head";
+
+const fflTransferSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "FFL Transfer Service",
+  "provider": {
+    "@type": "Organization",
+    "name": "KGS CREW Inc.",
+    "url": "https://kgscrewinc.com"
+  },
+  "serviceType": "Federal Firearms License Transfer",
+  "areaServed": {
+    "@type": "State",
+    "name": "Pennsylvania"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "35.00",
+    "priceCurrency": "USD",
+    "description": "First firearm transfer - additional items $10 each"
+  },
+  "description": "Professional FFL transfer services with fast processing and competitive rates",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://kgscrewinc.com/contact"
+    }
+  }
+};
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -82,7 +112,7 @@ export default function FFLTransfer() {
 
   return (
     <>
-      <SEOHead {...pageSEO.fflTransfer} />
+      <SEOHead {...pageSEO.fflTransfer} structuredData={fflTransferSchema} />
       
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
