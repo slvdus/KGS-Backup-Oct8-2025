@@ -91,9 +91,9 @@ export default function Catalog() {
   }
 
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" data-testid="page-catalog">
+    <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" data-testid="page-catalog">
       {/* Modern Hero Section with Animated Backgrounds */}
-      <section className="hero-bg min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-center relative overflow-hidden">
+      <section className="hero-bg min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>
         
         {/* Advanced Animated Background */}
