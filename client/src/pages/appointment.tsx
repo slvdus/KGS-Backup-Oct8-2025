@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, User, Phone, Mail, ArrowRight, Check, Star, Shield, Zap, MapPin, ChevronRight } from "lucide-react";
+import { Calendar, Clock, User, Phone, Mail, ArrowRight, Check, Star, Shield, Zap, MapPin, ChevronRight, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +16,7 @@ export default function Appointment() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const [activeSlide, setActiveSlide] = useState(0);
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
@@ -205,26 +206,103 @@ export default function Appointment() {
               No crowds, no pressure, just you and the perfect firearm.
             </p>
 
-            {/* Benefits Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
-              {[
-                { icon: Shield, text: "Private Consultation" },
-                { icon: Clock, text: "No Wait Times" },
-                { icon: Zap, text: "Best Price Guarantee" }
-              ].map((benefit, index) => (
-                <motion.div
-                  key={benefit.text}
-                  className="glass-effect p-4 rounded-lg border border-noir-700/50"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                >
-                  <benefit.icon className="w-5 h-5 text-beige-100 mx-auto mb-2" />
-                  <p className="text-sm text-gray-300">{benefit.text}</p>
-                </motion.div>
-              ))}
+            {/* Benefits - Mobile Slider / Desktop Grid */}
+            <div className="mb-6">
+              {/* Mobile Slider */}
+              <div className="sm:hidden relative">
+                <div className="overflow-hidden">
+                  <motion.div 
+                    className="flex transition-transform duration-500 ease-out"
+                    style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+                    drag="x"
+                    dragConstraints={{ left: -200, right: 200 }}
+                    onDragEnd={(e, { offset, velocity }) => {
+                      const swipe = offset.x > 50 ? -1 : offset.x < -50 ? 1 : 0;
+                      const newSlide = Math.max(0, Math.min(2, activeSlide + swipe));
+                      setActiveSlide(newSlide);
+                    }}
+                  >
+                    {[
+                      { icon: Shield, text: "Private Consultation", desc: "One-on-one personalized service" },
+                      { icon: Clock, text: "No Wait Times", desc: "Your appointment, your schedule" },
+                      { icon: Zap, text: "Best Price Guarantee", desc: "Unbeatable prices in PA" }
+                    ].map((benefit, index) => (
+                      <motion.div
+                        key={benefit.text}
+                        className="w-full flex-shrink-0 px-4"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                      >
+                        <div className="glass-effect p-6 rounded-xl border border-beige-100/20 text-center">
+                          <motion.div
+                            className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-xl flex items-center justify-center"
+                            whileHover={{ rotate: 5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <benefit.icon className="w-7 h-7 text-beige-100" />
+                          </motion.div>
+                          <h3 className="text-lg font-bold text-white mb-2">{benefit.text}</h3>
+                          <p className="text-sm text-gray-400">{benefit.desc}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
+                
+                {/* Mobile Navigation Dots */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {[0, 1, 2].map((index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveSlide(index)}
+                      className={`h-2 transition-all duration-300 rounded-full ${
+                        activeSlide === index 
+                          ? 'w-8 bg-beige-100' 
+                          : 'w-2 bg-noir-700'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Grid */}
+              <div className="hidden sm:grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                {[
+                  { icon: Shield, text: "Private Consultation" },
+                  { icon: Clock, text: "No Wait Times" },
+                  { icon: Zap, text: "Best Price Guarantee" }
+                ].map((benefit, index) => (
+                  <motion.div
+                    key={benefit.text}
+                    className="glass-effect p-4 rounded-lg border border-noir-700/50"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                  >
+                    <benefit.icon className="w-5 h-5 text-beige-100 mx-auto mb-2" />
+                    <p className="text-sm text-gray-300">{benefit.text}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
+
+            {/* Customer Satisfaction Badge */}
+            <motion.div
+              className="flex justify-center mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.6 }}
+            >
+              <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
+                <Trophy className="w-4 h-4 text-green-400" />
+                <span className="text-green-400 text-sm font-semibold">
+                  98% Customer Satisfaction • 94+ Reviews
+                </span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
