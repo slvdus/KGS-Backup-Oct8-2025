@@ -17,7 +17,8 @@ import {
   Zap,
   Trophy,
   Target,
-  CheckCircle
+  CheckCircle,
+  Eye
 } from "lucide-react";
 import { useProduct } from "@/hooks/use-products";
 import { useCart } from "@/contexts/cart-context";
@@ -999,9 +1000,27 @@ export default function ProductDetail() {
                 </div>
                 <div className="p-4">
                   <h3 className="text-white font-semibold mb-2">Related Product {index + 1}</h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-beige-100 font-bold">${(299 + index * 50).toFixed(2)}</span>
-                    <Button size="sm" className="cta-button">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-beige-100 font-bold text-lg">${(299 + index * 50).toFixed(2)}</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button 
+                      size="sm" 
+                      className="flex-1 glass-effect border-noir-600/50 text-white hover:bg-noir-700/50 hover:border-beige-100/30 hover:text-beige-100 transition-all duration-300 text-xs sm:text-sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Add to cart logic here
+                      }}
+                    >
+                      <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">Add</span>
+                      <span className="sm:hidden">Cart</span>
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      className="flex-1 cta-button text-xs sm:text-sm"
+                    >
+                      <Eye className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                       View
                     </Button>
                   </div>
