@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/cart-context";
+import { useLocation } from "wouter";
 
 interface Message {
   id: string;
@@ -23,6 +25,28 @@ export default function AIChatbot() {
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Get cart state and location
+  const { isOpen: isCartOpen } = useCart();
+  const [location] = useLocation();
+  
+  // Only show on home, product detail, and cart pages
+  const shouldShowChatbot = () => {
+    if (isCartOpen) return false; // Hide when cart slider is open
+    
+    const allowedPaths = [
+      '/',           // Home page
+      '/cart',       // Cart page
+    ];
+    
+    // Check if current path is in allowed paths or is a product page
+    return allowedPaths.includes(location) || location.startsWith('/product/');
+  };
+  
+  // Don't render if conditions aren't met
+  if (!shouldShowChatbot()) {
+    return null;
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
