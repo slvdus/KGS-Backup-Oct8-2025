@@ -10,6 +10,7 @@ import Footer from "@/components/layout/footer";
 import CartSlider from "@/components/cart/cart-slider";
 import LoadingScreen from "@/components/loading-screen";
 import ScrollToTop from "@/components/scroll-to-top";
+import AIChatbot from "@/components/ai-chatbot";
 import Home from "@/pages/home";
 import Catalog from "@/pages/catalog";
 import ProductDetail from "@/pages/product-detail";
@@ -47,6 +48,7 @@ function Router() {
         </Switch>
         <Footer />
         <CartSlider />
+        <AIChatbot />
       </div>
     </div>
   );
