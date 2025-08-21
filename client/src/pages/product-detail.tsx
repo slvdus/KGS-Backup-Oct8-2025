@@ -500,8 +500,8 @@ export default function ProductDetail() {
               transition={{ delay: 0.8 }}
             >
               {/* Tab Navigation - Mobile Optimized */}
-              <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-                <div className="flex space-x-1 glass-effect rounded-xl p-1 border border-noir-700/50 min-w-fit">
+              <div className="flex justify-center overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div className="flex space-x-1 glass-effect rounded-xl p-1 border border-noir-700/50 w-full sm:w-auto max-w-md">
                   {[
                     { id: 'overview', label: 'Overview' },
                     { id: 'specs', label: 'Specs' },
@@ -511,7 +511,7 @@ export default function ProductDetail() {
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex-shrink-0 py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                      className={`flex-1 sm:flex-initial py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                         activeTab === tab.id
                           ? 'bg-beige-100 text-noir-900'
                           : 'text-gray-400 hover:text-white hover:bg-noir-700/50'
