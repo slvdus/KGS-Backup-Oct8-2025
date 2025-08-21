@@ -78,22 +78,14 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       onMouseLeave={() => setIsHovered(false)}
       className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full bg-noir-900/60"
     >
-      {/* Animated Neon Trail Border */}
+      {/* Static Neon Trail Border */}
       <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute inset-0"
           style={{
             background: isHovered 
               ? `conic-gradient(from 90deg, transparent 60%, rgba(245, 243, 240, 0.2) 80%, rgba(245, 243, 240, 0.4) 85%, rgba(245, 243, 240, 0.6) 90%, rgba(245, 243, 240, 0.4) 95%, rgba(245, 243, 240, 0.2) 98%, transparent 100%)`
               : 'transparent',
-          }}
-          animate={isHovered ? {
-            rotate: [0, 360],
-          } : { rotate: 0 }}
-          transition={{
-            duration: 4,
-            repeat: isHovered ? Infinity : 0,
-            ease: "linear"
           }}
         />
         {/* Inner mask to create border effect */}
