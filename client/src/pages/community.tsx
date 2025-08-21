@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Community() {
   const [memberCount, setMemberCount] = useState(0);
@@ -107,6 +108,7 @@ export default function Community() {
 
   return (
     <div className="min-h-screen bg-noir-900" data-testid="page-community">
+      <SEOHead {...pageSEO.community} />
       {/* Enhanced Hero Section with Modern Design */}
       <section className="hero-bg min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>

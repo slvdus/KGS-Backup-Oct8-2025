@@ -21,6 +21,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import ProductCard from "@/components/product/product-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useLocation } from "wouter";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Catalog() {
   const { data: products, isLoading, error } = useProducts();
@@ -92,6 +93,7 @@ export default function Catalog() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" data-testid="page-catalog">
+      <SEOHead {...pageSEO.catalog} />
       {/* Modern Hero Section with Animated Backgrounds */}
       <section className="hero-bg min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>

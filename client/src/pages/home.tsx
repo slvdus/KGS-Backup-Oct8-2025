@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { useProducts } from "@/hooks/use-products";
 import ProductCard from "@/components/product/product-card";
 import { useState, useEffect } from "react";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Home() {
   const { data: products } = useProducts();
@@ -105,6 +106,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" data-testid="page-home">
+      <SEOHead {...pageSEO.home} />
       {/* Enhanced Hero Section with Modern Design */}
       <section className="hero-bg min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-16">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>

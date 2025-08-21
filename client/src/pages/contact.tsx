@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -96,6 +97,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-noir-900" data-testid="page-contact">
+      <SEOHead {...pageSEO.contact} />
       {/* Modern Hero Section with Dynamic Background */}
       <section className="relative pt-16 sm:pt-20 pb-8 sm:pb-12 md:pb-16 overflow-hidden">
         {/* Multi-layer Animated Background */}

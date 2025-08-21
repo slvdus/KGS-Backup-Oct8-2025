@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Package, CreditCard, ChevronDown, ChevronUp, AlertCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Policies() {
   const [expandedSection, setExpandedSection] = useState<string | null>("instructions");
@@ -166,6 +167,7 @@ export default function Policies() {
 
   return (
     <div className="min-h-screen bg-noir-900" data-testid="page-policies">
+      <SEOHead {...pageSEO.policies} />
       {/* Hero Section */}
       <section className="relative pt-16 sm:pt-20 pb-8 sm:pb-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-noir-900 via-noir-800/50 to-noir-900" />

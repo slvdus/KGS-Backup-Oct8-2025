@@ -16,6 +16,7 @@ import {
   Zap
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function About() {
   const [recommendRate, setRecommendRate] = useState(0);
@@ -99,6 +100,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" data-testid="page-about">
+      <SEOHead {...pageSEO.about} />
       {/* Modern Hero Section with Animated Backgrounds */}
       <section className="hero-bg min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>

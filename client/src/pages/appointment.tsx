@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Appointment() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -138,6 +139,7 @@ export default function Appointment() {
 
   return (
     <div className="min-h-screen bg-noir-900" data-testid="page-appointment">
+      <SEOHead {...pageSEO.appointment} />
       {/* Enhanced Hero Section with Animated Background */}
       <section className="relative pt-16 sm:pt-20 pb-8 sm:pb-12 md:pb-16 overflow-hidden">
         {/* Animated Gradient Background */}
