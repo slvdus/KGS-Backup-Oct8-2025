@@ -96,6 +96,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             ease: "linear"
           }}
         />
+        {/* Inner mask to create border effect */}
+        <div className="absolute inset-[2px] bg-noir-900/80 rounded-xl" />
       </div>
       
       {/* Subtle glow effect */}

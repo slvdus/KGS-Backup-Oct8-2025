@@ -47,11 +47,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Scope/Crosshair Logo */}
-                <motion.div 
-                  className="relative"
-                  whileHover={{ rotate: 90 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
+                <div className="relative">
                   <Crosshair className="w-6 h-6 sm:w-7 sm:h-7 text-beige-100" strokeWidth={2} />
                   {/* Animated glow effect */}
                   <motion.div
@@ -68,7 +64,7 @@ export default function Navbar() {
                   >
                     <div className="w-6 h-6 sm:w-7 sm:h-7 bg-beige-100/20 rounded-full blur-xl" />
                   </motion.div>
-                </motion.div>
+                </div>
                 
                 {/* Brand Name */}
                 <h1 className="text-lg sm:text-xl font-bold gradient-text relative">
