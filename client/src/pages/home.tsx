@@ -167,21 +167,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-noir-900/80 via-transparent to-transparent"></div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          {/* Live Badge */}
-          <motion.div
-            className="mb-6 inline-flex items-center gap-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-          >
-            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-400 text-sm font-semibold">
-                {satisfactionRate}% Customer Satisfaction • {reviewCount}+ Reviews
-              </span>
-            </div>
-          </motion.div>
-          
           <motion.h1 
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
@@ -303,6 +288,21 @@ export default function Home() {
                 </Button>
               </Link>
             </motion.div>
+          </motion.div>
+          
+          {/* Customer Satisfaction Badge */}
+          <motion.div
+            className="mt-6 inline-flex items-center gap-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
+          >
+            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-green-400 text-sm font-semibold">
+                {satisfactionRate}% Customer Satisfaction • {reviewCount}+ Reviews
+              </span>
+            </div>
           </motion.div>
           
           {/* Trust Indicators */}
