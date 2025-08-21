@@ -65,8 +65,7 @@ export default function Cart() {
       name: product.name,
       price: product.price.toString(),
       image: product.image,
-      quantity: 1,
-      inStock: product.inStock
+      category: "Accessories"
     });
     toast({
       title: "Added to Cart!",
@@ -81,8 +80,7 @@ export default function Cart() {
         name: product.name,
         price: (product.price * 0.9).toFixed(2), // 10% discount for bundle
         image: product.image,
-        quantity: 1,
-        inStock: product.inStock
+        category: "Accessories"
       });
     });
     toast({
