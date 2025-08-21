@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft, Shield, Lock, Award, CheckCircle, Package, Truck, Star } from "lucide-react";
+import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft, Shield, Lock, Award, CheckCircle, Package, Truck, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/cart-context";
 import SEOHead, { pageSEO } from "@/components/seo-head";
@@ -9,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 export default function Cart() {
   const { items, updateQuantity, removeItem, totalItems, subtotal, addItem } = useCart();
   const { toast } = useToast();
+  const [currentUpsellIndex, setCurrentUpsellIndex] = useState(0);
 
   const tax = subtotal * 0.0825; // 8.25% tax rate
   const total = subtotal + tax;
@@ -61,7 +63,7 @@ export default function Cart() {
     addItem({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: product.price.toString(),
       image: product.image,
       quantity: 1,
       inStock: product.inStock
@@ -77,7 +79,7 @@ export default function Cart() {
       addItem({
         id: product.id,
         name: product.name,
-        price: product.price * 0.9, // 10% discount for bundle
+        price: (product.price * 0.9).toFixed(2), // 10% discount for bundle
         image: product.image,
         quantity: 1,
         inStock: product.inStock
@@ -455,7 +457,8 @@ export default function Cart() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Desktop Grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {upsellProducts.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -499,6 +502,107 @@ export default function Cart() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Slider */}
+          <div className="sm:hidden relative">
+            <div className="overflow-hidden">
+              <motion.div 
+                className="flex"
+                animate={{ x: `-${currentUpsellIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                drag="x"
+                dragConstraints={{ left: -1000, right: 0 }}
+                onDragEnd={(_, info) => {
+                  const swipeThreshold = 50;
+                  if (info.offset.x > swipeThreshold && currentUpsellIndex > 0) {
+                    setCurrentUpsellIndex(currentUpsellIndex - 1);
+                  } else if (info.offset.x < -swipeThreshold && currentUpsellIndex < upsellProducts.length - 1) {
+                    setCurrentUpsellIndex(currentUpsellIndex + 1);
+                  }
+                }}
+              >
+                {upsellProducts.map((product, index) => (
+                  <motion.div
+                    key={product.id}
+                    className="w-full flex-shrink-0 px-4"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="glass-effect border border-noir-700/50 rounded-xl overflow-hidden">
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-48 object-cover"
+                        />
+                        <div className="absolute top-2 right-2">
+                          <span className={`${product.badgeColor} text-white px-2 py-1 rounded-full text-xs font-semibold`}>
+                            {product.badge}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-white font-semibold text-lg mb-1">{product.name}</h3>
+                        <p className="text-beige-100/60 text-sm mb-3">{product.description}</p>
+                        <div className="flex items-center justify-between mb-3">
+                          <div>
+                            <span className="text-2xl font-bold text-beige-100">${product.price.toFixed(2)}</span>
+                            <span className="text-sm text-beige-100/50 line-through ml-2">${product.originalPrice.toFixed(2)}</span>
+                          </div>
+                          <span className="text-green-400 text-sm">In Stock</span>
+                        </div>
+                        <Button 
+                          className="w-full bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-semibold"
+                          onClick={() => handleAddUpsell(product)}
+                        >
+                          <Plus className="w-4 h-4 mr-2" />
+                          Add to Cart
+                        </Button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {upsellProducts.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentUpsellIndex(index)}
+                  className={`transition-all duration-300 ${
+                    currentUpsellIndex === index 
+                      ? 'w-8 h-2 bg-beige-100 rounded-full' 
+                      : 'w-2 h-2 bg-beige-100/30 rounded-full hover:bg-beige-100/50'
+                  }`}
+                  aria-label={`Go to product ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Previous/Next Buttons */}
+            <button
+              onClick={() => setCurrentUpsellIndex(Math.max(0, currentUpsellIndex - 1))}
+              className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentUpsellIndex === 0 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentUpsellIndex === 0}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => setCurrentUpsellIndex(Math.min(upsellProducts.length - 1, currentUpsellIndex + 1))}
+              className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentUpsellIndex === upsellProducts.length - 1 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentUpsellIndex === upsellProducts.length - 1}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
 
           {/* Special Offer Banner */}
