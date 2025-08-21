@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, Crosshair } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/cart-context";
 
@@ -38,16 +38,43 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="flex-shrink-0 group relative" data-testid="link-home-logo">
-              <motion.h1 
-                className="text-lg sm:text-xl font-bold gradient-text relative"
+              <motion.div 
+                className="flex items-center gap-2 sm:gap-3"
                 whileHover={{ 
                   scale: 1.05,
                   transition: { duration: 0.2 }
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                KGS CREW
-              </motion.h1>
+                {/* Scope/Crosshair Logo */}
+                <motion.div 
+                  className="relative"
+                  whileHover={{ rotate: 90 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <Crosshair className="w-6 h-6 sm:w-7 sm:h-7 text-beige-100" strokeWidth={2} />
+                  {/* Animated glow effect */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    animate={{
+                      opacity: [0.5, 1, 0.5],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 bg-beige-100/20 rounded-full blur-xl" />
+                  </motion.div>
+                </motion.div>
+                
+                {/* Brand Name */}
+                <h1 className="text-lg sm:text-xl font-bold gradient-text relative">
+                  KGS CREW
+                </h1>
+              </motion.div>
             </Link>
           </motion.div>
           
