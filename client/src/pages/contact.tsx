@@ -93,9 +93,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 bg-noir-900" data-testid="page-contact">
+    <div className="min-h-screen bg-noir-900" data-testid="page-contact">
       {/* Enhanced Hero Section - Mobile-first approach */}
-      <section className="hero-bg py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
+      <section className="hero-bg pt-16 sm:pt-20 pb-12 sm:pb-16 md:pb-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/50"></div>
         {/* Enhanced floating background elements with micro-interactions */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
