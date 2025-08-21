@@ -20,7 +20,9 @@ import {
   Heart,
   Trophy,
   Mail,
-  Send
+  Send,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,6 +40,7 @@ export default function Home() {
   const [hoveredCollection, setHoveredCollection] = useState<number | null>(null);
   const [email, setEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
 
   // Newsletter subscription handler
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
@@ -781,7 +784,8 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Desktop Grid - Hidden on Mobile */}
+          <div className="hidden md:grid grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -844,6 +848,95 @@ export default function Home() {
                 />
               </motion.div>
             ))}
+          </div>
+
+          {/* Mobile Slider - Visible on Mobile Only */}
+          <div className="md:hidden relative">
+            {/* Slider Container */}
+            <div className="overflow-hidden relative">
+              <motion.div 
+                className="flex"
+                animate={{ x: `-${currentFeatureIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                drag="x"
+                dragConstraints={{ left: -1000, right: 0 }}
+                onDragEnd={(_, info) => {
+                  const swipeThreshold = 50;
+                  if (info.offset.x > swipeThreshold && currentFeatureIndex > 0) {
+                    setCurrentFeatureIndex(currentFeatureIndex - 1);
+                  } else if (info.offset.x < -swipeThreshold && currentFeatureIndex < features.length - 1) {
+                    setCurrentFeatureIndex(currentFeatureIndex + 1);
+                  }
+                }}
+              >
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    className="w-full flex-shrink-0 px-4"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="glass-effect p-6 rounded-xl border border-beige-100/10 backdrop-blur-md bg-noir-900/30 relative overflow-hidden shadow-2xl">
+                      {/* Icon */}
+                      <motion.div
+                        className="w-16 h-16 bg-beige-100/10 rounded-xl flex items-center justify-center mb-6 relative mx-auto"
+                        whileInView={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-xl" />
+                        <feature.icon className="w-8 h-8 text-beige-100 relative z-10" />
+                      </motion.div>
+                      
+                      {/* Content */}
+                      <h3 className="text-xl font-bold text-white mb-3 text-center">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-400 text-center">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentFeatureIndex(index)}
+                  className={`transition-all duration-300 ${
+                    currentFeatureIndex === index 
+                      ? 'w-8 h-2 bg-beige-100 rounded-full' 
+                      : 'w-2 h-2 bg-beige-100/30 rounded-full hover:bg-beige-100/50'
+                  }`}
+                  aria-label={`Go to feature ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Previous/Next Buttons */}
+            <button
+              onClick={() => setCurrentFeatureIndex(Math.max(0, currentFeatureIndex - 1))}
+              className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentFeatureIndex === 0 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentFeatureIndex === 0}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => setCurrentFeatureIndex(Math.min(features.length - 1, currentFeatureIndex + 1))}
+              className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentFeatureIndex === features.length - 1 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentFeatureIndex === features.length - 1}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </section>
