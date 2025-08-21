@@ -18,6 +18,7 @@ import Checkout from "@/pages/checkout";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import Community from "@/pages/community";
+import Appointment from "@/pages/appointment";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -35,6 +36,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/community" component={Community} />
+        <Route path="/appointment" component={Appointment} />
         <Route component={NotFound} />
         </Switch>
         <Footer />

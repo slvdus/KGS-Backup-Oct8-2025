@@ -14,7 +14,8 @@ export default function Navbar() {
     { href: "/catalog", label: "Inventory" },
     { href: "/about", label: "About" },
     { href: "/community", label: "Community" },
-    { href: "/contact", label: "Appointment" },
+    { href: "/appointment", label: "Appointment" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const isActive = (href: string) => {
