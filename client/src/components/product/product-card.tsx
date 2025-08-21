@@ -71,39 +71,37 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ 
-        y: -8,
-        transition: { duration: 0.3, ease: "easeOut" }
+        y: -2,
+        transition: { duration: 0.4, ease: "easeInOut" }
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full bg-noir-900/60"
+      className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full bg-noir-900/60 transition-all duration-500"
     >
-      {/* Static Neon Trail Border */}
+      {/* Subtle border glow on hover */}
       <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: isHovered 
-              ? `conic-gradient(from 90deg, transparent 60%, rgba(245, 243, 240, 0.2) 80%, rgba(245, 243, 240, 0.4) 85%, rgba(245, 243, 240, 0.6) 90%, rgba(245, 243, 240, 0.4) 95%, rgba(245, 243, 240, 0.2) 98%, transparent 100%)`
-              : 'transparent',
+        <motion.div
+          className="absolute inset-0 rounded-xl"
+          animate={{
+            boxShadow: isHovered 
+              ? '0 0 0 1px rgba(245, 243, 240, 0.15), inset 0 0 0 1px rgba(245, 243, 240, 0.05)'
+              : '0 0 0 0px rgba(245, 243, 240, 0), inset 0 0 0 0px rgba(245, 243, 240, 0)',
           }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         />
-        {/* Inner mask to create border effect */}
-        <div className="absolute inset-[2px] bg-noir-900/80 rounded-xl" />
       </div>
       
-      {/* Subtle glow effect */}
-      {isHovered && (
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          style={{
-            boxShadow: '0 0 25px rgba(245, 243, 240, 0.1), inset 0 0 15px rgba(245, 243, 240, 0.03)',
-          }}
-        />
-      )}
+      {/* Very subtle glow effect */}
+      <motion.div
+        className="absolute inset-0 rounded-xl pointer-events-none"
+        animate={{
+          opacity: isHovered ? 1 : 0
+        }}
+        transition={{ duration: 0.4 }}
+        style={{
+          background: 'radial-gradient(circle at center, rgba(245, 243, 240, 0.02) 0%, transparent 70%)',
+        }}
+      />
       
       {/* Image Section */}
       <div className="relative overflow-hidden h-56">
@@ -111,11 +109,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           src={product.image} 
           alt={`${product.name} - ${product.category} available at KGS CREW gun store PA`} 
           loading="lazy"
-          className="product-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="product-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-noir-900/70 via-noir-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-noir-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
         
         {/* Stock indicator */}
         <div className="absolute top-3 right-3 z-10">
