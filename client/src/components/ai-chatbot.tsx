@@ -31,6 +31,14 @@ export default function AIChatbot() {
   const { isOpen: isCartOpen } = useCart();
   const [location] = useLocation();
   
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
   // Only show on home, product detail, and cart pages
   const shouldShowChatbot = () => {
     if (isCartOpen) return false; // Hide when cart slider is open
@@ -66,14 +74,6 @@ export default function AIChatbot() {
   if (!shouldShowChatbot()) {
     return null;
   }
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   // Demo responses for common questions
   const getDemoResponse = (userInput: string): string => {
@@ -167,9 +167,6 @@ export default function AIChatbot() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                 </span>
               </div>
-              
-              {/* Sparkle animation */}
-              <Sparkles className="absolute -top-2 -left-2 w-4 h-4 text-amber-400 animate-pulse" />
             </motion.button>
             
             {/* Help Tooltip */}
