@@ -44,6 +44,14 @@ export default function AIChatbot() {
     return allowedPaths.includes(location) || location.startsWith('/product/');
   };
   
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
   // Show help tooltip for 3 seconds when component mounts
   useEffect(() => {
     if (!isOpen && shouldShowChatbot()) {
@@ -60,20 +68,7 @@ export default function AIChatbot() {
       
       return () => clearTimeout(timer);
     }
-  }, [location]); // Re-trigger when location changes
-  
-  // Don't render if conditions aren't met
-  if (!shouldShowChatbot()) {
-    return null;
-  }
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  }, [location, isOpen]); // Re-trigger when location changes
 
   // Demo responses for common questions
   const getDemoResponse = (userInput: string): string => {
@@ -142,6 +137,11 @@ export default function AIChatbot() {
     }
   };
 
+  // Don't render if conditions aren't met
+  if (!shouldShowChatbot()) {
+    return null;
+  }
+  
   return (
     <>
       {/* Chat Button */}
