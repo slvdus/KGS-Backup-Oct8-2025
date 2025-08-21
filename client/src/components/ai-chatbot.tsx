@@ -167,9 +167,6 @@ export default function AIChatbot() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                 </span>
               </div>
-              
-              {/* Sparkle animation */}
-              <Sparkles className="absolute -top-2 -left-2 w-4 h-4 text-amber-400 animate-pulse" />
             </motion.button>
             
             {/* Help Tooltip */}
