@@ -294,8 +294,8 @@ export default function AIChatbot() {
             </div>
 
             {/* Quick Actions */}
-            <div className="px-4 py-2 border-t border-noir-700/50">
-              <div className="flex gap-2 overflow-x-auto pb-2">
+            <div className="px-3 sm:px-4 py-2 border-t border-noir-700/50 bg-noir-800/30">
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide">
                 {["View Catalog", "Book Appointment", "FFL Transfer", "Contact Us"].map((action) => (
                   <button
                     key={action}
@@ -303,11 +303,14 @@ export default function AIChatbot() {
                       setInputValue(action);
                       handleSendMessage();
                     }}
-                    className="px-3 py-1.5 bg-noir-700/30 hover:bg-noir-700/50 border border-noir-600/50 rounded-full text-xs text-beige-100 whitespace-nowrap transition-colors"
+                    className="flex-shrink-0 px-3 py-1.5 bg-noir-700/40 hover:bg-noir-700/60 active:bg-noir-700/80 border border-noir-600/50 rounded-full text-xs text-beige-100 whitespace-nowrap transition-all transform hover:scale-105 active:scale-95"
                   >
                     {action}
                   </button>
                 ))}
+              </div>
+              <div className="sm:hidden text-center mt-1">
+                <span className="text-[10px] text-beige-100/30">Swipe for more options →</span>
               </div>
             </div>
 
