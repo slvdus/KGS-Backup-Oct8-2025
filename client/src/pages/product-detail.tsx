@@ -333,11 +333,11 @@ export default function ProductDetail() {
             </div>
 
             {/* Price Section */}
-            <div className="glass-effect p-6 rounded-xl border border-noir-700/50 neon-border">
-              <div className="flex items-baseline justify-between mb-4">
-                <div className="flex items-baseline space-x-4">
+            <div className="glass-effect p-4 sm:p-6 rounded-xl border border-noir-700/50 neon-border">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 sm:gap-0 mb-4">
+                <div className="flex flex-wrap items-baseline gap-2 sm:gap-4">
                   <motion.span 
-                    className="text-5xl font-bold gradient-text pulse-glow"
+                    className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text pulse-glow"
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: "spring" }}
@@ -345,10 +345,10 @@ export default function ProductDetail() {
                   >
                     ${product.price}
                   </motion.span>
-                  <span className="text-gray-400 line-through text-xl">
+                  <span className="text-gray-400 line-through text-lg sm:text-xl">
                     ${(parseFloat(product.price) * 1.2).toFixed(2)}
                   </span>
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs sm:text-sm">
                     Save 20%
                   </Badge>
                 </div>
