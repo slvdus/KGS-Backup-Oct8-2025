@@ -212,7 +212,22 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
             data-testid="text-hero-title"
           >
-            <span className="text-white">Welcome to</span>
+            <span className="relative inline-block">
+              <span className="text-white">Welcome to</span>
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-white/10 to-beige-100/10 blur-2xl"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
+            </span>
             <span className="block mt-2">
               <span className="gradient-text relative inline-block">
                 KGS CREW
@@ -238,7 +253,23 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             data-testid="text-hero-subtitle"
           >
-            Pennsylvania's <span className="text-beige-100 font-semibold">Best Prices</span> in Firearms
+            Pennsylvania's{' '}
+            <span className="relative inline-block">
+              <span className="text-beige-100 font-semibold">Best Prices</span>
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 blur-xl"
+                animate={{
+                  opacity: [0.4, 0.8, 0.4],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+            </span>
+            {' '}in Firearms
           </motion.p>
           
           {/* Stats Row */}
