@@ -95,155 +95,6 @@ export default function Catalog() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" data-testid="page-catalog">
       <SEOHead {...pageSEO.catalog} />
-      {/* Modern Hero Section with Animated Backgrounds */}
-      <section className="hero-bg min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>
-        
-        {/* Advanced Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
-            className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full blur-3xl"
-            animate={{
-              x: [-100, 0, -100],
-              y: [0, 100, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute -bottom-1/4 -left-1/4 w-[700px] h-[700px] bg-gradient-to-tr from-beige-100/8 to-transparent rounded-full blur-3xl"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 0.8, 1],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-          />
-          
-          {/* Sparkle Effects */}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-beige-100/60 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            data-testid="text-catalog-title"
-          >
-            <span className="text-white">Premium</span>
-            <span className="block mt-2">
-              <span className="gradient-text relative inline-block">
-                Firearms & Defense
-                <motion.div
-                  className="absolute -inset-2 bg-gradient-to-r from-beige-100/20 to-beige-200/20 blur-xl"
-                  animate={{
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </span>
-            </span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-base sm:text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-beige-100 to-white max-w-3xl mx-auto mb-6 sm:mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            data-testid="text-catalog-subtitle"
-          >
-            Licensed dealer offering authentic firearms, less-lethal launchers, ammunition, and professional transfer services
-          </motion.p>
-          
-          {/* Enhanced Stats with Icons */}
-          <motion.div 
-            className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <motion.div 
-              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-amber-500/30 text-center group relative overflow-hidden"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <Package className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 mx-auto mb-1 sm:mb-2" />
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">14+</div>
-              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Products</div>
-            </motion.div>
-            
-            <motion.div 
-              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-green-500/30 text-center group relative overflow-hidden"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 mx-auto mb-1 sm:mb-2" />
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">FFL</div>
-              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Licensed</div>
-            </motion.div>
-            
-            <motion.div 
-              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-purple-500/30 text-center group relative overflow-hidden"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 mx-auto mb-1 sm:mb-2" />
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">Fast</div>
-              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Transfers</div>
-            </motion.div>
-          </motion.div>
-          
-          {/* Live Badge */}
-          <motion.div
-            className="mt-6 sm:mt-8 inline-flex items-center gap-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-          >
-            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-400 text-xs sm:text-sm font-semibold">
-                Licensed FFL Dealer • Professional Transfers
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Enhanced Services Section - Mobile-first */}
       <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-noir-900 via-noir-800/30 to-noir-900"></div>
@@ -664,6 +515,155 @@ export default function Catalog() {
                   </Button>
                 </Link>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Modern Hero Section with Animated Backgrounds */}
+      <section className="hero-bg min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] pt-16 sm:pt-20 flex items-center justify-center text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-noir-900"></div>
+        
+        {/* Advanced Animated Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div 
+            className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-bl from-amber-500/10 to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [-100, 0, -100],
+              y: [0, 100, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute -bottom-1/4 -left-1/4 w-[700px] h-[700px] bg-gradient-to-tr from-beige-100/8 to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -50, 0],
+              scale: [1, 0.8, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
+          
+          {/* Sparkle Effects */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-beige-100/60 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h1 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            data-testid="text-catalog-title"
+          >
+            <span className="text-white">Premium</span>
+            <span className="block mt-2">
+              <span className="gradient-text relative inline-block">
+                Firearms & Defense
+                <motion.div
+                  className="absolute -inset-2 bg-gradient-to-r from-beige-100/20 to-beige-200/20 blur-xl"
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </span>
+            </span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-base sm:text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-beige-100 to-white max-w-3xl mx-auto mb-6 sm:mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            data-testid="text-catalog-subtitle"
+          >
+            Licensed dealer offering authentic firearms, less-lethal launchers, ammunition, and professional transfer services
+          </motion.p>
+          
+          {/* Enhanced Stats with Icons */}
+          <motion.div 
+            className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.div 
+              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-amber-500/30 text-center group relative overflow-hidden"
+              whileHover={{ y: -5, scale: 1.05 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Package className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">14+</div>
+              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Products</div>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-green-500/30 text-center group relative overflow-hidden"
+              whileHover={{ y: -5, scale: 1.05 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">FFL</div>
+              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Licensed</div>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-effect p-3 sm:p-4 md:p-5 rounded-xl border border-purple-500/30 text-center group relative overflow-hidden"
+              whileHover={{ y: -5, scale: 1.05 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 mx-auto mb-1 sm:mb-2" />
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text relative z-10">Fast</div>
+              <div className="text-beige-100/60 text-xs sm:text-sm relative z-10">Transfers</div>
+            </motion.div>
+          </motion.div>
+          
+          {/* Live Badge */}
+          <motion.div
+            className="mt-6 sm:mt-8 inline-flex items-center gap-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
+          >
+            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full backdrop-blur-md">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-green-400 text-xs sm:text-sm font-semibold">
+                Licensed FFL Dealer • Professional Transfers
+              </span>
             </div>
           </motion.div>
         </div>
