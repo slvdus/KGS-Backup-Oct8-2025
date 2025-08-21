@@ -12,10 +12,10 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { href: "#", label: "Privacy Policy" },
-    { href: "#", label: "Terms of Service" },
-    { href: "#", label: "FFL Information" },
-    { href: "#", label: "Compliance" },
+    { href: "/policies", label: "Store Policies" },
+    { href: "/policies", label: "Terms of Service" },
+    { href: "/policies", label: "FFL Information" },
+    { href: "/policies", label: "Compliance" },
   ];
 
   return (
