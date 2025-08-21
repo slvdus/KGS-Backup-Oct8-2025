@@ -347,21 +347,40 @@ export default function Community() {
                   {/* Gradient Background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
                   
-                  {/* Animated Border Glow */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{
-                      background: `linear-gradient(45deg, transparent, ${hoveredBenefit === index ? 'rgba(245, 243, 240, 0.2)' : 'transparent'}, transparent)`,
-                    }}
-                    animate={{
-                      rotate: hoveredBenefit === index ? 360 : 0,
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: hoveredBenefit === index ? Infinity : 0,
-                      ease: "linear"
-                    }}
-                  />
+                  {/* Animated Neon Trail Border */}
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{
+                        background: hoveredBenefit === index 
+                          ? `conic-gradient(from 90deg, transparent 60%, rgba(245, 243, 240, 0.2) 80%, rgba(245, 243, 240, 0.4) 85%, rgba(245, 243, 240, 0.6) 90%, rgba(245, 243, 240, 0.4) 95%, rgba(245, 243, 240, 0.2) 98%, transparent 100%)`
+                          : 'transparent',
+                      }}
+                      animate={hoveredBenefit === index ? {
+                        rotate: [0, 360],
+                      } : { rotate: 0 }}
+                      transition={{
+                        duration: 4,
+                        repeat: hoveredBenefit === index ? Infinity : 0,
+                        ease: "linear"
+                      }}
+                    />
+                    {/* Inner mask to create border effect */}
+                    <div className="absolute inset-[2px] bg-noir-900 rounded-2xl" />
+                  </div>
+                  
+                  {/* Subtle glow effect */}
+                  {hoveredBenefit === index && (
+                    <motion.div
+                      className="absolute inset-0 rounded-2xl pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      style={{
+                        boxShadow: '0 0 25px rgba(245, 243, 240, 0.1), inset 0 0 15px rgba(245, 243, 240, 0.03)',
+                      }}
+                    />
+                  )}
                   
                   {/* Badge */}
                   <motion.div
@@ -477,8 +496,40 @@ export default function Community() {
       </section>
 
       {/* Enhanced Stats Section with Animated Counters */}
-      <section className="py-12 sm:py-16 md:py-20 bg-noir-800 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-noir-900/50 via-transparent to-noir-900/50"></div>
+      <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
+        {/* Dynamic gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900" />
+        
+        {/* Animated mesh gradients */}
+        <div className="absolute inset-0">
+          <motion.div 
+            className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-purple-500/5 to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [0, -50, 0],
+              y: [0, 30, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-blue-500/5 to-transparent rounded-full blur-3xl"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+              scale: [1, 0.9, 1],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+          />
+        </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -535,22 +586,28 @@ export default function Community() {
                   whileHover={{ y: -5, scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
+                  {/* Gradient Background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
                   
-                  <stat.icon className="w-8 h-8 text-beige-100 mx-auto mb-3 opacity-50" />
+                  {/* Animated glow on hover */}
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-beige-100/10 to-beige-100/5 blur-xl" />
+                  </div>
                   
-                  <motion.div 
-                    className="text-3xl sm:text-4xl font-bold gradient-text mb-2"
-                    initial={{ scale: 0.5 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 100 }}
-                    viewport={{ once: true }}
-                  >
-                    {stat.value}
+                    <stat.icon className="w-8 h-8 text-beige-100 mx-auto mb-3 opacity-50 relative z-10" />
+                  
+                    <motion.div 
+                      className="text-3xl sm:text-4xl font-bold gradient-text mb-2 relative z-10"
+                      initial={{ scale: 0.5 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 100 }}
+                      viewport={{ once: true }}
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <div className="text-sm text-gray-400">{stat.label}</div>
                   </motion.div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
-              </motion.div>
             ))}
           </div>
         </div>
@@ -617,8 +674,16 @@ export default function Community() {
                   whileHover={{ y: -5, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Quote Mark */}
-                  <div className="absolute top-4 right-4 text-6xl text-beige-100/10 font-serif">"</div>
+                  {/* Enhanced Gradient Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-beige-100/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  
+                  {/* Animated Glow Effect */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-beige-100/10 to-beige-100/5 blur-2xl" />
+                  </div>
+                    
+                    {/* Quote Mark */}
+                    <div className="absolute top-4 right-4 text-6xl text-beige-100/10 font-serif">"</div>
                   
                   {/* Rating Stars */}
                   <div className="flex gap-1 mb-4">
@@ -645,25 +710,31 @@ export default function Community() {
                     <span className="text-green-400 text-xs font-semibold">{testimonial.savings}</span>
                   </div>
                   
-                  {/* Author */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-full flex items-center justify-center">
-                      <UserCheck className="w-5 h-5 text-beige-100" />
+                    {/* Author */}
+                    <div className="flex items-center gap-3 relative z-10">
+                      <motion.div 
+                        className="w-10 h-10 bg-gradient-to-br from-beige-100/20 to-beige-100/10 rounded-full flex items-center justify-center"
+                        whileHover={{ scale: 1.1, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <UserCheck className="w-5 h-5 text-beige-100" />
+                      </motion.div>
+                      <div>
+                        <p className="text-white font-semibold">{testimonial.author}</p>
+                        <p className="text-gray-400 text-sm">{testimonial.location}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-white font-semibold">{testimonial.author}</p>
-                      <p className="text-gray-400 text-sm">{testimonial.location}</p>
-                    </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA Section with Modern Design */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-noir-800 via-noir-900 to-noir-900 relative overflow-hidden">
+      <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+        {/* Modern gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-noir-900 via-noir-800/30 to-noir-900" />
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <motion.div 
