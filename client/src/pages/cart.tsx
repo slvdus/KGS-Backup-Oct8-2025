@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft, Shield, Lock, Award, CheckCircle, Package, Truck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/cart-context";
+import SEOHead, { pageSEO } from "@/components/seo-head";
 
 export default function Cart() {
   const { items, updateQuantity, removeItem, totalItems, subtotal } = useCart();
@@ -10,81 +11,193 @@ export default function Cart() {
   const tax = subtotal * 0.0825; // 8.25% tax rate
   const total = subtotal + tax;
 
+  const trustFeatures = [
+    { icon: Shield, text: "Licensed FFL Dealer", color: "text-green-400" },
+    { icon: Lock, text: "Secure Checkout", color: "text-blue-400" },
+    { icon: Award, text: "98% Satisfaction", color: "text-amber-400" },
+    { icon: Truck, text: "Fast Processing", color: "text-purple-400" }
+  ];
+
   return (
-    <div className="min-h-screen bg-noir-900 text-white py-8 sm:py-12 lg:py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: 20 }}
+    <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 text-white relative">
+      <SEOHead {...pageSEO.cart} />
+      
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-beige-100/5 to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-gradient-to-tl from-beige-100/3 to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 50, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+        {/* Trust Badges Bar - Mobile Optimized */}
+        <motion.div 
+          className="mb-6 sm:mb-8"
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
+          <div className="glass-effect border border-noir-700/50 rounded-xl p-3 sm:p-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              {trustFeatures.map((feature, index) => (
+                <motion.div
+                  key={feature.text}
+                  className="flex items-center justify-center gap-2"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <feature.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${feature.color}`} />
+                  <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">{feature.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Header */}
+        <motion.div
+          className="mb-6 sm:mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <Link href="/catalog">
             <motion.div
-              className="inline-flex items-center text-beige-100 hover:text-white mb-4 group"
-              whileHover={{ x: -5 }}
-              transition={{ duration: 0.2 }}
+              className="inline-flex items-center gap-2 text-beige-100 hover:text-white mb-4 group glass-effect px-4 py-2 rounded-full border border-beige-100/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               data-testid="link-back-to-catalog"
             >
-              <ArrowLeft className="w-4 h-4 mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
-              Back to Catalog
+              <ArrowLeft className="w-4 h-4 group-hover:transform group-hover:-translate-x-1 transition-transform" />
+              <span className="text-sm sm:text-base">Continue Shopping</span>
             </motion.div>
           </Link>
-          <h1 className="responsive-text-4xl md:responsive-text-5xl font-bold mb-4" data-testid="page-title">
-            Shopping Cart
-          </h1>
-          {totalItems > 0 && (
-            <p className="text-gray-400 responsive-text-lg" data-testid="cart-summary">
-              {totalItems} {totalItems === 1 ? 'item' : 'items'} in your cart
-            </p>
-          )}
+          
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 gradient-text" data-testid="page-title">
+                Shopping Cart
+              </h1>
+              {totalItems > 0 && (
+                <p className="text-gray-400 text-base sm:text-lg" data-testid="cart-summary">
+                  {totalItems} {totalItems === 1 ? 'item' : 'items'} • Ready for checkout
+                </p>
+              )}
+            </div>
+            
+            {totalItems > 0 && (
+              <motion.div
+                className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-4 py-2 rounded-full"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-sm text-green-400">Secure & Encrypted</span>
+              </motion.div>
+            )}
+          </div>
         </motion.div>
 
         {items.length === 0 ? (
           <motion.div
-            className="text-center py-16"
+            className="text-center py-12 sm:py-16 md:py-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             data-testid="cart-empty"
           >
-            <ShoppingBag className="w-24 h-24 text-gray-600 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-white mb-4">Your cart is empty</h2>
-            <p className="text-gray-400 mb-8 max-w-md mx-auto">
-              Looks like you haven't added any items to your cart yet. Start browsing our catalog to find the perfect firearms and equipment.
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                className="bg-beige-100 hover:bg-beige-200 text-noir-900 font-bold px-8 py-4 text-lg magnetic-btn ripple"
-                data-testid="button-browse-catalog"
+            <div className="glass-effect border border-noir-700/50 rounded-2xl p-8 sm:p-12 max-w-2xl mx-auto">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", duration: 0.6, delay: 0.3 }}
               >
-                <Link href="/catalog">Browse Catalog</Link>
-              </Button>
-            </motion.div>
+                <ShoppingBag className="w-20 h-20 sm:w-24 sm:h-24 text-gray-500 mx-auto mb-6" />
+              </motion.div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Your cart is empty</h2>
+              <p className="text-gray-400 mb-8 max-w-md mx-auto text-sm sm:text-base">
+                Start browsing our extensive catalog of firearms, ammunition, and accessories. Pennsylvania's best prices await!
+              </p>
+              
+              <div className="space-y-4">
+                <Link href="/catalog">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      className="w-full sm:w-auto bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-bold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg"
+                      data-testid="button-browse-catalog"
+                    >
+                      <Package className="w-5 h-5 mr-2" />
+                      Browse Catalog
+                    </Button>
+                  </motion.div>
+                </Link>
+                
+                <div className="flex items-center justify-center gap-4 text-xs sm:text-sm text-gray-500">
+                  <div className="flex items-center gap-1">
+                    <Shield className="w-4 h-4" />
+                    <span>Licensed FFL</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4" />
+                    <span>98% Satisfaction</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2">
-              <motion.div
-                className="space-y-6"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {items.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    className="glass-effect p-4 sm:p-6 rounded-xl border border-white/10 group card-hover"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    data-testid={`cart-item-${item.id}`}
-                  >
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  className="space-y-4 sm:space-y-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  {items.map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      layout
+                      className="glass-effect p-4 sm:p-6 rounded-xl border border-noir-700/50 hover:border-beige-100/30 transition-all duration-300 group overflow-hidden relative"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20, transition: { duration: 0.2 } }}
+                      transition={{ delay: index * 0.05 }}
+                      data-testid={`cart-item-${item.id}`}
+                    >
+                      {/* Hover gradient effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-beige-100/0 via-beige-100/5 to-beige-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
                       <motion.div
                         className="flex-shrink-0"
@@ -165,7 +278,8 @@ export default function Cart() {
                     </div>
                   </motion.div>
                 ))}
-              </motion.div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Order Summary */}
