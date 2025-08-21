@@ -299,7 +299,7 @@ export default function ProductDetail() {
                     {product.name}
                   </motion.h1>
                   <div className="flex items-center space-x-3">
-                    <Badge variant="secondary" className="glass-effect border-beige-100/30" data-testid="text-product-category">
+                    <Badge variant="secondary" className="glass-effect border-beige-100/30 text-[#faebeb]" data-testid="text-product-category">
                       {product.category}
                     </Badge>
                     <div className="flex items-center space-x-1">
