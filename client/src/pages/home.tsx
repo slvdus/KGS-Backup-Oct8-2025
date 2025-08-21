@@ -495,21 +495,40 @@ export default function Home() {
                     {/* Gradient Background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${collection.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
                     
-                    {/* Animated Border Glow */}
-                    <motion.div
-                      className="absolute inset-0 rounded-2xl"
-                      style={{
-                        background: `linear-gradient(45deg, transparent, ${hoveredCollection === index ? 'rgba(245, 243, 240, 0.2)' : 'transparent'}, transparent)`,
-                      }}
-                      animate={{
-                        rotate: hoveredCollection === index ? 360 : 0,
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: hoveredCollection === index ? Infinity : 0,
-                        ease: "linear"
-                      }}
-                    />
+                    {/* Animated Neon Trail Border */}
+                    <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0"
+                        style={{
+                          background: hoveredCollection === index 
+                            ? `conic-gradient(from 90deg, transparent 60%, rgba(245, 243, 240, 0.3) 80%, rgba(245, 243, 240, 0.6) 85%, rgba(245, 243, 240, 0.8) 90%, rgba(245, 243, 240, 0.6) 95%, rgba(245, 243, 240, 0.3) 98%, transparent 100%)`
+                            : 'transparent',
+                        }}
+                        animate={hoveredCollection === index ? {
+                          rotate: [0, 360],
+                        } : { rotate: 0 }}
+                        transition={{
+                          duration: 3,
+                          repeat: hoveredCollection === index ? Infinity : 0,
+                          ease: "linear"
+                        }}
+                      />
+                      {/* Inner mask to create border effect */}
+                      <div className="absolute inset-[2px] bg-noir-900 rounded-2xl" />
+                    </div>
+                    
+                    {/* Subtle glow effect */}
+                    {hoveredCollection === index && (
+                      <motion.div
+                        className="absolute inset-0 rounded-2xl pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        style={{
+                          boxShadow: '0 0 30px rgba(245, 243, 240, 0.15), inset 0 0 20px rgba(245, 243, 240, 0.05)',
+                        }}
+                      />
+                    )}
                     
                     <div className="relative z-10">
                       {/* Icon with Animation */}
