@@ -260,15 +260,13 @@ export default function Cart() {
                     <motion.div
                       key={item.id}
                       layout
-                      className="glass-effect p-4 sm:p-6 rounded-xl border border-noir-700/50 hover:border-beige-100/30 transition-all duration-300 group overflow-hidden relative"
+                      className="glass-effect p-4 sm:p-6 rounded-xl border border-noir-700/50 transition-all duration-300 overflow-hidden relative"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20, transition: { duration: 0.2 } }}
                       transition={{ delay: index * 0.05 }}
                       data-testid={`cart-item-${item.id}`}
                     >
-                      {/* Hover gradient effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-beige-100/0 via-beige-100/5 to-beige-100/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
                       <motion.div
                         className="flex-shrink-0"
