@@ -248,7 +248,7 @@ export default function NFATransfer() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <Card className="glass-effect border-noir-700/50 p-6 h-full relative overflow-hidden group">
+                <Card className="glass-effect border-noir-700/50 p-6 h-full relative overflow-hidden group text-white">
                   <div className="absolute inset-0 bg-gradient-to-br opacity-5 group-hover:opacity-10 transition-opacity duration-300"
                     style={{ backgroundImage: `linear-gradient(to bottom right, ${item.color.split(' ')[1]}, ${item.color.split(' ')[3]})` }}
                   />
@@ -307,7 +307,7 @@ export default function NFATransfer() {
                   </div>
                   
                   <div className="ml-6 flex-1">
-                    <Card className="glass-effect border-purple-500/20 p-6 hover:border-purple-500/40 transition-all duration-300">
+                    <Card className="glass-effect border-purple-500/20 p-6 hover:border-purple-500/40 transition-all duration-300 text-white">
                       <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
                       <p className="text-beige-100/80 mb-2">{step.description}</p>
                       <p className="text-sm text-beige-100/60">{step.detail}</p>
@@ -381,7 +381,7 @@ export default function NFATransfer() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Card className="glass-effect border-purple-500/20 p-8">
+              <Card className="glass-effect border-purple-500/20 p-8 text-white">
                 <div className="absolute -top-4 -right-4 bg-gradient-to-br from-purple-500 to-violet-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                   Expert Service
                 </div>
@@ -392,7 +392,7 @@ export default function NFATransfer() {
                 </h3>
 
                 <div className="space-y-4 mb-6">
-                  <div className="glass-effect p-4 rounded-lg">
+                  <div className="glass-effect p-4 rounded-lg text-white">
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="font-bold text-white">Transfer Fee</h4>
@@ -402,7 +402,7 @@ export default function NFATransfer() {
                     </div>
                   </div>
 
-                  <div className="glass-effect p-4 rounded-lg">
+                  <div className="glass-effect p-4 rounded-lg text-white">
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="font-bold text-white">ATF Tax Stamp</h4>
@@ -412,7 +412,7 @@ export default function NFATransfer() {
                     </div>
                   </div>
 
-                  <div className="glass-effect p-4 rounded-lg border border-purple-500/30">
+                  <div className="glass-effect p-4 rounded-lg border border-purple-500/30 text-white">
                     <div className="flex justify-between items-start">
                       <div>
                         <h4 className="font-bold text-white">Total Cost</h4>
@@ -423,7 +423,7 @@ export default function NFATransfer() {
                   </div>
                 </div>
 
-                <div className="glass-effect p-4 rounded-lg border border-amber-500/30">
+                <div className="glass-effect p-4 rounded-lg border border-amber-500/30 text-white">
                   <div className="flex items-start gap-3">
                     <Star className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-beige-100/70">
@@ -467,7 +467,7 @@ export default function NFATransfer() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="glass-effect border-noir-700/50 p-6 h-full hover:border-purple-500/30 transition-all duration-300">
+                <Card className="glass-effect border-noir-700/50 p-6 h-full hover:border-purple-500/30 transition-all duration-300 text-white">
                   <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
                     {faq.question}
@@ -488,7 +488,7 @@ export default function NFATransfer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass-effect p-8 sm:p-12 rounded-2xl border border-purple-500/20"
+            className="glass-effect p-8 sm:p-12 rounded-2xl border border-purple-500/20 text-white"
           >
             <Award className="w-16 h-16 text-purple-400 mx-auto mb-6" />
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">

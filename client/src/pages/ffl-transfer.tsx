@@ -219,7 +219,7 @@ export default function FFLTransfer() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <Card className="glass-effect border-noir-700/50 p-6 h-full relative overflow-hidden group">
+                <Card className="glass-effect border-noir-700/50 p-6 h-full relative overflow-hidden group text-white">
                   <div className="absolute inset-0 bg-gradient-to-br opacity-5 group-hover:opacity-10 transition-opacity duration-300"
                     style={{ backgroundImage: `linear-gradient(to bottom right, ${step.color.split(' ')[1]}, ${step.color.split(' ')[3]})` }}
                   />
@@ -306,7 +306,7 @@ export default function FFLTransfer() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <Card className="glass-effect border-green-500/20 p-8">
+              <Card className="glass-effect border-green-500/20 p-8 text-white">
                 <div className="absolute -top-4 -right-4 bg-gradient-to-br from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                   Best Value
                 </div>
@@ -373,7 +373,7 @@ export default function FFLTransfer() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="glass-effect border-noir-700/50 p-6 h-full hover:border-green-500/30 transition-all duration-300">
+                <Card className="glass-effect border-noir-700/50 p-6 h-full hover:border-green-500/30 transition-all duration-300 text-white">
                   <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     {faq.question}
@@ -396,7 +396,7 @@ export default function FFLTransfer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass-effect p-8 sm:p-12 rounded-2xl border border-green-500/20"
+            className="glass-effect p-8 sm:p-12 rounded-2xl border border-green-500/20 text-white"
           >
             <ShieldCheck className="w-16 h-16 text-green-400 mx-auto mb-6" />
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
