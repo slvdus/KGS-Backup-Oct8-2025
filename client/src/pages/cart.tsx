@@ -4,9 +4,11 @@ import { Plus, Minus, Trash2, ShoppingBag, ArrowLeft, Shield, Lock, Award, Check
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/cart-context";
 import SEOHead, { pageSEO } from "@/components/seo-head";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Cart() {
-  const { items, updateQuantity, removeItem, totalItems, subtotal } = useCart();
+  const { items, updateQuantity, removeItem, totalItems, subtotal, addItem } = useCart();
+  const { toast } = useToast();
 
   const tax = subtotal * 0.0825; // 8.25% tax rate
   const total = subtotal + tax;
@@ -17,6 +19,75 @@ export default function Cart() {
     { icon: Award, text: "98% Satisfaction", color: "text-amber-400" },
     { icon: Truck, text: "Fast Processing", color: "text-purple-400" }
   ];
+
+  // Upsell products data
+  const upsellProducts = [
+    {
+      id: "upsell-1",
+      name: "Federal 9mm 115gr FMJ",
+      description: "50 Round Box - Range Ready",
+      price: 24.99,
+      originalPrice: 29.99,
+      image: "/api/placeholder/400/250?text=9mm+Ammo+Box",
+      badge: "BEST SELLER",
+      badgeColor: "bg-red-500",
+      inStock: 50
+    },
+    {
+      id: "upsell-2",
+      name: "Vedder LightTuck IWB",
+      description: "Premium Kydex Holster",
+      price: 59.99,
+      originalPrice: 69.99,
+      image: "/api/placeholder/400/250?text=IWB+Holster",
+      badge: "TOP RATED",
+      badgeColor: "bg-amber-500",
+      inStock: 25
+    },
+    {
+      id: "upsell-3",
+      name: "Otis Elite Cleaning Kit",
+      description: "Complete Gun Care System",
+      price: 44.99,
+      originalPrice: 54.99,
+      image: "/api/placeholder/400/250?text=Cleaning+Kit",
+      badge: "ESSENTIAL",
+      badgeColor: "bg-green-500",
+      inStock: 35
+    }
+  ];
+
+  const handleAddUpsell = (product: typeof upsellProducts[0]) => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+      inStock: product.inStock
+    });
+    toast({
+      title: "Added to Cart!",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
+  const handleAddBundle = () => {
+    upsellProducts.forEach(product => {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price * 0.9, // 10% discount for bundle
+        image: product.image,
+        quantity: 1,
+        inStock: product.inStock
+      });
+    });
+    toast({
+      title: "Bundle Added!",
+      description: "All 3 items have been added to your cart with a 10% discount.",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 text-white relative">
@@ -358,6 +429,106 @@ export default function Cart() {
             </div>
           </div>
         )}
+
+        {/* Upsells Section */}
+        <motion.section 
+          className="mt-12 sm:mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="text-center mb-6 sm:mb-8">
+            <motion.h2 
+              className="text-2xl sm:text-3xl font-bold text-white mb-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Complete Your Setup
+            </motion.h2>
+            <motion.p 
+              className="text-beige-100/70 text-sm sm:text-base"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Star className="inline w-4 h-4 text-amber-400 mr-1" />
+              Customers who bought these items also purchased
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {upsellProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                className={`glass-effect border border-noir-700/50 rounded-xl overflow-hidden group ${
+                  index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2 right-2">
+                    <span className={`${product.badgeColor} text-white px-2 py-1 rounded-full text-xs font-semibold`}>
+                      {product.badge}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-white font-semibold text-lg mb-1">{product.name}</h3>
+                  <p className="text-beige-100/60 text-sm mb-3">{product.description}</p>
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <span className="text-2xl font-bold text-beige-100">${product.price.toFixed(2)}</span>
+                      <span className="text-sm text-beige-100/50 line-through ml-2">${product.originalPrice.toFixed(2)}</span>
+                    </div>
+                    <span className="text-green-400 text-sm">In Stock</span>
+                  </div>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-beige-100 to-beige-200 hover:from-beige-200 hover:to-beige-100 text-noir-900 font-semibold"
+                    onClick={() => handleAddUpsell(product)}
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add to Cart
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Special Offer Banner */}
+          <motion.div
+            className="mt-6 sm:mt-8 glass-effect border border-amber-500/30 rounded-xl p-4 sm:p-6 text-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Award className="w-8 h-8 text-amber-400" />
+              <div className="text-center sm:text-left">
+                <p className="text-white font-semibold text-base sm:text-lg">
+                  Add all 3 items and save an extra 10%!
+                </p>
+                <p className="text-beige-100/70 text-sm">
+                  Limited time bundle offer - Save $13 instantly
+                </p>
+              </div>
+              <Button 
+                className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold px-6 py-2 rounded-xl whitespace-nowrap"
+                onClick={handleAddBundle}
+              >
+                Add Bundle
+              </Button>
+            </div>
+          </motion.div>
+        </motion.section>
       </div>
     </div>
   );
