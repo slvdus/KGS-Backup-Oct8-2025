@@ -160,20 +160,6 @@ export default function About() {
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Live Badge */}
-          <motion.div
-            className="mb-6 inline-flex items-center gap-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-          >
-            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-green-400 text-sm font-semibold">
-                Family Owned Since 2020 • Serving PA & Beyond
-              </span>
-            </div>
-          </motion.div>
-          
           <motion.h1 
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
@@ -254,6 +240,21 @@ export default function About() {
                 <div className="text-beige-100/60 text-sm relative z-10">{stat.label}</div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Family Owned Badge */}
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, type: "spring", delay: 1 }}
+          >
+            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 px-4 py-2 rounded-full backdrop-blur-md">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-green-400 text-sm font-semibold">
+                Family Owned Since 2020 • Serving PA & Beyond
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
