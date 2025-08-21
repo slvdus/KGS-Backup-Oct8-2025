@@ -188,16 +188,6 @@ export default function Appointment() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-beige-100/10 to-beige-100/5 border border-beige-100/20 rounded-full px-4 py-2 mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Star className="w-4 h-4 text-beige-100" />
-              <span className="text-sm text-beige-100">98% Customer Satisfaction</span>
-            </motion.div>
-
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
               Book Your <span className="gradient-text">VIP Appointment</span>
             </h1>
