@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/cart-context";
 import { useToast } from "@/hooks/use-toast";
 import type { Product } from "@shared/schema";
+import { useState } from "react";
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem, openCart } = useCart();
   const { toast } = useToast();
   const [, setLocation] = useLocation();
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -72,10 +74,44 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         y: -8,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full"
     >
-      {/* Hover glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-beige-100/5 via-beige-100/10 to-beige-100/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"></div>
+      {/* Animated Neon Trail Border */}
+      <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background: isHovered 
+              ? `conic-gradient(from 90deg, transparent 60%, rgba(245, 243, 240, 0.2) 80%, rgba(245, 243, 240, 0.4) 85%, rgba(245, 243, 240, 0.6) 90%, rgba(245, 243, 240, 0.4) 95%, rgba(245, 243, 240, 0.2) 98%, transparent 100%)`
+              : 'transparent',
+          }}
+          animate={isHovered ? {
+            rotate: [0, 360],
+          } : { rotate: 0 }}
+          transition={{
+            duration: 4,
+            repeat: isHovered ? Infinity : 0,
+            ease: "linear"
+          }}
+        />
+        {/* Inner mask to create border effect */}
+        <div className="absolute inset-[2px] bg-noir-900 rounded-xl" />
+      </div>
+      
+      {/* Subtle glow effect */}
+      {isHovered && (
+        <motion.div
+          className="absolute inset-0 rounded-xl pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          style={{
+            boxShadow: '0 0 25px rgba(245, 243, 240, 0.1), inset 0 0 15px rgba(245, 243, 240, 0.03)',
+          }}
+        />
+      )}
       
       {/* Image Section */}
       <div className="relative overflow-hidden h-56">
