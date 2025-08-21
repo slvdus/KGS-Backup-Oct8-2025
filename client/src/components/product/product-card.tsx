@@ -76,7 +76,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full"
+      className="product-card glass-effect border border-noir-700/50 rounded-xl overflow-hidden group relative flex flex-col h-full bg-noir-900/60"
     >
       {/* Animated Neon Trail Border */}
       <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
@@ -96,8 +96,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             ease: "linear"
           }}
         />
-        {/* Inner mask to create border effect */}
-        <div className="absolute inset-[2px] bg-noir-900 rounded-xl" />
       </div>
       
       {/* Subtle glow effect */}
