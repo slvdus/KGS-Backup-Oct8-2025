@@ -1,0 +1,23 @@
+Warning: validateDOMNesting(...): <div> cannot appear as a descendant of &lt;p&gt;.
+div
+MotionComponent@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/framer-motion.js:6536:40
+span
+p
+MotionComponent@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/framer-motion.js:6536:40
+div
+section
+div
+Home@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/src/pages/home.tsx:52:41
+Route@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js:323:14
+Switch@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js:380:27
+div
+div
+Router
+TooltipProviderProvider@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-ZTXB6ZXA.js:32:13
+TooltipProvider@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tooltip.js:57:43
+CartProvider@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/src/contexts/cart-context.tsx:111:5
+QueryClientProvider@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js:2805:9
+App@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/src/App.tsx:158:45
+t@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12639
+value@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32772
+@https://f355bcf5-1a30-4520-9b0f-3f43b27333ea-00-3w3dyuc4csmr1.janeway.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34410

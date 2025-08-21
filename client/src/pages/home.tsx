@@ -214,7 +214,7 @@ export default function Home() {
           >
             <span className="relative inline-block">
               <span className="text-white">Welcome to</span>
-              <motion.div
+              <motion.span
                 className="absolute -inset-1 bg-gradient-to-r from-white/10 to-beige-100/10 blur-2xl"
                 animate={{
                   opacity: [0.3, 0.6, 0.3],
@@ -231,7 +231,7 @@ export default function Home() {
             <span className="block mt-2">
               <span className="gradient-text relative inline-block">
                 KGS CREW
-                <motion.div
+                <motion.span
                   className="absolute -inset-2 bg-gradient-to-r from-beige-100/20 to-beige-200/20 blur-xl"
                   animate={{
                     opacity: [0.5, 1, 0.5],
@@ -256,7 +256,7 @@ export default function Home() {
             Pennsylvania's{' '}
             <span className="relative inline-block">
               <span className="text-beige-100 font-semibold">Best Prices</span>
-              <motion.div
+              <motion.span
                 className="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 blur-xl"
                 animate={{
                   opacity: [0.4, 0.8, 0.4],
