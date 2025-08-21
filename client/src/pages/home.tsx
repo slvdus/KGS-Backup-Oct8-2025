@@ -329,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* Enhanced Best Sellers Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 relative overflow-hidden">
+      <section className="pt-20 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 bg-gradient-to-b from-noir-900 via-noir-800/50 to-noir-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div 
             className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-red-500/5 to-transparent rounded-full blur-3xl"
