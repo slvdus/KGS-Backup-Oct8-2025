@@ -257,7 +257,7 @@ export default function Home() {
             </div>
             <div className="text-center border-x border-noir-700/50">
               <div className="text-2xl sm:text-3xl font-bold gradient-text flex items-center justify-center">
-                <Clock className="w-5 h-5 mr-1" />
+                <Star className="w-5 h-5 mr-1" />
                 VIP
               </div>
               <div className="text-xs sm:text-sm text-gray-400">Appointment Only</div>
