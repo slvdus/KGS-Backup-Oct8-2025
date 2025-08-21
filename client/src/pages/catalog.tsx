@@ -34,6 +34,7 @@ export default function Catalog() {
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
   const [sortBy, setSortBy] = useState("name-asc");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   
   // Update selected category when URL changes
   useEffect(() => {
@@ -290,7 +291,8 @@ export default function Catalog() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* Desktop Grid - Hidden on Mobile */}
+          <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* FFL Transfer Service */}
             <motion.div
               className="glass-effect p-6 sm:p-8 rounded-2xl border border-green-500/20 group hover:border-green-500/40 transition-all duration-500 relative overflow-hidden"
@@ -426,6 +428,202 @@ export default function Catalog() {
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* Mobile Slider - Visible on Mobile Only */}
+          <div className="md:hidden relative">
+            {/* Slider Container */}
+            <div className="overflow-hidden relative">
+              <motion.div 
+                className="flex"
+                animate={{ x: `-${currentServiceIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                drag="x"
+                dragConstraints={{ left: -1000, right: 0 }}
+                onDragEnd={(_, info) => {
+                  const swipeThreshold = 50;
+                  if (info.offset.x > swipeThreshold && currentServiceIndex > 0) {
+                    setCurrentServiceIndex(0);
+                  } else if (info.offset.x < -swipeThreshold && currentServiceIndex < 1) {
+                    setCurrentServiceIndex(1);
+                  }
+                }}
+              >
+                {/* FFL Transfer Service - Mobile */}
+                <motion.div
+                  className="w-full flex-shrink-0 px-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="glass-effect p-6 rounded-2xl border border-green-500/20 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent" />
+                    
+                    <div className="relative z-10">
+                      <div className="flex flex-col items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <motion.div 
+                            className="w-14 h-14 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl flex items-center justify-center"
+                            whileInView={{ rotate: [0, 5, 0] }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                          >
+                            <ShieldCheck className="w-7 h-7 text-green-400" />
+                          </motion.div>
+                        </div>
+                        
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-white mb-3">
+                            FFL Transfer <span className="text-green-400">Service</span>
+                          </h3>
+                          <p className="text-beige-100/70 mb-4 text-sm">
+                            Professional Federal Firearms License transfer services for online purchases. Fast, secure, and compliant processing.
+                          </p>
+                          
+                          <ul className="space-y-2 mb-4">
+                            {[
+                              "Background check processing",
+                              "Secure storage until pickup",
+                              "Licensed professional handling"
+                            ].map((item, idx) => (
+                              <motion.li 
+                                key={idx}
+                                className="flex items-center text-beige-100/60 text-sm"
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 + idx * 0.1 }}
+                                viewport={{ once: true }}
+                              >
+                                <CheckCircle className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
+                                {item}
+                              </motion.li>
+                            ))}
+                          </ul>
+                          
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-baseline gap-1">
+                              <span className="text-2xl font-bold gradient-text">$35</span>
+                              <span className="text-xs text-beige-100/50">per transfer</span>
+                            </div>
+                            <Link href="/ffl-transfer">
+                              <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold px-4 py-2 rounded-xl text-sm">
+                                Learn More
+                                <Zap className="w-4 h-4 ml-2" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* NFA Transfer Service - Mobile */}
+                <motion.div
+                  className="w-full flex-shrink-0 px-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="glass-effect p-6 rounded-2xl border border-purple-500/20 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent" />
+                    
+                    <div className="relative z-10">
+                      <div className="flex flex-col items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <motion.div 
+                            className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-2xl flex items-center justify-center"
+                            whileInView={{ rotate: [0, 5, 0] }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                          >
+                            <Award className="w-7 h-7 text-purple-400" />
+                          </motion.div>
+                        </div>
+                        
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-white mb-3">
+                            NFA Transfer <span className="text-purple-400">Service</span>
+                          </h3>
+                          <p className="text-beige-100/70 mb-4 text-sm">
+                            Expert National Firearms Act transfer services for suppressors, SBRs, and other regulated items.
+                          </p>
+                          
+                          <ul className="space-y-2 mb-4">
+                            {[
+                              "ATF Form 4 processing",
+                              "Tax stamp assistance",
+                              "Compliance verification"
+                            ].map((item, idx) => (
+                              <motion.li 
+                                key={idx}
+                                className="flex items-center text-beige-100/60 text-sm"
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 + idx * 0.1 }}
+                                viewport={{ once: true }}
+                              >
+                                <CheckCircle className="w-4 h-4 text-purple-400 mr-2 flex-shrink-0" />
+                                {item}
+                              </motion.li>
+                            ))}
+                          </ul>
+                          
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-baseline gap-1">
+                              <span className="text-2xl font-bold gradient-text">$75</span>
+                              <span className="text-xs text-beige-100/50">per transfer</span>
+                            </div>
+                            <Link href="/nfa-transfer">
+                              <Button className="bg-gradient-to-r from-purple-500 to-violet-500 hover:from-purple-600 hover:to-violet-600 text-white font-semibold px-4 py-2 rounded-xl text-sm">
+                                Learn More
+                                <Zap className="w-4 h-4 ml-2" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {[0, 1].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentServiceIndex(index)}
+                  className={`transition-all duration-300 ${
+                    currentServiceIndex === index 
+                      ? 'w-8 h-2 bg-beige-100 rounded-full' 
+                      : 'w-2 h-2 bg-beige-100/30 rounded-full hover:bg-beige-100/50'
+                  }`}
+                  aria-label={`Go to service ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Previous/Next Buttons */}
+            <button
+              onClick={() => setCurrentServiceIndex(0)}
+              className={`absolute left-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentServiceIndex === 0 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentServiceIndex === 0}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => setCurrentServiceIndex(1)}
+              className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 glass-effect rounded-full text-beige-100/70 hover:text-beige-100 transition-all ${
+                currentServiceIndex === 1 ? 'opacity-30 cursor-not-allowed' : ''
+              }`}
+              disabled={currentServiceIndex === 1}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
 
           {/* Enhanced Contact Notice */}
