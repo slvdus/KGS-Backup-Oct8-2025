@@ -154,8 +154,8 @@ export default function Home() {
             <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <circle cx="20" cy="20" r="1" fill="currentColor" className="text-beige-100/10">
-                    <animate attributeName="r" values="1;2;1" dur="4s" repeatCount="indefinite" />
+                  <circle cx="20" cy="20" r="0.5" fill="currentColor" className="text-beige-100/5">
+                    <animate attributeName="r" values="0.5;1;0.5" dur="4s" repeatCount="indefinite" />
                   </circle>
                 </pattern>
               </defs>
@@ -165,10 +165,10 @@ export default function Home() {
 
           {/* Flowing Light Beams */}
           <motion.div
-            className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-beige-100/20 to-transparent"
+            className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-beige-100/5 to-transparent"
             animate={{
               x: [-100, 800],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: 8,
@@ -178,10 +178,10 @@ export default function Home() {
             }}
           />
           <motion.div
-            className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-beige-100/15 to-transparent"
+            className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-beige-100/3 to-transparent"
             animate={{
               x: [100, -800],
-              opacity: [0, 1, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: 10,
@@ -194,10 +194,10 @@ export default function Home() {
 
           {/* Floating Geometric Shapes */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-32 h-32 border border-beige-100/10 rounded-full"
+            className="absolute top-1/4 left-1/4 w-32 h-32 border border-beige-100/5 rounded-full"
             animate={{
               rotate: 360,
-              scale: [1, 1.2, 1],
+              scale: [1, 1.1, 1],
             }}
             transition={{
               rotate: { duration: 20, repeat: Infinity, ease: "linear" },
@@ -205,10 +205,10 @@ export default function Home() {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-24 h-24 border border-beige-100/10 rotate-45"
+            className="absolute bottom-1/4 right-1/4 w-24 h-24 border border-beige-100/5 rotate-45"
             animate={{
               rotate: -360,
-              scale: [1, 1.3, 1],
+              scale: [1, 1.2, 1],
             }}
             transition={{
               rotate: { duration: 25, repeat: Infinity, ease: "linear" },
@@ -218,11 +218,11 @@ export default function Home() {
 
           {/* Gradient Orbs */}
           <motion.div 
-            className="absolute -top-1/3 -left-1/3 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-gradient-to-br from-beige-100/10 to-transparent rounded-full blur-3xl"
+            className="absolute -top-1/3 -left-1/3 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-gradient-to-br from-beige-100/3 to-transparent rounded-full blur-3xl"
             animate={{
               x: [0, 150, 0],
               y: [0, -100, 0],
-              scale: [1, 1.3, 1],
+              scale: [1, 1.2, 1],
             }}
             transition={{
               duration: 25,
@@ -231,11 +231,11 @@ export default function Home() {
             }}
           />
           <motion.div 
-            className="absolute -bottom-1/3 -right-1/3 w-[700px] sm:w-[1000px] h-[700px] sm:h-[1000px] bg-gradient-to-tl from-beige-100/8 to-transparent rounded-full blur-3xl"
+            className="absolute -bottom-1/3 -right-1/3 w-[700px] sm:w-[1000px] h-[700px] sm:h-[1000px] bg-gradient-to-tl from-beige-100/2 to-transparent rounded-full blur-3xl"
             animate={{
               x: [0, -150, 0],
               y: [0, 100, 0],
-              scale: [1, 0.7, 1],
+              scale: [1, 0.8, 1],
             }}
             transition={{
               duration: 30,
@@ -250,7 +250,7 @@ export default function Home() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px]"
             animate={{
               scale: [0, 1.5],
-              opacity: [0.3, 0],
+              opacity: [0.1, 0],
             }}
             transition={{
               duration: 4,
@@ -259,21 +259,21 @@ export default function Home() {
               repeatDelay: 2,
             }}
           >
-            <div className="w-full h-full rounded-full border border-beige-100/20" />
+            <div className="w-full h-full rounded-full border border-beige-100/5" />
           </motion.div>
           
           {/* Sparkle Effects */}
-          {[...Array(20)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-beige-100/60 rounded-full"
+              className="absolute w-0.5 h-0.5 bg-beige-100/30 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
+                opacity: [0, 0.5, 0],
+                scale: [0, 1.2, 0],
               }}
               transition={{
                 duration: 4,
