@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, Crosshair } from "lucide-react";
+import { Menu, X, ShoppingCart, Crosshair, Home, Package, Info, Users, Calendar, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/cart-context";
 
@@ -10,12 +10,12 @@ export default function Navbar() {
   const { totalItems, toggleCart } = useCart();
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/catalog", label: "Inventory" },
-    { href: "/about", label: "About" },
-    { href: "/community", label: "Community" },
-    { href: "/appointment", label: "Appointment" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "Home", icon: Home },
+    { href: "/catalog", label: "Inventory", icon: Package },
+    { href: "/about", label: "About", icon: Info },
+    { href: "/community", label: "Community", icon: Users },
+    { href: "/appointment", label: "Appointment", icon: Calendar },
+    { href: "/contact", label: "Contact", icon: Phone },
   ];
 
   const isActive = (href: string) => {
@@ -168,21 +168,25 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <div className="px-3 pt-2 pb-3 space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`block px-4 py-3 rounded-lg transition-all duration-200 font-medium text-base ${
-                    isActive(link.href)
-                      ? "text-beige-100 bg-beige-100/15 shadow-inner"
-                      : "text-white/90 hover:text-beige-100 hover:bg-white/10"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-medium text-base ${
+                      isActive(link.href)
+                        ? "text-beige-100 bg-beige-100/15 shadow-inner"
+                        : "text-white/90 hover:text-beige-100 hover:bg-white/10"
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}
